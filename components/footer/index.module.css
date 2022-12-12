@@ -1,0 +1,32 @@
+.footer > ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+
+  justify-content: space-between;
+  margin: 10px 10%;
+  margin-bottom: 40px;
+}
+
+.footer > ul > li > ul {
+  list-style: none;
+  padding: 0;
+}
+.footer > ul > li > b {
+  font-weight: 500;
+  font-size: 12px;
+
+  color: #2b2a2a;
+}
+.footer > ul > li > ul > li{
+    height: 21px;
+}
+.footer > ul > li > ul > li > a {
+  font-weight: 400;
+  font-size: 10px;
+  color: #2b2a2a;
+  text-decoration: none;
+}
+.footer > ul > li > ul > li{
+
+}

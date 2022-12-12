@@ -1,0 +1,35 @@
+.search > div {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  height: 41px;
+  padding-left: 12px;
+  box-sizing: border-box;
+  gap: 0 18px;
+}
+.search > div .select {
+  align-items: center;
+  display: flex;
+  border-left: 1px solid #808080;
+  height: 20px;
+}
+.search > div > input {
+  border: none;
+  outline: none;
+  height: 34px;
+  width: 79%;
+}
+.search {
+  display: flex;
+  justify-content: center;
+}
+.search > div button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}

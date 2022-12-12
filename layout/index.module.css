@@ -1,0 +1,36 @@
+.header,
+.headerRIght {
+  display: flex;
+  align-items: center;
+  font-family: "Poppins";
+}
+.header {
+  justify-content: flex-end;
+  width: 97%;
+}
+.header > div {
+  display: flex;
+  width: 22%;
+  justify-content: space-between;
+}
+.header > div > p {
+  color: #808080;
+  font-weight: 500;
+  font-size: 12px;
+}
+.headerRIght {
+  justify-content: space-between;
+  width: 45%;
+}
+.headerRIghtChild {
+  display: flex;
+  justify-content: space-between;
+  width: 46%;
+  align-items: center;
+}
+.headerRIghtChild>a{
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #808080;
+}

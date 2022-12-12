@@ -1,0 +1,49 @@
+.nav {
+  background: #e61c23;
+  height: 68px;
+  padding: 0 40px;
+  border-bottom: 1px solid white;
+
+}
+.nav > ul {
+  align-items: center;
+  height: inherit;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+.nav ul {
+  display: flex;
+  list-style: none;
+}
+.logo > a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 28px;
+  color: white;
+  letter-spacing: 1.1px;
+}
+.logo > p {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1.1px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+
+  color: #ffffff;
+}
+.navbar {
+  width: 40%;
+}
+.navbar > ul {
+  justify-content: space-between;
+}
+.navbar > ul a {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: none;
+  color: #ffffff;
+}
