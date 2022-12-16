@@ -2,25 +2,29 @@ import ProductCard from "../../components/card/product";
 import PrimaryButton from "../../components/UI/button";
 import styles from "./index.module.css";
 
-type ProductsContainerProps = {};
+type ProductsContainerProps = {
+  style?:any
+};
 
-const ProductsContainer: React.FC<ProductsContainerProps> = () => {
+const ProductsContainer: React.FC<ProductsContainerProps> = ({style={}}) => {
   return (
-    <section className={styles.productContainer}>
-      <header>
-        <ul>
-          <li>Elanlar</li>
-          <li>
-            <a href="">Alıcılar</a>
-          </li>
-          <li>
-            <a href="">Satıcılar</a>
-          </li>
-          <li className={styles.TabActive}>
-            <a href="">Hamısı</a>
-          </li>
-        </ul>
-      </header>
+    <section className={styles.productContainer} style={style}>
+{
+  style?.transform&&<header>
+  <ul>
+    <li>Elanlar</li>
+    <li>
+      <a href="">Alıcılar</a>
+    </li>
+    <li>
+      <a href="">Satıcılar</a>
+    </li>
+    <li className={styles.TabActive}>
+      <a href="">Hamısı</a>
+    </li>
+  </ul>
+</header>
+}
       <main>
         <header>
           <ul>

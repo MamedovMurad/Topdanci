@@ -9,7 +9,9 @@ const Menu: React.FC<MenuProps> = () => {
   return (
     <section className={styles.Menu}>
       <div className={styles.search}><TopSearch /></div>
-      <div className={styles.containermenu} style={collapse?{}:{overflow:'hidden',height:'66px'}} >
+
+   <div className="wrapper">
+   <div className={styles.containermenu} style={collapse?{}:{overflow:'hidden',height:'66px'}} >
         <div onClick={()=>setcollapse(!collapse)}>
           <button style={collapse?{background:'#00A0E4'}:{}}>
             <span></span>
@@ -112,6 +114,7 @@ const Menu: React.FC<MenuProps> = () => {
           </li>
         </ul>
       </div>
+   </div>
     </section>
   );
 };

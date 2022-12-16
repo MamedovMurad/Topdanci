@@ -5,7 +5,8 @@ type NavProps = {};
 const Nav: React.FC<NavProps> = () => {
   return (
     <nav className={styles.nav}>
-      <ul>
+<div className="wrapper">
+<ul>
         <li className={styles.logo}>
           <a>topdancı.az</a> <p>Topdan Al/Topdan Sat</p>
         </li>
@@ -29,6 +30,7 @@ const Nav: React.FC<NavProps> = () => {
           <PrimaryButton text="YENİ ELAN" />
         </li>
       </ul>
+</div>
     </nav>
   );
 };

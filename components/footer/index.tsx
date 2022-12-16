@@ -3,7 +3,7 @@ type FooterProps = {};
 
 const Footer: React.FC<FooterProps> = () => {
     return (
-        <footer className={styles.footer}>
+        <footer className={styles.footer+' wrapper'}>
             <ul>
                 <li>
                     <b>Topdanci.az</b>

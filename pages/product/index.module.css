@@ -1,8 +1,37 @@
-.productPage{
-    margin: 20px 40px;
+.productPage {
 }
-.productPage ul{
+.productPage ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.productPagearea {
+  transform: translateY(12px);
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 1px 10px;
+}
+.productPagearea ul.links {
+  display: flex;
+  align-items: center;
+  gap: 0px 15px;
+  padding: 0;
+  margin: 20px 0;
+
+}
+.productPagearea ul.links > li::after {
+  content: "/";
+  display: inline-block;
+  margin-left: 6px;
+}
+.productPagearea ul.links > li:last-child::after {
+  all: unset;
+}
+.productPagearea ul > li {
     padding: 0;
-    margin: 0;
-    list-style: none;
+  position: relative;
+  font-weight: 400;
+  font-size: 16px;
+  color: #2b2a2a;
+  margin: 0;
 }

@@ -6,11 +6,11 @@
 }
 .header {
   justify-content: flex-end;
-  width: 97%;
+
 }
 .header > div {
   display: flex;
-  width: 22%;
+  width: 25%;
   justify-content: space-between;
 }
 .header > div > p {

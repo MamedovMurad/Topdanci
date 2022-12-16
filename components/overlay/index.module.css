@@ -1,0 +1,10 @@
+.Overlay{
+    position: relative;
+}
+.Overlay>div{
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    background: #E61C23;
+    height: 345px;
+}

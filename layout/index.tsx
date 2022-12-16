@@ -11,8 +11,8 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <header className={styles.header}>
-        <div>
+      <header className={styles.header+' wrapper'}>
+        <div >
           <p>Dəstək: (+994) 200 10 30</p>
           <div className={styles.headerRIght}>
             <ReactSelectUI width="77px" />
@@ -25,7 +25,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
       </header>
       <Nav/>
-      <main>{children}</main>
+      <main >{children}</main>
       <Footer/>
     </>
   );

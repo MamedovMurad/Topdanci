@@ -1,11 +1,11 @@
 .nav {
   background: #e61c23;
   height: 68px;
-  padding: 0 40px;
+
   border-bottom: 1px solid white;
 
 }
-.nav > ul {
+.nav >div> ul {
   align-items: center;
   height: inherit;
   justify-content: space-between;

@@ -7,7 +7,7 @@ const HomePage:React.FC<HomePageProps> = () => {
     return (
         <div>
        <Menu/>
-       <ProductsContainer/>
+      <div className="wrapper"> <ProductsContainer style={{transform: 'translateY(-100px)'}}/></div>
         </div>
     );
 }
