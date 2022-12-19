@@ -4,7 +4,7 @@ type OverlayProps = {}
 const Overlay:React.FC<OverlayProps> = () => {
     return (
         <section className={styles.Overlay}>
-            <div>Overlay</div>
+            <div></div>
             
         </section>
     );
