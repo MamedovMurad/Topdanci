@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { BuilderSVG } from "../../assets/svg/builder";
+import { BuilderSVG } from "../../assets/svg/buider";
+
 import TopSearch from "../topSearch";
 import styles from "./index.module.css";
 type MenuProps = {};
