@@ -1,0 +1,54 @@
+.replace {
+    margin: 52px 0;
+    background: #F1F3F7;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.replace>h4 {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 16px;
+    color: #E61C23;
+}
+
+.replace>form>div {
+    display: flex;
+    width: 41%;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.replace>form>div:last-child {
+    justify-content: center;
+}
+
+.replace>form>div>label {
+    font-weight: 400;
+    font-size: 16px;
+    color: #2B2A2A;
+}
+
+.replace>form>div>label>span {
+    color: red;
+}
+
+.replace>form>div>input {
+    border: none;
+    outline: none;
+    width: 241px;
+}
+
+.replace>form>div>button {
+    font-weight: 400;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: #FFC702;
+    border-radius: 5px;
+    padding: 3px;
+    outline: none;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}

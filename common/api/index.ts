@@ -1,9 +1,19 @@
+
+
 export class HttpClient {
     _baseURL: string;
     _headers: any
     constructor(options: any = {}) {
-        this._baseURL = options.baseURL || "";
+      if (typeof window !== 'undefined') {
+        options.headers.Authorization= "Bearer " +localStorage.getItem('agent') 
+        console.log(localStorage.getItem('agent'));
+        
+      }
+        this._baseURL = options.baseURL || "http://api.artelie.az/api/v1/";
         this._headers = options.headers || {};
+   
+      
+        
     }
     setHeader(key: string, value: string) {
         this._headers[key] = value;

@@ -13,7 +13,7 @@
   padding: 22px 29px;
   border-radius: 11px;
   display: flex;
-  transition: all 0.3s;
+/*   transition: all 0.3s; */
 }
 .containermenu > div {
   width: 10%;
@@ -33,7 +33,7 @@
   justify-content: center;
   gap: 5px 0;
   cursor: pointer;
-  transition: all 0.3s;
+/*   transition: all 0.3s; */
 }
 .containermenu > div > button:hover,
 .containermenu > ul > li > button:hover {
@@ -68,7 +68,7 @@
   border-width: 10px;
   border-style: solid;
   border-color:  transparent  transparent #f1f3f7 transparent;
-  bottom: -31px;
+  bottom: -37px;
   display: none;
 }
 .MenutItem > .content::before{
@@ -90,7 +90,7 @@
   opacity: 0;
   position: absolute;
   z-index: 7;
-  top: 100px;
+  top: 106px;
 transition: padding .3s;
   border-radius: 10px;
   height: 0;

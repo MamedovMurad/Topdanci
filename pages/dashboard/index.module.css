@@ -1,0 +1,73 @@
+.dashboard>header {
+    border-bottom: 0.5px solid #808080;
+}
+
+.dashboard>header>div {
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.dashboard>header>div>h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    color: #353535;
+}
+
+.dashboard>header>div>div {
+    display: flex;
+    gap: 0 31px;
+    align-items: center;
+}
+
+.dashboard>header>div>div>div>p {
+    font-weight: 400;
+    font-size: 10px;
+    color: #999999;
+    margin: 0;
+}
+
+.dashboard>header>div>div>div>h5 {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 16px;
+    color: #2B2A2A;
+}
+
+.dashboard>div>header>div>button {
+    outline: none;
+    border: none;
+    width: 83px;
+    height: 27px;
+    border-radius: 5px;
+    background: #FFC702;
+    font-weight: 500;
+    font-size: 16px;
+
+
+
+    color: #2B2A2A;
+}
+
+/* main */
+
+.dashboard>main>div>ul {
+    display: flex;
+    gap: 0 34px;
+    list-style: none;
+}
+
+.dashboard>main>div>ul>li {
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+
+
+    color: #808080;
+}
