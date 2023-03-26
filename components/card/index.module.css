@@ -5,6 +5,7 @@
   border-radius: 5px;
 /*   min-width: 212px; */
   max-width: 23.9%;
+  min-width: 23.9%;
 }
 .product > .image {
   position: relative;
@@ -53,6 +54,7 @@
   color: #2b2a2a;
 }
 .content > div > article {
+  width: 60px;
   font-style: normal;
   font-weight: 300;
   font-size: 8px;

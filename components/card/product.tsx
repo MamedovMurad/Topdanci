@@ -4,6 +4,7 @@ import images from "../../assets/uploads/example.jpg";
 import Link from "next/link";
 type ProductCardProps = {
   data: {
+    id:number,
     title: string;
     address: string;
     date: string;
@@ -20,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
     <div className={styles.product}>
       <div className={styles.image}>
         <Image
-          src={images}
+          src={data.photo}
           alt="Picture of the author"
          layout="fill"
         />
@@ -31,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
       <span>{data.type === "premium"}</span>
       <div className={styles.content}>
         <div>
-          <h6>  <Link href="/product/ll">{data.title}</Link></h6>
+          <h6>  <Link href={"/product/"+data.title+'/'+data.id}>{data.title}</Link></h6>
           <article>
             {data.address} <br /> {data.date}
           </article>
@@ -41,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             <p>Minimum sifariş</p> <p>Topdan qiymət</p>
           </div>
           <div>
-            <p className={styles.productPrice}>100 Ədəd</p> <p>150 AZN</p>
+            <p className={styles.productPrice}>100 Ədəd</p> <p>{data.price}</p>
           </div>
         </div>
       </div>

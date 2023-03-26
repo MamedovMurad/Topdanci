@@ -3,14 +3,15 @@ import styles from './index.module.css';
 import { LogoRed } from '../../assets/svg/logo';
 import { TopdanciSVG } from '../../assets/svg/topdanci';
 import PrimaryButton from '../../components/UI/button';
-import { HttpClient } from '../../common/api';
+import {  api } from '../../common/api';
+import { useRouter } from 'next/router';
 interface LoginProps {
 
 }
 
 const Login: React.FC<LoginProps> = ({ }) => {
- 
-   const api =  new HttpClient( {headers:{['content-type']:'application/json',Accept:'application/json'}})
+ const router = useRouter()
+
     const [tel, settel] = useState<null|string>(null)
     const [tab, setTab] = useState(0)
     const [otp_code, setOtp_code] = useState(0)
@@ -52,7 +53,8 @@ const Login: React.FC<LoginProps> = ({ }) => {
         }else if(name==='last'&& value.length>0){
             console.log(Object.values(inputs).join('')+value);
              const response = await api.post('login',{tel, otp_code:Object.values(inputs).join('')+value})
-             return localStorage.setItem('agent',response.token)
+              localStorage.setItem('agent',response.token)
+              return router.push('dashboard')
         }
 
 

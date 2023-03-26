@@ -40,6 +40,7 @@
   padding: 0 20px;
   display: flex;
   gap: 0 10px;
+  min-height: 147px;
 }
 .contentTop > div:first-child {
   width: 32%;

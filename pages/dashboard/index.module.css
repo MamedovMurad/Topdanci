@@ -40,7 +40,7 @@
     color: #2B2A2A;
 }
 
-.dashboard>div>header>div>button {
+.dashboard>header>div>div>button {
     outline: none;
     border: none;
     width: 83px;

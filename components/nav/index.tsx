@@ -1,3 +1,4 @@
+import Router from "next/router";
 import PrimaryButton from "../UI/button";
 import styles from "./index.module.css";
 type NavProps = {};
@@ -7,7 +8,7 @@ const Nav: React.FC<NavProps> = () => {
     <nav className={styles.nav}>
 <div className="wrapper">
 <ul>
-        <li className={styles.logo}>
+        <li className={styles.logo} onClick={()=>Router.push('/')}>
           <a>topdancı.az</a> <p>Topdan Al/Topdan Sat</p>
         </li>
         <li className={styles.navbar}>

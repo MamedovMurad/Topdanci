@@ -5,15 +5,16 @@ import ReactSelectUI from "../components/r-select";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
 import { useRouter } from 'next/router'
-import { HttpClient } from "../common/api";
+
 import { useEffect, useState } from "react";
+import { api } from "../common/api";
 type LayoutProps = {
   children: any; //still
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [user, setuser] = useState<null|{name:string, tel:string}>(null)
-  const api =  new HttpClient( {headers:{['content-type']:'application/json',Accept:'application/json'}})
+ 
 
   async function  fetchUser(){
 const respose  = await api.get('user/info')
@@ -27,7 +28,7 @@ setuser(respose)
   }, [])
   
   const router = useRouter()
-  if (router.pathname=='/login') {
+  if (router.pathname==='/login') {
     return <>{children}</>
   }
   return (
@@ -41,7 +42,7 @@ setuser(respose)
 
             <div className={styles.headerRIghtChild}>
               <UserLoginSVG />
-              <Link href={user?.tel?'/dashboard':"/"}>{user?.tel||'Giriş'} </Link>
+              <Link href={user?.tel?'/dashboard':"/login"}>{user?.tel||'Giriş'} </Link>
             </div>
           </div>
         </div>

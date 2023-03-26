@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import styles from './index.module.css';
 import ProfileReplace from '../../container/profile/replace';
+import { useRouter } from 'next/navigation';
+import withPrivateRoute from '../../hoc/withPrivateRoute';
 interface DashboardProps {
 
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ }) => {
+const Dashboard: React.FC<DashboardProps> = ({isLoggedIn }:any) => {
+
   const [selectedTab, setselectedTab] = useState({ title: 'Profil', content: <ProfileReplace /> })
   const tabs = [
     { title: 'Profil', content: <ProfileReplace /> },
@@ -41,6 +44,7 @@ const Dashboard: React.FC<DashboardProps> = ({ }) => {
           {
             selectedTab.content
           }
+        
         </div>
       </main>
 
@@ -50,4 +54,4 @@ const Dashboard: React.FC<DashboardProps> = ({ }) => {
   );
 };
 
-export default Dashboard;
+export default withPrivateRoute(Dashboard);

@@ -1,6 +1,6 @@
 
 
-export class HttpClient {
+ class HttpClient {
     _baseURL: string;
     _headers: any
     constructor(options: any = {}) {
@@ -15,6 +15,20 @@ export class HttpClient {
       
         
     }
+
+    private static instance: HttpClient;
+
+
+
+	static getInstance() {
+		if (!HttpClient.instance) {
+			HttpClient.instance = new HttpClient({headers:{['content-type']:'application/json',Accept:'application/json'}});
+		}
+
+		return HttpClient.instance;
+	}
+
+
     setHeader(key: string, value: string) {
         this._headers[key] = value;
         return this;
@@ -66,3 +80,5 @@ export class HttpClient {
         )
       }
 }
+
+export  const api=  HttpClient.getInstance();

@@ -2,54 +2,34 @@ import Image from "next/image";
 import styles from "./index.module.css";
 import images from "../../assets/uploads/example.jpg";
 
-type SliderUIProps = {};
+type SliderUIProps = {
+  photos?:{src:string,alt:string}[]
+};
 
-const SliderUI: React.FC<SliderUIProps> = () => {
+const SliderUI: React.FC<SliderUIProps> = ({photos}) => {
   return (
     <div className={styles.slider}>
       <div className={styles.bigImage}>
       <Image
-             src={images}
-            alt="Picture of the author"
+             src={photos?.length&&photos[0].src||''}
+            alt={photos?.length&&photos[0].alt||''}
            layout="fill"
           />
       </div>
       <ul>
-        <li>
-          <Image
-            src={images}
-            alt="Picture of the author"
-            layout="fill"
-          />
-        </li>
-        <li>
-          <Image
-            src={images}
-            alt="Picture of the author"
-            layout="fill"
-          />
-        </li>
-        <li>
-          <Image
-            src={images}
-            alt="Picture of the author"
-            layout="fill"
-          />
-        </li>
-        <li>
-          <Image
-            src={images}
-            alt="Picture of the author"
-            layout="fill"
-          />
-        </li>
-            <li>
-          <Image
-            src={images}
-            alt="Picture of the author"
-            layout="fill"
-          />
-        </li>
+        {
+          photos?.map(item=>(
+            <li key={item.src}>
+            <Image
+              src={item.src}
+              alt={item.alt}
+              layout="fill"
+            />
+          </li>
+          ))
+        }
+ 
+     
       </ul>
     </div>
   );

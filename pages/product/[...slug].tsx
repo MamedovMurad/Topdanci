@@ -1,13 +1,16 @@
 import { TelIconSVG } from "../../assets/svg/tel";
 import { UserLoginSVG } from "../../assets/svg/userloginsvg";
+import { api } from "../../common/api";
 import Overlay from "../../components/overlay";
 import SliderUI from "../../components/slider";
 import PrimaryButton from "../../components/UI/button";
 import ProductsContainer from "../../container/products";
 import styles from "./index.module.css";
-type ProductDetailProps = {};
+type ProductDetailProps = {
+  data:any
+};
 
-const ProductDetail: React.FC<ProductDetailProps> = () => {
+const ProductDetail: React.FC<ProductDetailProps> = ({data}) => {
   return (
     <section className={styles.productPage}>
       <Overlay />
@@ -16,11 +19,11 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
           <div>
             <ul className={styles.links}>
               <li>Bütün elanlar</li>
-              <li>Elektronika</li>
+              <li>{data.category?.name}</li>
               <li>Televizor</li>
             </ul>
           </div>
-          <SliderUI />
+          <SliderUI photos={data.images}/>
           <div className={styles.contentTop}>
             <div>
               <div className={styles.info}>
@@ -30,7 +33,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                   font="14px"
                   color="white"
                 />
-                <h5>Samsung televizorlarını topdan alıram</h5>
+                <h5>{data.title}</h5>
                 <div className={styles.infocontent}>
                   <div className={styles.bottomcontent}>
                     <p>Minimum sifariş</p> <p>Topdan qiymət</p>
@@ -44,7 +47,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
             <div className={styles.content}>
               <article>Şəhər: Bakı</article>
               <article>
-                Məhsul kateqoriyası: <span>Elektronika</span>
+                Məhsul kateqoriyası: <span>{data.category?.name}</span>
               </article>
             </div>
             <div className={styles.buttons}>
@@ -76,12 +79,12 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
           <div className={styles.contentBottom}>
             <div>
               <div>
-                <label ><UserLoginSVG/>Fəqan</label>
-                <p><TelIconSVG/><a href="tel:055 973 63 13">055 973 63 13</a></p>
+                <label ><UserLoginSVG/>{data.name}</label>
+                <p><TelIconSVG/><a href={"tel:"+data.tel}>{data.tel}</a></p>
               </div>
               <ul>
                 <li>    Elanın nömrəsi:35537250</li>
-                <li>Baxışların sayı: 75</li>
+                <li>Baxışların sayı: {data.views_count}</li>
                 <li>Yeniləndi: Bugün, 09:55</li>
               </ul>
             </div>
@@ -93,16 +96,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
             <div className={styles.moreDetail}>
               <h6>Ətraflı</h6>
               <p>
-                What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
-                printing and typesetting industry. Lorem Ipsum has been the
-                industry`s standard dummy text ever since the 1500s, when an
-                unknown printer took a galley of type and scrambled it to make a
-                type specimen book. It has survived not only five centuries, but
-                also the leap into electronic typesetting, remaining essentially
-                unchanged. It was popularised in the 1960s with the release of
-                Letraset sheets containing Lorem Ipsum passages, and more
-                recently with desktop publishing software like Aldus PageMaker
-                including versions of Lorem Ipsum.
+              {data.detail}
               </p>
             </div>
           </div>
@@ -114,3 +108,16 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
 };
 
 export default ProductDetail;
+
+
+export async function getServerSideProps({params:{slug}}:any) {
+  // Fetch data from external API
+
+  
+  const res = await api.get('advert/'+slug[1])
+console.log(res);
+
+
+  // Pass data to the page via props
+  return { props: { data:res.data } }
+}
