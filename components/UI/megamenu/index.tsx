@@ -2,55 +2,22 @@
 import { ArrowSVG } from '../../../assets/svg/Arrow';
 import { LocationSVG } from '../../../assets/svg/location';
 import styles from './index.module.css'
-type MegaMenuProps = {}
+type MegaMenuProps = {
+    cities:any
+}
  
-const MegaMenuUI:React.FC<MegaMenuProps> = () => {
+const MegaMenuUI:React.FC<MegaMenuProps> = ({cities}) => {
     return (
         <div className={styles.MegaMenu}>
             <label ><span>Şəhər</span> <LocationSVG/> <ArrowSVG/></label>
             <div className={styles.content}>
                 <ul>
-                    <li>Baki</li>
-                    <li>Ağcabedi</li>
-                    <li>Ağdam </li>
-                    <li>Ağdaş</li>
-                    <li>Yevlax</li>
-                    <li>Tovuz</li>
-                    <li>Saatli</li>
-                    <li>Sabirabad</li>
-                    <li>Goranboy</li>
-                    <li>Aqstafa</li>
-                    <li>Baki</li>
-                    <li>Ağcabedi</li>
-                    <li>Ağdam </li>
-                    <li>Ağdaş</li>
-                    <li>Yevlax</li>
-                    <li>Tovuz</li>
-                    <li>Saatli</li>
-                    <li>Sabirabad</li>
-                    <li>Goranboy</li>
-                    <li>Aqstafa</li>
-                    <li>Baki</li>
-                    <li>Ağcabedi</li>
-                    <li>Ağdam </li>
-                    <li>Ağdaş</li>
-                    <li>Yevlax</li>
-                    <li>Tovuz</li>
-                    <li>Saatli</li>
-                    <li>Sabirabad</li>
-                    <li>Goranboy</li>
-                    <li>Aqstafa</li>
-                    <li>Baki</li>
-                    <li>Ağcabedi</li>
-                    <li>Ağdam </li>
-                    <li>Ağdaş</li>
-                    <li>Yevlax</li>
-                    <li>Tovuz</li>
-                    <li>Saatli</li>
-                    <li>Sabirabad</li>
-                    <li>Goranboy</li>
-                    <li>Aqstafa</li>
-                  
+                   {cities?.map((item:any)=>(
+                    <li key={item.id}>{item.name}</li>
+                   ))}
+                  <li>fsffs</li>
+                  <li>fsdfsdfsd</li>
+                  <li>fsfsd</li>
                 </ul>
             </div>
         </div>

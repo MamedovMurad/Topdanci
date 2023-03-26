@@ -1,19 +1,26 @@
 import { BuilderSVG } from "../../assets/svg/buider";
 import styles from './index.module.css'
-type MenuItemProps = {}
+type MenuItemProps = {
+  item:any
+}
  
-const MenuItem:React.FC<MenuItemProps> = () => {
+const MenuItem:React.FC<MenuItemProps> = ({item}) => {
     return (
         <>
         <li className={styles.MenutItem}>
         <button>
           <BuilderSVG />
         </button>
-        <article>Elektironika</article>
+        <article>{item.name}</article>
         <div className={styles.content}>
             <header>Bütün elanlar</header>
             <ul>
-                <li><a href="#">Ehtiyyat hissələri və aksesuarlar</a></li>
+              {
+                item?.subcategories.map((sub:any)=>(
+<li key={sub.icon}><a href="#">{sub.name}</a></li>
+                ))
+              }
+                
                 <li> <a href="">Avtomobillər</a></li>
                 <li> <a href="">Motosikletlər və Mopedlər</a></li>
             </ul>

@@ -1,4 +1,5 @@
 .MegaMenu {
+  min-width: 100%;
   position: relative;
   width: 100%;
   padding-left: 10px;
