@@ -3,13 +3,16 @@ import Menu from "../../components/menu";
 import ProductsContainer from "../../container/products";
 import { api } from "../../common/api";
 import ProductCard from "../../components/card/product";
+import { useRouter } from "next/router";
 
 type HomePageProps = {}
 
 const HomePage: React.FC<HomePageProps> = () => {
+    const router = useRouter()
+
     const [products, setproducts] = useState([])
     async function fetchProducts() {
-        const response = await api.get('adverts')
+        const response = await api.get('adverts?search_text='+router.query.search_text+'&city'+router.query.city)
         setproducts(response.data.adverts.map((item: any, index: number) => (
             <ProductCard
                 key={index}
@@ -32,7 +35,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     }
     useEffect(() => {
         fetchProducts()
-    }, [])
+    }, [router.query])
     return (
         <div>
             <Menu />
