@@ -1,6 +1,7 @@
 import Router from "next/router";
 import PrimaryButton from "../UI/button";
 import styles from "./index.module.css";
+import Link from "next/link";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
@@ -17,13 +18,16 @@ const Nav: React.FC<NavProps> = () => {
               <a href="">Bütün elanlar</a>
             </li>
             <li>
-              <a href="">Topdançılar</a>
+              <Link href={"/topdancilar/"}>Topdançılar</Link>
+              
             </li>
             <li>
-              <a href="">Alıcılar</a>
+            <Link href={"/alicilar"}>Alıcılar</Link>
+           
             </li>
             <li>
-              <a href="">Satıcılar</a>
+            <Link href={"/saticilar/"}>Satıcılar</Link>
+          
             </li>
           </ul>
         </li>

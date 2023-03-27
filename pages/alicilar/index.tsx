@@ -4,12 +4,12 @@ import ProductsContainer from "../../container/products";
 import { api } from "../../common/api";
 import ProductCard from "../../components/card/product";
 
-type HomePageProps = {}
+type AliciPageProps = {}
 
-const HomePage: React.FC<HomePageProps> = () => {
+const Alici: React.FC<AliciPageProps> = () => {
     const [products, setproducts] = useState([])
     async function fetchProducts() {
-        const response = await api.get('adverts')
+        const response = await api.get('adverts?advert_type=1')
         setproducts(response.data.adverts.map((item: any, index: number) => (
             <ProductCard
                 key={index}
@@ -36,10 +36,10 @@ const HomePage: React.FC<HomePageProps> = () => {
     return (
         <div>
             <Menu />
-            <div className="wrapper"> <ProductsContainer title="Premium elanlar" isproduct style={{ transform: 'translateY(-100px)' }} list={products} /></div>
+            <div className="wrapper"> <ProductsContainer seletedUrl="/alicilar" title="Alıcılar" isproduct style={{ transform: 'translateY(-100px)' }} list={products} /></div>
         </div>
     );
 }
 
 
-export default HomePage;
+export default Alici;

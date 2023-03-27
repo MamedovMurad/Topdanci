@@ -4,12 +4,12 @@ import ProductsContainer from "../../container/products";
 import { api } from "../../common/api";
 import ProductCard from "../../components/card/product";
 
-type HomePageProps = {}
+type SaticiPageProps = {}
 
-const HomePage: React.FC<HomePageProps> = () => {
+const Satici: React.FC<SaticiPageProps> = () => {
     const [products, setproducts] = useState([])
     async function fetchProducts() {
-        const response = await api.get('adverts')
+        const response = await api.get('adverts?advert_type=0')
         setproducts(response.data.adverts.map((item: any, index: number) => (
             <ProductCard
                 key={index}
@@ -36,10 +36,10 @@ const HomePage: React.FC<HomePageProps> = () => {
     return (
         <div>
             <Menu />
-            <div className="wrapper"> <ProductsContainer title="Premium elanlar" isproduct style={{ transform: 'translateY(-100px)' }} list={products} /></div>
+            <div className="wrapper"> <ProductsContainer seletedUrl="/saticilar" title="Satıcılar" isproduct style={{ transform: 'translateY(-100px)' }} list={products} /></div>
         </div>
     );
 }
 
 
-export default HomePage;
+export default Satici;

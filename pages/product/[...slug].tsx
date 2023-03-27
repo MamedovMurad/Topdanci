@@ -100,7 +100,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({data}) => {
               </p>
             </div>
           </div>
-          <ProductsContainer />
+         {/*  <ProductsContainer  /> */}
         </div>
       </div>
     </section>

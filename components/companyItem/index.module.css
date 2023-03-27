@@ -1,0 +1,52 @@
+.companyitem {
+    background: #D9D9D9;
+    border: 1px solid #40B8EB;
+    border-radius: 5px;
+    gap: 0 4px;
+    display: flex;
+    width: 49%;
+}
+
+.companyitem>.logo {
+    height: 166px;
+    width: 152px;
+    min-width: 152px;
+    position: relative;
+}
+
+.companyitem>.content {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.companyitem>.content>h5 {
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.companyitem>.content>p {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 12px;
+    color: #2B2A2A;
+}
+
+.companyitem>.content>a {
+    font-weight: 400;
+    font-size: 12px;
+    color: #2B2A2A;
+    text-decoration: none;
+}
+
+.companyitem>.content>div>span {
+    font-weight: 400;
+    font-size: 12px;
+    color: #E61C23;
+}

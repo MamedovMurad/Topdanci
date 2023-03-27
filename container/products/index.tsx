@@ -1,41 +1,44 @@
-import { useEffect, useState } from "react";
+import Link from "next/link";
 import ProductCard from "../../components/card/product";
 import PrimaryButton from "../../components/UI/button";
 import styles from "./index.module.css";
-import { api } from "../../common/api";
+
 
 
 type ProductsContainerProps = {
-  style?: any
+  style?: any,
+  list?: any,
+  isproduct?:boolean,
+  title:string,
+  seletedUrl?:string
 };
 
-const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {} }) => {
+const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list, isproduct,title,seletedUrl }) => {
+const urls = [
+  {link:'/alicilar', title:'Alıcılar'},
+  {link:'/saticilar', title:'Satıcılar'},
+ 
+]
 
-  const [products, setproducts] = useState([])
-  async function fetchProducts() {
-    const response = await api.get('adverts')
-    setproducts(response.data.adverts)
-    console.log(response);
-
-  }
-  useEffect(() => {
-    fetchProducts()
-  }, [])
 
   return (
     <section className={styles.productContainer} style={style}>
       {
-        style?.transform && <header>
+        (style?.transform &&isproduct)&& <header>
           <ul>
             <li>Elanlar</li>
-            <li>
-              <a href="">Alıcılar</a>
-            </li>
-            <li>
-              <a href="">Satıcılar</a>
-            </li>
-            <li className={styles.TabActive}>
-              <a href="">Hamısı</a>
+            {
+              urls.map(item=>(
+                <li key={item.title} className={item.link==seletedUrl?styles.TabActive:''}>
+                  <Link href={item.link}>{item.title}</Link>
+        
+              </li>
+              ))
+            }
+          
+          <li className={!seletedUrl? styles.TabActive:''}>
+          <Link href={'/'}>Hamısı</Link>
+          
             </li>
           </ul>
         </header>
@@ -43,27 +46,12 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {} }) => 
       <main>
         <header>
           <ul>
-            <li>Premium elanlar</li>
-            <li>Hamısını göstər</li>
+            <li>{title}</li>
+           {isproduct&& <li>Hamısını göstər</li>}
           </ul>
         </header>
         <div className={styles.productmain}>
-          {products.map((item: any, index: number) => (
-            <ProductCard
-              key={index}
-              data={{
-                id:item.id,
-                title: item.title,
-                address: "Bakı",
-                minNumber: item.min_order,
-                price: item.wholesale_price,
-                date: item.date,
-                photo: item.image?.src,
-                label: item.advert_type?"buyer":'seller',
-                type: "premium"
-              }}
-            />
-          ))}
+        {list}
 
 
 
