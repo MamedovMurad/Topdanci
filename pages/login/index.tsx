@@ -64,12 +64,11 @@ const Login: React.FC<LoginProps> = ({ }) => {
     function handlesetTel(event: any) {
 
         if (
-            (Number(event.target.value.replace('(', '').replace(')', '').replace('-', '')) ||
-             Number(event.target.value.replace('(', '').replace(')', '').replace('-', '')) == 0) &&
-            event.target.value.replace('(', '').replace(')', '').replace('-', '').length < 11) {
-console.log('fsadfsa');
-
-
+            (Number(event.target.value.replace('(', '').replace(')', '').replaceAll('-', '')) ||
+             Number(event.target.value.replace('(', '').replace(')', '').replaceAll('-', '')) == 0) &&
+            event.target.value.replace('(', '').replace(')', '').replaceAll('-', '').length < 11) {
+              
+                
             if (event.target.value.length > 1) {
 
                 settel(event.target.value)
@@ -79,6 +78,13 @@ console.log('fsadfsa');
                 settel(event.target.value + ')-')
 
             }
+            console.log(tel);
+            if((event.target.value.length === 9 && tel[9] !== '-')||
+            (event.target.value.length === 12 && tel[12] !== '-')){
+              
+                settel(event.target.value + '-')
+            }
+            
 
         } else {
 
