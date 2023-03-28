@@ -3,43 +3,43 @@ import styles from './index.module.css';
 import { LogoRed } from '../../assets/svg/logo';
 import { TopdanciSVG } from '../../assets/svg/topdanci';
 import PrimaryButton from '../../components/UI/button';
-import {  api } from '../../common/api';
+import { api } from '../../common/api';
 import { useRouter } from 'next/router';
 interface LoginProps {
 
 }
 
 const Login: React.FC<LoginProps> = ({ }) => {
- const router = useRouter()
+    const router = useRouter()
 
-    const [tel, settel] = useState<null|string>(null)
+    const [tel, settel] = useState<string>('(0')
     const [tab, setTab] = useState(0)
     const [otp_code, setOtp_code] = useState(0)
     const [inputs, setInputs] = useState({
         first: '',
         second: '',
-        third:'',
+        third: '',
         last: ''
     })
-    const handleSubmitForm = async(event: any) => {
-        
+    const handleSubmitForm = async (event: any) => {
+
         event.preventDefault()
         setTab(2)
-        const response= await api.post('otp',{tel})
-       setOtp_code(response.kod)
-        
-     
+        const response = await api.post('otp', { tel: Number(tel.replace('(', '').replace(')', '')) })
+        setOtp_code(response.kod)
+
+
     }
 
     const secondRef = useRef<any>(null);
     const thirdRef = useRef<any>(null);
     const lastRef = useRef<any>(null);
 
-    const handleInput1Change = async(event: any) => {
+    const handleInput1Change = async (event: any) => {
         const value = event.target.value;
         const name = event.target.name;
-        setInputs((input)=>({...input,[name]: value}))
-       /*  setInputs({ ...inputs, [name]: value }); */
+        setInputs((input) => ({ ...input, [name]: value }))
+        /*  setInputs({ ...inputs, [name]: value }); */
         if (name === 'first' && value.length > 0) {
             secondRef.current.focus();
             return
@@ -47,22 +47,46 @@ const Login: React.FC<LoginProps> = ({ }) => {
             thirdRef.current.focus();
             return
         }
-        else if (name==='third'&& value.length>0){
+        else if (name === 'third' && value.length > 0) {
             lastRef.current.focus();
-           
-        }else if(name==='last'&& value.length>0){
-            console.log(Object.values(inputs).join('')+value);
-             const response = await api.post('login',{tel, otp_code:Object.values(inputs).join('')+value})
-              localStorage.setItem('agent',response.token)
-              return router.push('dashboard')
+
+        } else if (name === 'last' && value.length > 0) {
+            console.log(Object.values(inputs).join('') + value);
+            const response = await api.post('login', { tel, otp_code: Object.values(inputs).join('') + value })
+            localStorage.setItem('agent', response.token)
+            return router.push('dashboard')
         }
 
 
     };
 
 
+    function handlesetTel(event: any) {
 
-    
+        if (
+            (Number(event.target.value.replace('(', '').replace(')', '').replace('-', '')) ||
+             Number(event.target.value.replace('(', '').replace(')', '').replace('-', '')) == 0) &&
+            event.target.value.replace('(', '').replace(')', '').replace('-', '').length < 11) {
+console.log('fsadfsa');
+
+
+            if (event.target.value.length > 1) {
+
+                settel(event.target.value)
+            }
+            if (event.target.value.length === 4 && tel[4] !== ')') {
+
+                settel(event.target.value + ')-')
+
+            }
+
+        } else {
+
+        }
+
+
+    }
+
     return (
         <section className={styles.login}>
             {
@@ -83,7 +107,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
                                 <form action="" onSubmit={handleSubmitForm}>
                                     <div>
                                         <label htmlFor="phone">Telefon nömrəsi</label>
-                                        <input type="text" name="" id="phone" onChange={(e)=> settel(e.target.value)} />
+                                        <input type="text" name="" id="phone" value={tel} onChange={handlesetTel} />
                                     </div>
                                     <button type='submit' style={{ padding: '6px', background: '#00A0E4', color: 'white' }}>SMS kod göndərilsin</button>
                                 </form>
