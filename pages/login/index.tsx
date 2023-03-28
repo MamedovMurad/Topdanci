@@ -25,7 +25,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
 
         event.preventDefault()
         setTab(2)
-        const response = await api.post('otp', { tel: Number(tel.replace('(', '').replace(')', '')) })
+        const response = await api.post('otp', { tel: '994'+Number(tel.replace('(', '').replace(')', '').replaceAll('-','')) })
         setOtp_code(response.kod)
 
 
