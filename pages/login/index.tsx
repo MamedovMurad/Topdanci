@@ -52,7 +52,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
 
         } else if (name === 'last' && value.length > 0) {
             console.log(Object.values(inputs).join('') + value);
-            const response = await api.post('login', { tel, otp_code: Object.values(inputs).join('') + value })
+            const response = await api.post('login', { tel:'994'+Number(tel.replace('(', '').replace(')', '').replaceAll('-','')), otp_code: Object.values(inputs).join('') + value })
             localStorage.setItem('agent', response.token)
             return router.push('dashboard')
         }
