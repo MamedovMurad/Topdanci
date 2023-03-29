@@ -39,7 +39,9 @@
     outline: none;
     width: 241px;
 }
-
+.replace>form>div>input:disabled{
+    background-color: #d8d1d152;
+}
 .replace>form>div>button {
     font-weight: 400;
     font-size: 14px;

@@ -1,18 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {  useRef, useState } from 'react';
 import styles from './index.module.css';
 import { LogoRed } from '../../assets/svg/logo';
 import { TopdanciSVG } from '../../assets/svg/topdanci';
 import PrimaryButton from '../../components/UI/button';
 import { api } from '../../common/api';
 import { useRouter } from 'next/router';
+import { usePhoneInput } from '../../hooks/inputmask';
 interface LoginProps {
 
 }
 
 const Login: React.FC<LoginProps> = ({ }) => {
     const router = useRouter()
-
-    const [tel, settel] = useState<string>('(0')
+    const [tel,handlesetTel]=usePhoneInput()
+ 
     const [tab, setTab] = useState(0)
     const [otp_code, setOtp_code] = useState(0)
     const [inputs, setInputs] = useState({
@@ -61,37 +62,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
     };
 
 
-    function handlesetTel(event: any) {
-
-        if (
-            (Number(event.target.value.replace('(', '').replace(')', '').replaceAll('-', '')) ||
-             Number(event.target.value.replace('(', '').replace(')', '').replaceAll('-', '')) == 0) &&
-            event.target.value.replace('(', '').replace(')', '').replaceAll('-', '').length < 11) {
-              
-                
-            if (event.target.value.length > 1) {
-
-                settel(event.target.value)
-            }
-            if (event.target.value.length === 4 && tel[4] !== ')') {
-
-                settel(event.target.value + ')-')
-
-            }
-            console.log(tel);
-            if((event.target.value.length === 9 && tel[9] !== '-')||
-            (event.target.value.length === 12 && tel[12] !== '-')){
-              
-                settel(event.target.value + '-')
-            }
-            
-
-        } else {
-
-        }
-
-
-    }
+   
 
     return (
         <section className={styles.login}>

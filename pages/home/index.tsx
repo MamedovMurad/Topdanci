@@ -12,7 +12,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 
     const [products, setproducts] = useState([])
     async function fetchProducts() {
-        const response = await api.get('adverts?search_text='+router.query.search_text+'&city'+router.query.city)
+        const response = await api.get('adverts?search_text='+(router.query.search_text||'')+'&city='+(router.query.city||''))
         setproducts(response.data.adverts.map((item: any, index: number) => (
             <ProductCard
                 key={index}

@@ -1,31 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './index.module.css';
+import { api } from '../../../common/api';
+import { usePhoneInput } from '../../../hooks/inputmask';
+import SpinnerLoader from '../../../components/loader/spinner';
 interface ProfileReplaceProps {
-  
+
 }
 
 const ProfileReplace: React.FC<ProfileReplaceProps> = ({ }) => {
-  return (
-    <section className={styles.replace}> 
-        <h4>Düzəliş et</h4>
+    const [data, setdata] = useState({ name: '', mail: '', loader: false })
+    const [tel, setTel, handleSetTelAll] = usePhoneInput()
+    async function fetchApi() {
+        setdata({ ...data, loader: true })
+        const res = await api.get('user/info')
 
-        <form action="">
-            <div>
-                <label htmlFor="">Adınız <span>*</span></label>
-                <input type="text" placeholder='Əli' />
-            </div>
-            <div>
-                <label htmlFor="">E-mail <span>*</span></label>
-                <input type="text" placeholder='Əli' />
-            </div>
-            <div>
-                <label htmlFor="">Mobil nömrə <span>*</span></label>
-                <input type="text" placeholder='Əli' />
-            </div>
-         <div>   <button>Yadda saxla</button></div>
-        </form>
-    </section>
-  );
+        setdata({ name: res.name, mail: res.email, loader: false })
+
+        handleSetTelAll(('0' + res.tel).replace('994', ''))
+
+
+
+    }
+    async function updateProfile(event: any) {
+        setdata({ ...data, loader: true })
+        event.preventDefault()
+        const response = await api.post('user/update', { name: data.name, email: data.mail })
+        setdata({ ...data, loader: false })
+    }
+    useEffect(() => {
+        fetchApi()
+    }, [])
+
+
+    return (
+        <section className={styles.replace}>
+            <h4>Düzəliş et</h4>
+
+            {
+                !data.loader?    <form action="" onSubmit={updateProfile}>
+                <div>
+                    <label htmlFor="">Adınız <span>*</span></label>
+                    <input type="text" placeholder='Əli' value={data.name} onChange={(event) => setdata({ ...data, name: event.target.value })} />
+                </div>
+                <div>
+                    <label htmlFor="">E-mail <span>*</span></label>
+                    <input type="email" placeholder='e-mail' value={data.mail} onChange={(event) => setdata({ ...data, mail: event.target.value })} />
+                </div>
+                <div>
+                    <label htmlFor="">Mobil nömrə <span>*</span></label>
+                    <input type="text" value={tel} placeholder='nömrə' disabled onChange={setTel} />
+                </div>
+                <div>   <button>Yadda saxla</button></div>
+            </form>
+         :   <SpinnerLoader />
+            }
+        </section>
+    );
 };
 
 export default ProfileReplace;

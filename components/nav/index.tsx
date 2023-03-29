@@ -32,7 +32,7 @@ const Nav: React.FC<NavProps> = () => {
           </ul>
         </li>
         <li className={styles.rightButton}>
-          <PrimaryButton text="YENİ ELAN" />
+          <PrimaryButton text="YENİ ELAN" onClick={()=>Router.push('yeni-elan')} />
         </li>
       </ul>
 </div>
