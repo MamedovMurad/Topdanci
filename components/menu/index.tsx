@@ -38,10 +38,10 @@ setMenu(res.data)
 
           <ul>
             {
-              collapse ? menu.map(item => (
-                <MenuItem key={item} item={item}/>
-              )) : menu.slice(0, 8).map(item => (
-                <MenuItem key={item}  item={item}/>
+              collapse ? menu.map((item,index) => (
+                <MenuItem key={index} item={item}/>
+              )) : menu.slice(0, 8).map((item,index) => (
+                <MenuItem  key={index}  item={item}/>
               ))
             }
 
