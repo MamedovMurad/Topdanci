@@ -106,15 +106,6 @@ const HomePage: React.FC<HomePageProps> = () => {
             <Menu />
             <div className="wrapper">
                 <ProductsContainer title="Premium elanlar" isproduct style={{ transform: 'translateY(-100px)' }} list={premiumProducts} />
-
-
-
-
-
-                <SpinnerLoader />
-
-
-
                 <InfiniteScroll
                     dataLength={products?.length || 1}
                     next={fetchProducts}
