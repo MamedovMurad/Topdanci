@@ -73,3 +73,8 @@
   margin-top: 50px;
   text-align: center;
 }
+.skeletonArea{
+  display: flex;
+  gap: 0 16px;
+
+}

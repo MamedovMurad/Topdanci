@@ -144,8 +144,10 @@
     color: #FFC702;
 }
 
-span.required {
+.required {
     color: red;
+    margin: 0;
+    font-size: 12px;
 }
 
 .newAdvert .elements_different>.element>label::after {

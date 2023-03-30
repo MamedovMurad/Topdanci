@@ -10,7 +10,7 @@ type HomePageProps = {}
 const HomePage: React.FC<HomePageProps> = () => {
     const router = useRouter()
 
-    const [products, setproducts] = useState([])
+    const [products, setproducts] = useState<any>(null)
     async function fetchProducts() {
         const response = await api.get('adverts?search_text='+(router.query.search_text||'')+'&city='+(router.query.city||''))
         setproducts(response.data.adverts.map((item: any, index: number) => (
@@ -39,7 +39,9 @@ const HomePage: React.FC<HomePageProps> = () => {
     return (
         <div>
             <Menu />
-            <div className="wrapper"> <ProductsContainer title="Premium elanlar" isproduct style={{ transform: 'translateY(-100px)' }} list={products} /></div>
+            <div className="wrapper"> 
+                 <ProductsContainer title="Premium elanlar" isproduct style={{ transform: 'translateY(-100px)' }} list={products} />
+            </div>
         </div>
     );
 }

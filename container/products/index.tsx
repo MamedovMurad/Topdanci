@@ -2,6 +2,7 @@ import Link from "next/link";
 import ProductCard from "../../components/card/product";
 import PrimaryButton from "../../components/UI/button";
 import styles from "./index.module.css";
+import SkeletonLoader from "../../components/skeleton";
 
 
 
@@ -51,7 +52,12 @@ const urls = [
           </ul>
         </header>
         <div className={styles.productmain}>
-        {list}
+        {list||<div className={styles.skeletonArea}>
+          <SkeletonLoader/>
+          <SkeletonLoader/>
+          <SkeletonLoader/>
+          <SkeletonLoader/>
+          </div>}
 
 
 
