@@ -38,10 +38,17 @@ const HomePage: React.FC<HomePageProps> = () => {
     }
 
     async function fetchProducts() {
+        sethasmore(false)
+
         const response = await api.get('adverts?page=' + page + '&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || ''))
+
         response.data.adverts.length && setpage(prev => prev + 1)
-        response.data.adverts.length < 1 && sethasmore(false)
-        response.data.adverts.length < 1 && setend(true)
+        if (response.data.adverts.length < 1) {
+            sethasmore(false)
+            setend(true)
+             return;
+        }
+      
         if (page < 2) {
             setproducts(response.data.adverts.map((item: any, index: number) => (
                 <ProductCard
@@ -61,7 +68,7 @@ const HomePage: React.FC<HomePageProps> = () => {
             )))
         }
         else {
-
+            sethasmore(true)
             setproducts([...products, response.data.adverts.map((item: any, index: number) => (
                 <ProductCard
                     key={item.id}
@@ -82,7 +89,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 
         }
 
-        console.log(response);
+
     }
 
     function handleScrollToBottom() {
@@ -90,7 +97,7 @@ const HomePage: React.FC<HomePageProps> = () => {
         sethasmore(true)
         setTimeout(() => {
             window.scrollTo({
-                top: document.body.scrollHeight + 6000,
+                top: document.body.scrollHeight,
                 behavior: 'smooth'
             });
         }, 100);
@@ -106,6 +113,7 @@ const HomePage: React.FC<HomePageProps> = () => {
             <Menu />
             <div className="wrapper">
                 <ProductsContainer title="Premium elanlar" isproduct style={{ transform: 'translateY(-100px)' }} list={premiumProducts} />
+
                 <InfiniteScroll
                     dataLength={products?.length || 1}
                     next={fetchProducts}
@@ -113,13 +121,15 @@ const HomePage: React.FC<HomePageProps> = () => {
                     loader={<SpinnerLoader />}
                     style={{ transform: 'translateY(-100px)' }}
 
+
                 >
-                    <ProductsContainer title="Son elanlar" isproduct list={products} isNotTop={!end} onClick={handleScrollToBottom} />
+                    <div> <ProductsContainer title="Son elanlar" isproduct list={products} isNotTop={!end} onClick={handleScrollToBottom} /></div>
                 </InfiniteScroll>
-
-
             </div>
+
+
         </div>
+
     );
 }
 
