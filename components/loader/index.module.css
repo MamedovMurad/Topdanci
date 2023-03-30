@@ -21,13 +21,13 @@
 .ldio-lpo3g36561 div {
   position: absolute;
   animation: ldio-lpo3g36561 .6s linear infinite;
-  width: 104px;
-  height: 104px;
-  top: 48px;
+  width: 60px;
+  height: 60px;
+  top: 30px;
   left: 48px;
   border-radius: 50%;
   box-shadow: 0 2.8px 0 0 #e15b64;
-  transform-origin: 52px 53.4px;
+  transform-origin: 28px 32.4px;
 }
 
 .loadingio-spinner-eclipse-aoc8pcnrf4q {

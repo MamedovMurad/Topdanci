@@ -111,7 +111,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 
 
 
-
+                <SpinnerLoader />
 
 
 
