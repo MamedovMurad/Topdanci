@@ -9,7 +9,7 @@
         console.log(localStorage.getItem('agent'));
         
       }
-        this._baseURL = options.baseURL || "http://api.artelie.az/api/v1/";
+        this._baseURL = options.baseURL || "https://api.artelie.az/api/v1/";
         this._headers = options.headers || {};
    
       
