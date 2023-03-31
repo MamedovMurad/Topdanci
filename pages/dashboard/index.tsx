@@ -4,18 +4,19 @@ import ProfileReplace from '../../container/profile/replace';
 import { useRouter } from 'next/navigation';
 import withPrivateRoute from '../../hoc/withPrivateRoute';
 import Adverts from '../../container/profile/adverts';
+import EmptyAdverts from '../../components/empty-adverts';
 interface DashboardProps {
 
 }
 
-const Dashboard: React.FC<DashboardProps> = ({isLoggedIn }:any) => {
+const Dashboard: React.FC<DashboardProps> = ({ isLoggedIn }: any) => {
 
   const [selectedTab, setselectedTab] = useState({ title: 'Profil', content: <ProfileReplace /> })
   const tabs = [
     { title: 'Profil', content: <ProfileReplace /> },
-    { title: 'Elanlar', content: <Adverts/> },
-    { title: 'Ödənişlər', content: <></> },
-    { title: 'Elan limiti', content: <></> }
+    { title: 'Elanlar', content: <Adverts /> },
+    { title: 'Ödənişlər', content: <EmptyAdverts title='' selectable='action' /> },
+    { title: 'Elan limiti', content: <EmptyAdverts title='' selectable='action' /> }
   ]
 
 
@@ -45,7 +46,7 @@ const Dashboard: React.FC<DashboardProps> = ({isLoggedIn }:any) => {
           {
             selectedTab.content
           }
-        
+
         </div>
       </main>
 

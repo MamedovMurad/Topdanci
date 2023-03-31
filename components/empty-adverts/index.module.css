@@ -1,5 +1,5 @@
 .emptyAdvertsMain {
-    margin: 15px 39px;
+/*     margin: 15px 39px; */
     min-height: 277px;
     box-sizing: border-box;
     background: #F1F3F7;
@@ -19,7 +19,7 @@
 .emptyAdvertsMain p {
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
     color: #8B8787;
 
