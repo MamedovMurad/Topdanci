@@ -4,12 +4,12 @@ import Image from 'next/image';
 interface CompanyItemProps {
     title: string,
     src: string,
-    slogan: string,
+    desc: string,
     tel:string,
     count:number,
 }
 
-const CompanyItem: React.FC<CompanyItemProps> = ({ title, src, slogan,tel,count }) => {
+const CompanyItem: React.FC<CompanyItemProps> = ({ title, src, desc,tel,count }) => {
     return (
         <div className={styles.companyitem}>
             <div className={styles.logo}>
@@ -22,7 +22,7 @@ const CompanyItem: React.FC<CompanyItemProps> = ({ title, src, slogan,tel,count 
             <div className={styles.content}>
                 <h5>{title}</h5>
                 <p>
-                    {slogan} </p>
+                    {desc} </p>
                 <a href={"tel:"+tel}>{tel}</a>
 
                 <div>
