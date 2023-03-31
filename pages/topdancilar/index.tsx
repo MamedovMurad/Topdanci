@@ -12,7 +12,7 @@ const Topdancilar: React.FC<TopdancilarProps> = ({ }) => {
     async function fetchApi() {
         const res = await api.get('wholesalers')
         setdata(res.data.data.map((item: any) => <CompanyItem key={item.id} title={item.title} src={item.logo}
-            slogan={item.slogan} tel={item.tel} count={item.adverts_count} />))
+        desc={item.desc} tel={item.tel} count={item.adverts_count} />))
     }
     useEffect(() => {
         fetchApi()
