@@ -11,7 +11,8 @@ const Topdancilar: React.FC<TopdancilarProps> = ({ }) => {
     const [data, setdata] = useState(null)
     async function fetchApi() {
         const res = await api.get('wholesalers')
-        setdata(res.data.data.map((item: any) => <CompanyItem key={item.id} title={item.title} src={item.logo} slogan={item.slogan} tel={item.tel} count={6} />))
+        setdata(res.data.data.map((item: any) => <CompanyItem key={item.id} title={item.title} src={item.logo}
+            slogan={item.slogan} tel={item.tel} count={item.adverts_count} />))
     }
     useEffect(() => {
         fetchApi()
