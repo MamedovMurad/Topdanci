@@ -10,10 +10,10 @@ type ProductsContainerProps = {
   style?: any,
   list?: any,
   isproduct?: boolean,
-  title: string,
+  title?: string,
   seletedUrl?: string,
   isNotTop?: boolean,
-  onClick?:any
+  onClick?: any
 };
 
 const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list, isproduct, title, seletedUrl, isNotTop, onClick }) => {
@@ -47,12 +47,12 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list,
         </header>
       }
       <main>
-        <header>
+        {title && <header>
           <ul>
             <li>{title}</li>
             {isproduct && <li>Hamısını göstər</li>}
           </ul>
-        </header>
+        </header>}
         <div className={styles.productmain}>
           {list || <div className={styles.skeletonArea}>
             <SkeletonLoader />
