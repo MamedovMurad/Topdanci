@@ -18,7 +18,7 @@ const EmptyAdverts: React.FC<EmptyAdvertsProps> = ({ title, selectable = 'defaul
             tarixçəniz göstəriləcək</p></div>
     }[selectable]
     return (
-        <main className={styles.emptyAdvertsMain}>
+        <main className={styles.emptyAdvertsMain} style={!title?{alignItems:'center'}:{}}>
 
             {item}
         </main>
