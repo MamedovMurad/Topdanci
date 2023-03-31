@@ -4,10 +4,10 @@ import { api } from '../../../common/api';
 import { usePhoneInput } from '../../../hooks/inputmask';
 import SpinnerLoader from '../../../components/loader/spinner';
 interface ProfileReplaceProps {
-
+CB?:any
 }
 
-const ProfileReplace: React.FC<ProfileReplaceProps> = ({ }) => {
+const ProfileReplace: React.FC<ProfileReplaceProps> = ({ CB}) => {
     const [data, setdata] = useState({ name: '', mail: '', loader: false })
     const [tel, setTel, handleSetTelAll] = usePhoneInput()
     async function fetchApi() {
@@ -18,9 +18,8 @@ const ProfileReplace: React.FC<ProfileReplaceProps> = ({ }) => {
 
         handleSetTelAll(('0' + res.tel).replace('994', ''))
 
-
-
-    }
+        CB&&CB(res.balance)
+}
     async function updateProfile(event: any) {
         setdata({ ...data, loader: true })
         event.preventDefault()
@@ -29,7 +28,7 @@ const ProfileReplace: React.FC<ProfileReplaceProps> = ({ }) => {
     }
     useEffect(() => {
         fetchApi()
-    }, [])
+    }, [CB])
 
 
     return (
