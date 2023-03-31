@@ -21,7 +21,7 @@ const CompanyItem: React.FC<CompanyItemProps> = ({ title, src, slogan,tel,count 
             </div>
             <div className={styles.content}>
                 <h5>{title}</h5>
-                <p>What is Lorem Ipsum?
+                <p>
                     {slogan} </p>
                 <a href={"tel:"+tel}>{tel}</a>
 
