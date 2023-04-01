@@ -7,7 +7,7 @@ interface NewAdvertProps {
 
 const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
     const [cities, setcities] = useState<{ name: string, id: number }[]>([])
-    const [categories, setcategories] = useState<{ name: string, id: number }[]>([])
+    const [categories, setcategories] = useState<{ name: string, id: number, subcategories: [] }[]>([])
     const [unit, setunit] = useState<{ name: string, id: number }[]>([])
     const [errors, serErrors] = useState<any>({})
     const input_firstRef = useRef<any>(null)
@@ -48,7 +48,7 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
                         <label htmlFor="">Alıcı/Satıcı <span className={styles.required}>*</span></label>
                         <div className={styles.elements}>
                             <div className={styles.element}>
-                                <input type="radio" name="advert_type" id="buyer" value={0} defaultChecked/>
+                                <input type="radio" name="advert_type" id="buyer" value={0} defaultChecked />
                                 <label htmlFor="buyer">Satıcı </label>
 
                             </div>
@@ -83,7 +83,11 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
                                 <select name="category_id" id="category_id">
                                     {
                                         categories.map(item => (
-                                            <option key={item.id} value={item.id}>{item.name}</option>
+                                            <optgroup key={item.id} label={item.name}>
+                                                {item.subcategories?.map((sub: any) => (
+                                                    <option key={sub.id} value={sub.id}>{sub.name}</option>
+                                                ))}
+                                            </optgroup>
                                         ))
                                     }
 
@@ -98,9 +102,9 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
                         <label htmlFor="">Ölçü vahidi<span className={styles.required}>*</span></label>
                         <div className={`${styles.elements} ${styles.elements_different}`}>
                             {
-                                unit.map((item, index:number) => (
+                                unit.map((item, index: number) => (
                                     <div key={item.id} className={styles.element}>
-                                        <input type="radio" name="unit_id" id={'unit_' + item.id} value={item.id} defaultChecked={index===0} />
+                                        <input type="radio" name="unit_id" id={'unit_' + item.id} value={item.id} defaultChecked={index === 0} />
                                         <label htmlFor={'unit_' + item.id} title={item.name}> </label>
 
                                     </div>
@@ -120,8 +124,8 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
 
                             </div>
                             <div className={styles.element}>
-                                <input type="radio" name="min_order_count" id="min_order_count" value={-1} ref={input_firstRef} 
-                                defaultChecked/>
+                                <input type="radio" name="min_order_count" id="min_order_count" value={-1} ref={input_firstRef}
+                                    defaultChecked />
                                 <label htmlFor="min_order_count" style={{ fontSize: '12px' }}>Razılaşma yolu ilə </label>
 
                             </div>
@@ -156,7 +160,7 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
 
                             </div>
                             <div className={styles.element}>
-                                <input type="radio" name="retail_sales" id="retail_sales_no" value={0}/>
+                                <input type="radio" name="retail_sales" id="retail_sales_no" value={0} />
                                 <label htmlFor="retail_sales_no" style={{ fontSize: '12px' }}>Xeyr </label>
 
                             </div>
