@@ -1,5 +1,7 @@
+import Router from "next/router";
 import { BuilderSVG } from "../../assets/svg/buider";
 import styles from './index.module.css'
+import Link from "next/link";
 type MenuItemProps = {
   item: any
 }
@@ -8,7 +10,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
   return (
     <>
       <li className={styles.MenutItem}>
-        <button>
+        <button onClick={()=>Router.push('/?category='+item.id)}>
           <BuilderSVG />
         </button>
         <article>{item.name}</article>
@@ -17,12 +19,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
           <ul>
             {
               item?.subcategories.map((sub: any, index: number) => (
-                <li key={index}><a href="#">{sub.name}</a></li>
+                <li key={index}> <Link href={'/?category='+sub.id}>{sub.name}</Link></li>
               ))
             }
 
-            <li> <a href="">Avtomobillər</a></li>
-            <li> <a href="">Motosikletlər və Mopedlər</a></li>
+         
           </ul>
         </div>
       </li>

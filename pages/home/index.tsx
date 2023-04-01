@@ -17,7 +17,8 @@ const HomePage: React.FC<HomePageProps> = () => {
     const [end, setend] = useState(false)
     const [page, setpage] = useState(1)
     async function fetchPremiumProducts() {
-        const response = await api.get('adverts?premium=1&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || ''))
+        const response = await api.get('adverts?premium=1&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || ''
+            + '&category=' + (router.query.category || '')))
         setpremiumProducts(response.data.adverts.map((item: any, index: number) => (
             <ProductCard
                 key={item.id}
@@ -37,19 +38,22 @@ const HomePage: React.FC<HomePageProps> = () => {
         console.log(response);
     }
 
-    async function fetchProducts() {
+    async function fetchProducts(param?: boolean) {
         sethasmore(false)
 
-        const response = await api.get('adverts?page=' + page + '&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || ''))
+        const response = await api.get('adverts?page=' + page + '&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || '')
+            + '&category=' + (router.query.category || ''))
 
-        response.data.adverts.length && setpage(prev => prev + 1)
-        if (response.data.adverts.length < 1) {
+
+        if (response.data.adverts.length < 1 && page >= 2 && !param) {
             sethasmore(false)
             setend(true)
-             return;
+            return;
         }
-      
-        if (page < 2) {
+        if (page < 2 || param) {
+            console.log('hello guys');
+            setpage(1)
+            setend(false)
             setproducts(response.data.adverts.map((item: any, index: number) => (
                 <ProductCard
                     key={item.id}
@@ -68,6 +72,7 @@ const HomePage: React.FC<HomePageProps> = () => {
             )))
         }
         else {
+            response.data.adverts.length && setpage(prev => prev + 1)
             sethasmore(true)
             setproducts([...products, response.data.adverts.map((item: any, index: number) => (
                 <ProductCard
@@ -93,7 +98,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     }
 
     function handleScrollToBottom() {
-
+        setpage(prev => prev + 1)
         sethasmore(true)
         setTimeout(() => {
             window.scrollTo({
@@ -104,9 +109,13 @@ const HomePage: React.FC<HomePageProps> = () => {
     }
 
     useEffect(() => {
+
         fetchPremiumProducts()
-        fetchProducts()
+        fetchProducts(true)
+
     }, [router.query])
+
+
     return (
         <div>
 
