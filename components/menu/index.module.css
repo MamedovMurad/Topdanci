@@ -155,3 +155,9 @@
 .MenutItem>.content>ul>li:hover a {
   color: #E61C23;
 }
+
+
+
+.menuItemnosub:hover::before {
+  display: none;
+}

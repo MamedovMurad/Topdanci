@@ -9,23 +9,24 @@ type MenuItemProps = {
 const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
   return (
     <>
-      <li className={styles.MenutItem}>
-        <button onClick={()=>Router.push('/?category='+item.id)}>
+      <li className={`${styles.MenutItem} ${item.subcategories.length <1 && styles.menuItemnosub}`}>
+        <button onClick={() => Router.push('/?category=' + item.id)}>
           <BuilderSVG />
         </button>
         <article>{item.name}</article>
-        <div className={styles.content}>
+        {item.subcategories.length > 0 && <div className={styles.content}>
           <header>Bütün elanlar</header>
           <ul>
             {
               item?.subcategories.map((sub: any, index: number) => (
-                <li key={index}> <Link href={'/?category='+sub.id}>{sub.name}</Link></li>
+                <li key={index}> <Link href={'/?category=' + sub.id}>{sub.name}</Link></li>
               ))
             }
 
-         
+
           </ul>
-        </div>
+        </div>}
+
       </li>
     </>
   );
