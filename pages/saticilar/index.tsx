@@ -3,13 +3,20 @@ import Menu from "../../components/menu";
 import ProductsContainer from "../../container/products";
 import { api } from "../../common/api";
 import ProductCard from "../../components/card/product";
+import { useRouter } from "next/router";
 
 type SaticiPageProps = {}
 
 const Satici: React.FC<SaticiPageProps> = () => {
+    const router = useRouter()
+    const search_text = router.query.search_text ? router?.query?.search_text + '' : ''
+    const city = router.query.city ? router?.query?.city + '' : ''
+    const category = router.query.category ? router?.query?.category + '' : ''
+
     const [products, setproducts] = useState([])
     async function fetchProducts() {
-        const response = await api.get('adverts?advert_type=0')
+
+        const response = await api.get('adverts?' + new URLSearchParams({ advert_type: '0', search_text, city, category }))
         setproducts(response.data.adverts.map((item: any, index: number) => (
             <ProductCard
                 key={index}
@@ -32,7 +39,7 @@ const Satici: React.FC<SaticiPageProps> = () => {
     }
     useEffect(() => {
         fetchProducts()
-    }, [])
+    }, [router.query])
     return (
         <div>
             <Menu />

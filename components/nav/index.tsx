@@ -1,10 +1,19 @@
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
+import { stringify } from 'querystring';
 import PrimaryButton from "../UI/button";
 import styles from "./index.module.css";
 import Link from "next/link";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
+  const router = useRouter()
+  const newParams = { advert_type: 0 };
+  const updatedQuery = { ...router.query, ...newParams };
+  const href = {
+    pathname: router.pathname,
+    search: `?${stringify(updatedQuery)}`,
+  };
+
   return (
     <nav className={styles.nav}>
       <div className="wrapper">
@@ -22,11 +31,11 @@ const Nav: React.FC<NavProps> = () => {
 
               </li>
               <li>
-                <Link href={"/alicilar"}>Alıcılar</Link>
+                <Link href={{ pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 1 })}` }}>Alıcılar</Link>
 
               </li>
               <li>
-                <Link href={"/saticilar/"}>Satıcılar</Link>
+                <Link href={{ pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 0 })}` }} >Satıcılar</Link>
 
               </li>
             </ul>
