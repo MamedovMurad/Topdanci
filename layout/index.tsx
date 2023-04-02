@@ -42,7 +42,7 @@ setuser(respose)
 
             <div className={styles.headerRIghtChild}>
               <UserLoginSVG />
-              <Link href={user?.tel?'/dashboard':"/login"}>{user?.tel||'Giriş'} </Link>
+              <Link href={user?.tel?'/dashboard':"/login"}>{ (user?.name?.slice(0,6)||user?.tel)||'Giriş'} </Link>
             </div>
           </div>
         </div>
