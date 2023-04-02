@@ -2,6 +2,8 @@ import styles from "./index.module.css";
 import Image from "next/image";
 import images from "../../assets/uploads/example.jpg";
 import Link from "next/link";
+import Router from "next/router";
+
 type ProductCardProps = {
   data: {
     id:number,
@@ -17,8 +19,9 @@ type ProductCardProps = {
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+
   return (
-    <div className={styles.product}>
+    <div className={styles.product} onClick={()=>Router.push("/product/"+data.title+'/'+data.id)}>
       <div className={styles.image}>
         <Image
           src={data.photo}

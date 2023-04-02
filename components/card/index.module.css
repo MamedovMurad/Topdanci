@@ -6,6 +6,7 @@
 /*   min-width: 212px; */
   max-width: 23.9%;
   min-width: 23.9%;
+  cursor: pointer;
 }
 .product > .image {
   position: relative;
