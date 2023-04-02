@@ -47,7 +47,11 @@
   list-style: none;
   margin: 0;
   padding: 0%;
-  gap: 4px;
+  /* gap: 4px; */
+  flex-direction: column;
+  width: 100%;
+  width: 678px;
+  height: 24rem;
 }
 .content > ul > li {
   width: 105px;
