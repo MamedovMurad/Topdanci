@@ -7,12 +7,7 @@ type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
   const router = useRouter()
-  const newParams = { advert_type: 0 };
-  const updatedQuery = { ...router.query, ...newParams };
-  const href = {
-    pathname: router.pathname,
-    search: `?${stringify(updatedQuery)}`,
-  };
+
 
   return (
     <nav className={styles.nav}>

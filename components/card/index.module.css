@@ -3,17 +3,19 @@
   background: #f1f3f7;
   border: 0.5px solid #e61c23;
   border-radius: 5px;
-/*   min-width: 212px; */
+  /*   min-width: 212px; */
   max-width: 23.9%;
   min-width: 23.9%;
   cursor: pointer;
 }
-.product > .image {
+
+.product>.image {
   position: relative;
   width: 100%;
   height: 174px;
 }
-.product > .label {
+
+.product>.label {
   top: 4px;
   left: 9px;
   position: absolute;
@@ -27,19 +29,28 @@
   text-align: center;
   color: #ffffff;
 }
+
+.product>.seller {
+  background: #FFC702;
+  color: #2B2A2A;
+}
+
 .content {
   height: 70px;
   padding: 8px;
 }
-.content > div {
+
+.content>div {
   display: flex;
   align-items: center;
 }
-.content > div:last-child {
+
+.content>div:last-child {
   gap: 0 10px;
   margin-top: 9px;
 }
-.content > div > h6 {
+
+.content>div>h6 {
   cursor: pointer;
   width: 70%;
   padding: 0;
@@ -47,14 +58,16 @@
   font-weight: 500;
   font-size: 10px;
   display: flex;
- 
+
 }
-.content > div > h6 >a{
+
+.content>div>h6>a {
   text-decoration: none;
   align-items: center;
   color: #2b2a2a;
 }
-.content > div > article {
+
+.content>div>article {
   width: 60px;
   font-style: normal;
   font-weight: 300;
@@ -62,9 +75,11 @@
   color: #808080;
   text-align: right;
 }
+
 .bottomcontent {
   position: relative;
 }
+
 .bottomcontent::after {
   position: absolute;
   content: "";
@@ -75,13 +90,15 @@
   right: -4.5px;
   top: 2.3px;
 }
-.bottomcontent > p {
+
+.bottomcontent>p {
   margin: 2px 0;
   font-weight: 400;
   font-size: 10px;
   color: #808080;
 }
-.bottomcontent + div > p {
+
+.bottomcontent+div>p {
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -89,6 +106,7 @@
   padding: 0;
   margin: 0;
 }
-.bottomcontent + div > p:last-child {
+
+.bottomcontent+div>p:last-child {
   color: #2b2a2a;
 }

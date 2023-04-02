@@ -3,6 +3,9 @@ import ProductCard from "../../components/card/product";
 import PrimaryButton from "../../components/UI/button";
 import styles from "./index.module.css";
 import SkeletonLoader from "../../components/skeleton";
+import { stringify } from "querystring";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 
 
@@ -17,9 +20,11 @@ type ProductsContainerProps = {
 };
 
 const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list, isproduct, title, seletedUrl, isNotTop, onClick }) => {
+  const [active, setactive] = useState(2)
+  const router = useRouter()
   const urls = [
-    { link: '/alicilar', title: 'Alıcılar' },
-    { link: '/saticilar', title: 'Satıcılar' },
+    { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 1 })}` }, title: 'Alıcılar' },
+    { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 0 })}` }, title: 'Satıcılar' },
 
   ]
 
@@ -31,17 +36,16 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list,
           <ul>
             <li>Elanlar</li>
             {
-              urls.map(item => (
-                <li key={item.title} className={item.link == seletedUrl ? styles.TabActive : ''}>
+              urls.map((item, index) => (
+                <li key={item.title} className={index == active ? styles.TabActive : ''} onClick={() => setactive(index)}>
                   <Link href={item.link}>{item.title}</Link>
 
                 </li>
               ))
             }
 
-            <li className={!seletedUrl ? styles.TabActive : ''}>
+            <li className={active == 2 ? styles.TabActive : ''} onClick={() => setactive(2)}>
               <Link href={'/'}>Hamısı</Link>
-
             </li>
           </ul>
         </header>

@@ -36,7 +36,7 @@ setuser(respose)
       <header className={styles.header+' wrapper'}>
         
         <div >
-          <p>Dəstək: (+994) 200 10 30</p>
+          <a href="tel:+9942001030">Dəstək: (+994) 200 10 30</a>
           <div className={styles.headerRIght}>
             <ReactSelectUI width="77px" />
 

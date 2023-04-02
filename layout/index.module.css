@@ -4,33 +4,42 @@
   align-items: center;
   font-family: "Poppins";
 }
+
 .header {
   justify-content: flex-end;
 
 }
-.header > div {
+
+.header>div {
   display: flex;
   width: 30%;
   justify-content: space-between;
+  align-items: center;
 }
-.header > div > p {
+
+.header>div>a {
   color: #808080;
   font-weight: 500;
   font-size: 12px;
+  text-decoration: none;
+  display: block;
 }
+
 .headerRIght {
   justify-content: space-between;
   width: 45%;
 }
+
 .headerRIghtChild {
   display: flex;
   justify-content: space-between;
   width: 46%;
   align-items: center;
 }
-.headerRIghtChild>a{
-    font-size: 14px;
-    font-weight: 400;
-    text-decoration: none;
-    color: #808080;
+
+.headerRIghtChild>a {
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #808080;
 }
