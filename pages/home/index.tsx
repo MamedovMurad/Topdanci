@@ -18,7 +18,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     const [page, setpage] = useState(1)
     async function fetchPremiumProducts() {
         const response = await api.get('adverts?premium=1&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || '')
-            + '&category=' + (router.query.category || '' + '&advert_type=' + (router.query.advert_type || '')))
+            + '&category=' + (router.query.category || '') + '&advert_type=' + (router.query.advert_type || ''))
         setpremiumProducts(response.data.adverts.map((item: any, index: number) => (
             <ProductCard
                 key={item.id}
@@ -35,14 +35,14 @@ const HomePage: React.FC<HomePageProps> = () => {
                 }}
             />
         )))
-        console.log(response);
+      
     }
 
     async function fetchProducts(param?: boolean) {
         sethasmore(false)
 
         const response = await api.get('adverts?page=' + page + '&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || '')
-            + '&category=' + (router.query.category || '' + '&advert_type=' + (router.query.advert_type || '')))
+            + '&category=' + (router.query.category || '') + '&advert_type=' + (router.query.advert_type || ''))
 
 
         if (response.data.adverts.length < 1 && page >= 2 && !param) {

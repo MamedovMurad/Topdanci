@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 import SkeletonLoader from "../../components/skeleton";
 import { stringify } from "querystring";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -23,10 +23,14 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list,
   const [active, setactive] = useState(2)
   const router = useRouter()
   const urls = [
-    { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 1 })}` }, title: 'Alıcılar' },
     { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 0 })}` }, title: 'Satıcılar' },
+    { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 1 })}` }, title: 'Alıcılar' },
+  
 
   ]
+useEffect(() => {
+  router.query.advert_type&&setactive(router.query.advert_type?Number(router.query.advert_type+''):2)
+}, [router.query.advert_type])
 
 
   return (
@@ -45,7 +49,7 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list,
             }
 
             <li className={active == 2 ? styles.TabActive : ''} onClick={() => setactive(2)}>
-              <Link href={'/'}>Hamısı</Link>
+              <Link href={{ pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: '' })}` }}>Hamısı</Link>
             </li>
           </ul>
         </header>
