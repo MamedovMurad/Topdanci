@@ -25,7 +25,7 @@ const HomePage: React.FC<HomePageProps> = () => {
                 data={{
                     id: item.id,
                     title: item.title,
-                    address: "Bakı",
+                    address: item.city,
                     minNumber: item.min_order,
                     price: item.wholesale_price,
                     date: item.date,
@@ -60,7 +60,7 @@ const HomePage: React.FC<HomePageProps> = () => {
                     data={{
                         id: item.id,
                         title: item.title,
-                        address: "Bakı",
+                        address: item.city,
                         minNumber: item.min_order,
                         price: item.wholesale_price,
                         date: item.date,
@@ -80,7 +80,7 @@ const HomePage: React.FC<HomePageProps> = () => {
                     data={{
                         id: item.id,
                         title: item.title,
-                        address: "Bakı",
+                        address: item.city,
                         minNumber: item.min_order,
                         price: item.wholesale_price,
                         date: item.date,
