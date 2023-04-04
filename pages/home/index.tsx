@@ -131,17 +131,18 @@ const HomePage: React.FC<HomePageProps> = () => {
                     style={responsive > 500 ? { transform: 'translateY(-100px)' } :
                         { transform: 'translateY(-31px)' }} list={premiumProducts} />
 
-                {/*    <InfiniteScroll
+                   <InfiniteScroll
                     dataLength={products?.length || 1}
                     next={fetchProducts}
                     hasMore={hasmore}
                     loader={<SpinnerLoader />}
-                    style={{ transform: 'translateY(-100px)' }}
+                    style={responsive > 500?{ transform: 'translateY(-100px)' }
+                    :{ transform: 'translateY(-30px)' }}
 
 
                 >
                     <div> <ProductsContainer title="Son elanlar" isproduct list={products} isNotTop={!end} onClick={handleScrollToBottom} /></div>
-                </InfiniteScroll> */}
+                </InfiniteScroll>
             </div>
 
 
