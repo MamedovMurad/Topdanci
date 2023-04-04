@@ -23,6 +23,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 
 
     async function fetchPremiumProducts() {
+        setpremiumProducts(null)
         const response = await api.get('adverts?premium=1&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || '')
             + '&category=' + (router.query.category || '') + '&advert_type=' + (router.query.advert_type || ''))
         setpremiumProducts(response.data.adverts.map((item: any, index: number) => (
@@ -45,6 +46,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     }
 
     async function fetchProducts(param?: boolean) {
+        setproducts(null)
         sethasmore(false)
 
         const response = await api.get('adverts?page=' + page + '&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || '')
