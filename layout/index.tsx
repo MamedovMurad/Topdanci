@@ -18,6 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
 
   async function  fetchUser(){
+ api.setHeader('Authorization','Bearer '+localStorage.getItem('agent')||'')
 const respose  = await api.get('user/info')
 setuser(respose)
   }
@@ -26,7 +27,7 @@ setuser(respose)
    
       fetchUser()
     }
-  }, [])
+  }, [typeof window !== 'undefined'&&localStorage.getItem('agent')])
   
   const router = useRouter()
   if (router.pathname==='/login') {
