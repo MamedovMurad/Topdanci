@@ -110,3 +110,12 @@
 .bottomcontent+div>p:last-child {
   color: #2b2a2a;
 }
+
+@media screen and (max-width: 900px) {
+  .product {
+    border-radius: 2px;
+    max-width: 48.9%;
+    min-width: 23.9%;
+
+  }
+}

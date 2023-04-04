@@ -8,13 +8,14 @@ import { useRouter } from 'next/router'
 
 import { useEffect, useState } from "react";
 import { api } from "../common/api";
+import { MyComponent } from "../hooks/useResponsivenenessAdjuster";
 type LayoutProps = {
   children: any; //still
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [user, setuser] = useState<null|{name:string, tel:string}>(null)
- 
+
 
   async function  fetchUser(){
 const respose  = await api.get('user/info')

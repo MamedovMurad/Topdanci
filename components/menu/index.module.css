@@ -161,3 +161,59 @@
 .menuItemnosub:hover::before {
   display: none;
 }
+
+@media screen and (max-width: 900px) {
+  .Menu>div:last-child {
+    /*  display: none; */
+  }
+
+  .Menu {
+     padding: 10px 0 40px 0;
+  }
+
+  .search {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  .menuMobile {
+    max-width: unset;
+  }
+
+  .containermenu {
+    background-color: #fff;
+
+    padding: 9px 5px;
+    border-radius: 0px;
+
+  }
+
+  .containermenu>ul>li {
+    width: 75px;
+  }
+
+  .containermenu>div>button,
+  .containermenu>ul>li>button {
+    width: 44px;
+    height: 44px;
+    gap: 5px 0;
+
+  }
+
+  .MenutItem article,
+  .containermenu article {
+    font-size: 12px;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .containermenu>ul {
+
+    width: 88%;
+    gap: 8px 0.7%;
+  }
+
+  .containermenu>div {
+    width: 12%;
+  }
+}

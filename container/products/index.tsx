@@ -36,7 +36,8 @@ useEffect(() => {
   return (
     <section className={styles.productContainer} style={style}>
       {
-        (style?.transform && isproduct && !isNotTop) && <header>
+        (style?.transform && isproduct && !isNotTop) &&
+         <header>
           <ul>
             <li>Elanlar</li>
             {

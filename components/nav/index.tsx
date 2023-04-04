@@ -3,6 +3,7 @@ import { stringify } from 'querystring';
 import PrimaryButton from "../UI/button";
 import styles from "./index.module.css";
 import Link from "next/link";
+import { BurgerSVG } from "../../assets/svg/burger";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
@@ -13,6 +14,11 @@ const Nav: React.FC<NavProps> = () => {
     <nav className={styles.nav}>
       <div className="wrapper">
         <ul>
+          <li className={styles.burgerMenu}>
+            <div>
+              <BurgerSVG/>
+            </div>
+          </li>
           <li className={styles.logo} onClick={() => Router.push('/')}>
             <a>topdancı.az</a> <p>Topdan Al/Topdan Sat</p>
           </li>

@@ -48,3 +48,28 @@
   text-decoration: none;
   color: #ffffff;
 }
+.burgerMenu{
+  display: none;
+}
+@media screen and (max-width: 900px)  {
+.navbar{
+  display: none;
+}
+.burgerMenu{
+  display: block;
+  width: 50px;
+}
+.nav {
+  margin-top: 10px;
+  background: #ffffff;
+  height: 50px;
+
+}
+.logo>a{
+  color: #2B2A2A;
+  font-size: 20px;
+}
+.logo>p{
+  display: none;
+}
+}

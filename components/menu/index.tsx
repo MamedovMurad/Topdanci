@@ -5,6 +5,8 @@ import TopSearch from "../topSearch";
 import styles from "./index.module.css";
 import MenuItem from "./menuItem";
 import { api } from "../../common/api";
+
+
 type MenuProps = {};
 
 const Menu: React.FC<MenuProps> = () => {
@@ -21,11 +23,13 @@ setMenu(res.data)
     fetchMenu()
   }, [])
   
+
+  
   return (
     <section className={styles.Menu}>
       <div className={styles.search}><TopSearch /></div>
 
-      <div className="wrapper">
+      <div className={styles.menuMobile+" wrapper"}>
         <div className={styles.containermenu}  >
           <div onClick={() => setcollapse(!collapse)}>
             <button style={collapse ? { background: '#00A0E4' } : {}}>
@@ -40,7 +44,7 @@ setMenu(res.data)
             {
               collapse ? menu.map((item,index) => (
                 <MenuItem key={index} item={item}/>
-              )) : menu.slice(0, 8).map((item,index) => (
+              )) :  menu.slice(0, 4).map((item,index) => (
                 <MenuItem  key={index}  item={item}/>
               ))
             }

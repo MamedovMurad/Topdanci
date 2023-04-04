@@ -6,6 +6,7 @@ import ProductCard from "../../components/card/product";
 import { useRouter } from "next/router";
 import InfiniteScroll from "react-infinite-scroll-component";
 import SpinnerLoader from "../../components/loader/spinner";
+import { MyComponent } from "../../hooks/useResponsivenenessAdjuster";
 type HomePageProps = {}
 
 const HomePage: React.FC<HomePageProps> = () => {
@@ -16,6 +17,11 @@ const HomePage: React.FC<HomePageProps> = () => {
     const [hasmore, sethasmore] = useState(false)
     const [end, setend] = useState(false)
     const [page, setpage] = useState(1)
+
+    const responsive = MyComponent()
+
+
+
     async function fetchPremiumProducts() {
         const response = await api.get('adverts?premium=1&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || '')
             + '&category=' + (router.query.category || '') + '&advert_type=' + (router.query.advert_type || ''))
@@ -35,7 +41,7 @@ const HomePage: React.FC<HomePageProps> = () => {
                 }}
             />
         )))
-      
+
     }
 
     async function fetchProducts(param?: boolean) {
@@ -121,9 +127,11 @@ const HomePage: React.FC<HomePageProps> = () => {
 
             <Menu />
             <div className="wrapper">
-                <ProductsContainer title="Premium elanlar" isproduct style={{ transform: 'translateY(-100px)' }} list={premiumProducts} />
+                <ProductsContainer title="Premium elanlar" isproduct
+                    style={responsive > 500 ? { transform: 'translateY(-100px)' } :
+                        { transform: 'translateY(-31px)' }} list={premiumProducts} />
 
-                <InfiniteScroll
+                {/*    <InfiniteScroll
                     dataLength={products?.length || 1}
                     next={fetchProducts}
                     hasMore={hasmore}
@@ -133,7 +141,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 
                 >
                     <div> <ProductsContainer title="Son elanlar" isproduct list={products} isNotTop={!end} onClick={handleScrollToBottom} /></div>
-                </InfiniteScroll>
+                </InfiniteScroll> */}
             </div>
 
 
