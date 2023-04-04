@@ -46,7 +46,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     }
 
     async function fetchProducts(param?: boolean) {
-        setproducts(null)
+    
         sethasmore(false)
 
         const response = await api.get('adverts?page=' + page + '&search_text=' + (router.query.search_text || '') + '&city=' + (router.query.city || '')
@@ -59,7 +59,7 @@ const HomePage: React.FC<HomePageProps> = () => {
             return;
         }
         if (page < 2 || param) {
-
+            setproducts(null)
             setpage(1)
             setend(false)
             setproducts(response.data.adverts.map((item: any, index: number) => (
