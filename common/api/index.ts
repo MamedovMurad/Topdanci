@@ -30,7 +30,11 @@
 
 
     setHeader(key: string, value: string) {
+      
         this._headers[key] = value;
+        if (value==='') {
+         delete this._headers[key];
+        }
         return this;
     }
 
@@ -68,7 +72,14 @@
           }
         )
       }
-      
+      postWithFormData(endpoint:string, body:any, options = {}){
+        return this._fetchJSON(
+          endpoint,{
+            method: 'POST' ,
+            body
+          }
+        )
+      }
       delete(endpoint:string, options = {}) {
         return this._fetchJSON(
           endpoint, 

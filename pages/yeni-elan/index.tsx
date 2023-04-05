@@ -9,15 +9,18 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
     const [cities, setcities] = useState<{ name: string, id: number }[]>([])
     const [categories, setcategories] = useState<{ name: string, id: number, subcategories: [] }[]>([])
     const [unit, setunit] = useState<{ name: string, id: number }[]>([])
+    const [files, setfiles] = useState<any>([])
     const [errors, serErrors] = useState<any>({})
     const input_firstRef = useRef<any>(null)
     const input_secondRef = useRef<any>(null)
     async function handleSubmit(event: any) {
         event.preventDefault()
         const data = new FormData(event.target)
-        console.log(Object.fromEntries(data.entries()));
-        validate(Object.fromEntries(data.entries()))
-
+        console.log({ ...Object.fromEntries(data.entries()), images: files });
+        const exam = validate(Object.fromEntries(data.entries()))
+        if (Object.keys(exam).length === 0) {
+            const res = await api.post('advert-store', { ...Object.fromEntries(data.entries()), images: files })
+        }
     }
 
     async function fetchApi() {
@@ -33,7 +36,17 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
             .map(([key]) => key);
         const newObj = Object.fromEntries(emptyProps.map(key => [key, 'məcburidir!']));
         serErrors(newObj)
-        console.log(newObj, 'newobj');
+        return newObj
+    }
+    async function addFile(params: any) {
+        const formData = new FormData();
+        formData.append('img', params.target.files[0]);
+        console.log(params.target.files[0], 'formData');
+        api.setHeader('content-type', '')
+        api.setHeader('Accept', '')
+        const file = await api.postWithFormData('file-upload-temporary', formData)
+
+        file?.data?.path && setfiles((prev: any) => [...prev, file.data.path])
     }
     useEffect(() => {
         fetchApi()
@@ -44,6 +57,17 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
             <div className="wrapper">
                 <h4>YENİ ELAN</h4>
                 <form onSubmit={handleSubmit}>
+                <div className={styles.elementCard}>
+                        <label htmlFor="category_id">Elan başlığı <span className={styles.required}>*</span></label>
+                        <div className={styles.elements}>
+                            <div className={styles.element}>
+                                <input name='advert_title' type="text" className={styles.singleInput} />
+                                <p className={styles.required}>{errors?.advert_title}</p>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div className={styles.elementCard}>
                         <label htmlFor="">Alıcı/Satıcı <span className={styles.required}>*</span></label>
                         <div className={styles.elements}>
@@ -66,7 +90,7 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
                         <label htmlFor="city">Şəhər <span className={styles.required}>*</span></label>
                         <div className={styles.elements}>
                             <div className={styles.element}>
-                                <select name="city" id="city">
+                                <select name="city_id" id="city">
                                     {cities.map(item => (
                                         <option key={item.id} value={item.id}>{item.name}</option>
                                     ))}
@@ -179,13 +203,28 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
 
                         </div>
                     </div>
+                    <div className={styles.elementCard}>
+                        <label htmlFor="category_id">Şəkillər <span className={styles.required}>*</span></label>
+                        <div className={styles.picture}>
 
+                            <label htmlFor='pctr' className={styles.buttonPicture} >Şəkil əlavə et</label>
+                            <input type="file" id='pctr' style={{ display: 'none' }} onChange={addFile} />
+                            <ul>
+                                {files?.map((item: any) => (
+                                    <li key={item}><img src={item} alt="" /></li>
+
+                                ))}
+                            </ul>
+
+
+                        </div>
+                    </div>
                     <div className={styles.elementCard}>
                         <label htmlFor="category_id">Adınız <span className={styles.required}>*</span></label>
                         <div className={styles.elements}>
                             <div className={styles.element}>
-                                <input name='name' type="text" className={styles.singleInput} placeholder='Əli' />
-                                <p className={styles.required}>{errors?.name}</p>
+                                <input name='name_surname' type="text" className={styles.singleInput} placeholder='Əli Aliyev' />
+                                <p className={styles.required}>{errors?.name_surname}</p>
                             </div>
 
                         </div>
