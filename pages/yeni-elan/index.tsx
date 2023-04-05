@@ -15,6 +15,8 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
     const input_secondRef = useRef<any>(null)
     async function handleSubmit(event: any) {
         event.preventDefault()
+        api.setHeader('content-type', 'application/json')
+        api.setHeader('Accept', 'application/json')
         const data = new FormData(event.target)
         console.log({ ...Object.fromEntries(data.entries()), images: files });
         const exam = validate(Object.fromEntries(data.entries()))
