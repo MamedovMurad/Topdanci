@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './index.module.css';
 import { api } from '../../common/api';
+import Router from 'next/router';
 interface NewAdvertProps {
 
 }
@@ -22,6 +23,7 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
         const exam = validate(Object.fromEntries(data.entries()))
         if (Object.keys(exam).length === 0) {
             const res = await api.post('advert-store', { ...Object.fromEntries(data.entries()), images: files })
+            res&& Router.push('/product/'+res.data.title+'/'+res.data.id)
         }
     }
 
