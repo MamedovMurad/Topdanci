@@ -1,3 +1,5 @@
+
+import { useState } from "react";
 import { TelIconSVG } from "../../assets/svg/tel";
 import { UserLoginSVG } from "../../assets/svg/userloginsvg";
 import { api } from "../../common/api";
@@ -5,14 +7,23 @@ import Overlay from "../../components/overlay";
 import SliderUI from "../../components/slider";
 import PrimaryButton from "../../components/UI/button";
 import ProductsContainer from "../../container/products";
+
 import styles from "./index.module.css";
 type ProductDetailProps = {
-  data:any
+  data: any
 };
 
-const ProductDetail: React.FC<ProductDetailProps> = ({data}) => {
+const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
+
+
   return (
     <section className={styles.productPage}>
+
+
+      <div className={styles.alert} style={data.status.color_code ? { backgroundColor: data.status.color_code } : {}}>
+        <h4>{data.status.title}</h4>
+   {/*      <p></p> */}
+      </div>
       <Overlay />
       <div className="wrapper">
         <div className={styles.productPagearea}>
@@ -23,7 +34,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({data}) => {
               <li>Televizor</li>
             </ul>
           </div>
-          <SliderUI photos={data.images}/>
+          <SliderUI photos={data.images} />
           <div className={styles.contentTop}>
             <div>
               <div className={styles.info}>
@@ -79,8 +90,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({data}) => {
           <div className={styles.contentBottom}>
             <div>
               <div>
-                <label ><UserLoginSVG/>{data.name}</label>
-                <p><TelIconSVG/><a href={"tel:"+data.tel}>{data.tel}</a></p>
+                <label ><UserLoginSVG />{data.name}</label>
+                <p><TelIconSVG /><a href={"tel:" + data.tel}>{data.tel}</a></p>
               </div>
               <ul>
                 <li>    Elanın nömrəsi:35537250</li>
@@ -88,7 +99,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({data}) => {
                 <li>Yeniləndi: Bugün, 09:55</li>
               </ul>
             </div>
-        
+
 
 
 
@@ -96,11 +107,11 @@ const ProductDetail: React.FC<ProductDetailProps> = ({data}) => {
             <div className={styles.moreDetail}>
               <h6>Ətraflı</h6>
               <p>
-              {data.detail}
+                {data.detail}
               </p>
             </div>
           </div>
-         {/*  <ProductsContainer  /> */}
+          {/*  <ProductsContainer  /> */}
         </div>
       </div>
     </section>
@@ -110,14 +121,14 @@ const ProductDetail: React.FC<ProductDetailProps> = ({data}) => {
 export default ProductDetail;
 
 
-export async function getServerSideProps({params:{slug}}:any) {
+export async function getServerSideProps({ params: { slug } }: any) {
   // Fetch data from external API
 
-  
-  const res = await api.get('advert/'+slug[1])
-console.log(res);
+
+  const res = await api.get('advert/' + slug[1])
+  console.log(res);
 
 
   // Pass data to the page via props
-  return { props: { data:res.data } }
+  return { props: { data: res.data } }
 }
