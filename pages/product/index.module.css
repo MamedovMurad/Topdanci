@@ -27,6 +27,7 @@
   content: "/";
   display: inline-block;
   margin-left: 6px;
+  cursor: pointer;
 }
 
 .productPagearea ul.links>li:last-child::after {
