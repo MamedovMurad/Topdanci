@@ -31,8 +31,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
           <div>
             <ul className={styles.links}>
               <li>Bütün elanlar</li>
-           {/*    <li onClick={()=>Router.push('/?category_id='+data.parent_category.id)}>{data?.parent_category?.name}</li>
-              <li onClick={()=>Router.push('/?category_id='+data.category.id)}>{data?.category?.name}</li> */}
+              <li onClick={()=>Router.push('/?category_id='+data.parent_category.id)}>{data?.parent_category?.name}</li>
+              <li onClick={()=>Router.push('/?category_id='+data.category.id)}>{data?.category?.name}</li>
             </ul>
           </div>
           <SliderUI photos={data.images} />
