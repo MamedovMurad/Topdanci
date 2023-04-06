@@ -4,7 +4,7 @@ import PrimaryButton from "../../components/UI/button";
 import styles from "./index.module.css";
 import SkeletonLoader from "../../components/skeleton";
 import { stringify } from "querystring";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 
@@ -25,19 +25,19 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list,
   const urls = [
     { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 0 })}` }, title: 'Satıcılar' },
     { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 1 })}` }, title: 'Alıcılar' },
-  
+
 
   ]
-useEffect(() => {
-  router.query.advert_type&&setactive(router.query.advert_type?Number(router.query.advert_type+''):2)
-}, [router.query.advert_type])
+  useEffect(() => {
+    router.query.advert_type && setactive(router.query.advert_type ? Number(router.query.advert_type + '') : 2)
+  }, [router.query.advert_type])
 
 
   return (
     <section className={styles.productContainer} style={style}>
       {
         (style?.transform && isproduct && !isNotTop) &&
-         <header>
+        <header>
           <ul>
             <li>Elanlar</li>
             {
@@ -59,7 +59,7 @@ useEffect(() => {
         {title && <header>
           <ul>
             <li>{title}</li>
-            {isproduct && <li>Hamısını göstər</li>}
+            {isproduct && <li onClick={() => Router.push('premium-elanlar')}>Hamısını göstər</li>}
           </ul>
         </header>}
         <div className={styles.productmain}>
