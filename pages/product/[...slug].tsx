@@ -9,6 +9,7 @@ import PrimaryButton from "../../components/UI/button";
 import ProductsContainer from "../../container/products";
 
 import styles from "./index.module.css";
+import Router from "next/router";
 type ProductDetailProps = {
   data: any
 };
@@ -30,8 +31,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
           <div>
             <ul className={styles.links}>
               <li>Bütün elanlar</li>
-              <li>{data?.parent_category?.name}</li>
-              <li>{data?.category?.name}</li>
+           {/*    <li onClick={()=>Router.push('/?category_id='+data.parent_category.id)}>{data?.parent_category?.name}</li>
+              <li onClick={()=>Router.push('/?category_id='+data.category.id)}>{data?.category?.name}</li> */}
             </ul>
           </div>
           <SliderUI photos={data.images} />
@@ -128,7 +129,7 @@ export async function getServerSideProps({ params: { slug } }: any) {
   // Fetch data from external API
 
 
-  const res = await api.get('advert/' + slug[1])
+  const res = await api.get('advert/' + slug[slug.length-1])
   console.log(res);
 
 
