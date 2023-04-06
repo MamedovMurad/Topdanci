@@ -10,6 +10,7 @@ height: 338px;
   position: relative;
   border-radius: 5px;
   min-width: 32%;
+  cursor: zoom-in;
 
 }
 .slider ul {
@@ -24,5 +25,6 @@ height: 338px;
 .slider ul li {
    
   position: relative;
+  cursor: zoom-in;
 
 }
