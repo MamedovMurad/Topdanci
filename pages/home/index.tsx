@@ -143,7 +143,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 
 
                 >
-                    <div> <ProductsContainer title="Son elanlar" isproduct list={products} isNotTop={!end} onClick={handleScrollToBottom} /></div>
+                    <div> <ProductsContainer title="Son elanlar"  list={products} isNotTop={!end} onClick={handleScrollToBottom} /></div>
                 </InfiniteScroll>
             </div>
 

@@ -30,8 +30,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
           <div>
             <ul className={styles.links}>
               <li>Bütün elanlar</li>
-              <li>{data.category?.name}</li>
-              <li>Televizor</li>
+              <li>{data?.parent_category?.name}</li>
+              <li>{data?.category?.name}</li>
             </ul>
           </div>
           <SliderUI photos={data.images} />
@@ -109,8 +109,11 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
               <p>
                 {data.detail}
               </p>
+              <PrimaryButton text="Paylaş" size="7px"/>
             </div>
+           
           </div>
+      
           {/*  <ProductsContainer  /> */}
         </div>
       </div>

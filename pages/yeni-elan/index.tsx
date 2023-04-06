@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './index.module.css';
 import { api } from '../../common/api';
 import Router from 'next/router';
+import { usePhoneInput } from '../../hooks/inputmask';
 interface NewAdvertProps {
 
 }
 
 const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
+    const [tel,handlesetTel]=usePhoneInput()
     const [cities, setcities] = useState<{ name: string, id: number }[]>([])
     const [categories, setcategories] = useState<{ name: string, id: number, subcategories: [] }[]>([])
     const [unit, setunit] = useState<{ name: string, id: number }[]>([])
@@ -22,7 +24,9 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
         console.log({ ...Object.fromEntries(data.entries()), images: files });
         const exam = validate(Object.fromEntries(data.entries()))
         if (Object.keys(exam).length === 0) {
-            const res = await api.post('advert-store', { ...Object.fromEntries(data.entries()), images: files })
+            const res = await api.post('advert-store', { ...Object.fromEntries(data.entries()), 
+                tel:'994'+Number(tel.replace('(', '').replace(')', '').replaceAll('-','')),
+                images: files })
             res&& Router.push('/product/'+res.data.title+'/'+res.data.id)
         }
     }
@@ -249,7 +253,7 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
                         <label htmlFor="category_id">Mobil nömrə <span className={styles.required}>*</span></label>
                         <div className={styles.elements}>
                             <div className={styles.element}>
-                                <input type="text" name='tel' className={styles.singleInput} placeholder='(000) 000 00 00' />
+                                <input type="text" name='tel' value={tel} onChange={handlesetTel} className={styles.singleInput} placeholder='(000) 000 00 00' />
                                 <p className={styles.required}>{errors?.tel}</p>
                             </div>
 

@@ -81,7 +81,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
                     <main>
                         {
                             tab === 0 ? <button onClick={() => setTab(1)}>Telefon nömrəsi ilə giriş</button> :
-                                <form action="" onSubmit={handleSubmitForm}>
+                                <form action="" onSubmit={handleSubmitForm} id='telOtpSend'>
                                     <div>
                                         <label htmlFor="phone">Telefon nömrəsi</label>
                                         <input type="text" name="" id="phone" value={tel} onChange={handlesetTel} />
@@ -107,7 +107,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
                             <input type="text" maxLength={1} ref={thirdRef} name='third' onChange={handleInput1Change} />
                             <input type="text" maxLength={1} ref={lastRef} name='last' onChange={handleInput1Change} />
                         </div>
-                        <button>Təkrar göndər</button>
+                        <button type='submit' onClick={handleSubmitForm}>Təkrar göndər</button>
                     </div>
                 </main>
             }
