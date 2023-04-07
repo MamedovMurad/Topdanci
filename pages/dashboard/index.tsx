@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './index.module.css';
 import ProfileReplace from '../../container/profile/replace';
-import { useRouter } from 'next/navigation';
 import withPrivateRoute from '../../hoc/withPrivateRoute';
 import Adverts from '../../container/profile/adverts';
 import EmptyAdverts from '../../components/empty-adverts';
+import { useRouter } from 'next/router';
+
 interface DashboardProps {
 
 }
@@ -18,8 +19,16 @@ const Dashboard: React.FC<DashboardProps> = ({ isLoggedIn }: any) => {
     { title: 'Ödənişlər', content: <EmptyAdverts title='' selectable='action' /> },
     { title: 'Elan limiti', content: <EmptyAdverts title='' selectable='action' /> }
   ]
-console.log('fdsafsaf');
 
+const router =  useRouter()
+
+console.log(router.query,'query');
+
+useEffect(() => {
+  
+const findIndex =  tabs.findIndex(item=>item.title===router.query.param)
+setselectedTab(tabs[findIndex])
+}, [router.query.param])
 
 
   return (
