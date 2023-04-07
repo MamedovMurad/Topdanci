@@ -27,7 +27,7 @@ console.log(router.query,'query');
 useEffect(() => {
   
 const findIndex =  tabs.findIndex(item=>item.title===router.query.param)
-setselectedTab(tabs[findIndex])
+router.query.param&&setselectedTab(tabs[findIndex])
 }, [router.query.param])
 
 
