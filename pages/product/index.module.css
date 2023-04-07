@@ -22,7 +22,9 @@
   padding: 0;
   margin: 20px 0;
 }
-
+.productPagearea ul.links>li:not(:first-child){
+  cursor: pointer;
+}
 .productPagearea ul.links>li::after {
   content: "/";
   display: inline-block;

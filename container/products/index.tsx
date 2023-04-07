@@ -59,7 +59,7 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list,
         {title && <header>
           <ul>
             <li>{title}</li>
-            {isproduct && <li onClick={() => Router.push('premium-elanlar')}>Hamısını göstər</li>}
+            {isproduct && <li style={{cursor:'pointer'}} onClick={() => Router.push('premium-elanlar')}>Hamısını göstər</li>}
           </ul>
         </header>}
         <div className={styles.productmain}>

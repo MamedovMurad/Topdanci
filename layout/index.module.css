@@ -37,6 +37,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
+  gap: 0 5px;
 }
 
 .headerRIghtChild>a {
@@ -55,8 +56,18 @@
   /*   padding: 10px; */
   border-radius: 5px;
   width: 160px;
+ 
 }
+.visible::before{
+ 
+  content: '';
+  display: block;
+  height: 15px;
+  position: absolute;
+  top: -13px;
+  width: 100%;
 
+}
 .visible a {
   text-decoration: none;
   border-bottom: 1px solid rgb(0 0 0 / 15%);
