@@ -220,6 +220,7 @@
     }
 
     .newAdvert .elements .element input[type="text"] {
+        background-color: #F1F3F7;
         width: 100%;
     }
 
@@ -239,7 +240,7 @@
     }
 
     .labelExtend {
-        width: 109%;
+        width: 115%;
     }
 
     .labelExtend label {

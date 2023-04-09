@@ -21,7 +21,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
     <section className={styles.productPage}>
 
 
-      <div className={styles.alert} style={data.status.color_code ? { backgroundColor: data.status.color_code } : {}}>
+      <div className={styles.alert} style={data.status.color_code ? { backgroundColor: data.status.color_code } : {padding:'0.1px'}}>
         <h4>{data.status.title}</h4>
    {/*      <p></p> */}
       </div>
