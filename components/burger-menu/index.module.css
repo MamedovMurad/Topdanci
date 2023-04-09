@@ -1,10 +1,57 @@
-.burgerMenuParent{
+.burgerMenuParent {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.174);
     position: fixed;
     z-index: 5;
 }
-.burgerMenu{
-    background-color: white;
+
+.burgerMenu {
+    background-color: #D9D9D9;
+    width: 85%;
+    height: 74%;
+}
+
+.burgerMenu>header {
+    height: 53.31px;
+    background: #FFFFFF;
+    margin-bottom: 11px;
+}
+
+.burgerMenu>main>ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 5px;
+
+}
+
+.burgerMenu>main>ul>li {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    margin-top: 1px;
+    background-color: #FFFFFF;
+    padding: 14px;
+}
+
+.burgerMenu>main>ul>li a {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+    color: #808080;
+}
+
+.burgerMenu>main>ul.links>li:first-child {
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+.burgerMenu>main>ul.links>li {
+    margin: 0;
+    padding: 1px 14px;
+}
+
+.burgerMenu>main>ul.links>li a {
+    font-size: 11px;
 }
