@@ -68,6 +68,10 @@ function handleScrollToBottom() {
 }
 
   useEffect(() => {
+    if (data.adverts.adverts.length<1) {
+      setend(true)
+      sethasmore(false)
+    }
     setproducts( data.adverts.adverts?.map((item: any, index: number) => (
       <ProductCard
           key={item.id}

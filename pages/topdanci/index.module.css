@@ -42,6 +42,7 @@
     padding: 0 12px;
     transform: translateY(-80px);
     display: flex;
+    justify-content: space-between;
 }
 
 .logoarea {
@@ -57,14 +58,15 @@
 }
 
 .topSection>.leftBox {
-    width: 70%;
+    width: 60%;
     display: flex;
     gap: 0 10px;
+    border-right: .5px solid #808080;
 
 }
 
 .topSection>.leftBox>.content {
-    width: 60%;
+    width: 70%;
     border-bottom: 0.5px solid #00A0E4;
 }
 
