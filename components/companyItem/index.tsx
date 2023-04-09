@@ -1,17 +1,19 @@
 import React from 'react';
 import styles from './index.module.css';
 import Image from 'next/image';
+import Router from 'next/router';
 interface CompanyItemProps {
     title: string,
     src: string,
     desc: string,
     tel:string,
     count:number,
+    id:number
 }
 
-const CompanyItem: React.FC<CompanyItemProps> = ({ title, src, desc,tel,count }) => {
+const CompanyItem: React.FC<CompanyItemProps> = ({ title, src, desc,tel,count,id }) => {
     return (
-        <div className={styles.companyitem}>
+        <div className={styles.companyitem} onClick={()=>Router.push('/topdanci/'+id)}>
             <div className={styles.logo}>
                 <Image
                     src={src}

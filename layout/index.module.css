@@ -40,7 +40,7 @@
   gap: 0 5px;
 }
 
-.headerRIghtChild>a {
+.headerRIghtChild>a,.headerRIghtChild>span {
   font-size: 14px;
   font-weight: 400;
   text-decoration: none;

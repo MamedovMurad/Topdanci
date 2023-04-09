@@ -8,7 +8,7 @@ import Router, { useRouter } from 'next/router'
 import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 import { useEffect, useState } from "react";
 import { api } from "../common/api";
-import { MyComponent } from "../hooks/useResponsivenenessAdjuster";
+
 type LayoutProps = {
   children: any; //still
 };
@@ -22,10 +22,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     const respose = await api.get('user/info')
     setuser(respose)
   }
-  function performSearch(param: string) {
 
-    Router.push({ pathname: '/results', query: { [param]: '?param' } });
-  };
 
   useEffect(() => {
     if (typeof window !== 'undefined' && localStorage.getItem('agent')) {

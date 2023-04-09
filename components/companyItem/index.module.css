@@ -5,6 +5,7 @@
     gap: 0 4px;
     display: flex;
     width: 49%;
+    cursor: pointer;
 }
 
 .companyitem>.logo {

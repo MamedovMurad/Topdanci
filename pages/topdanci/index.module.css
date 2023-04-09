@@ -10,7 +10,7 @@
     background: #FFFFFF;
     border-radius: 5px;
     transform: translateY(-80px);
-    padding: 30px;
+    padding: 30px 12px;
 }
 
 .topdanci>div>main>h4 {
@@ -36,4 +36,157 @@
     border-radius: 5px;
 
     background-size: cover;
+}
+
+.topSection {
+    padding: 0 12px;
+    transform: translateY(-80px);
+    display: flex;
+}
+
+.logoarea {
+    position: relative;
+    width: 146px;
+    height: 147px;
+
+}
+
+.logoarea img {
+    width: 100%;
+    height: 100%;
+}
+
+.topSection>.leftBox {
+    width: 70%;
+    display: flex;
+    gap: 0 10px;
+
+}
+
+.topSection>.leftBox>.content {
+    width: 60%;
+    border-bottom: 0.5px solid #00A0E4;
+}
+
+.topSection>.leftBox>.content h5 {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 16px;
+    color: #00A0E4;
+}
+
+.topSection>.leftBox>.content p {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 12px;
+    color: #2B2A2A;
+}
+
+.leftboxBottom {
+    margin-top: 35px;
+    display: flex;
+}
+
+.leftboxBottom>article {
+    font-weight: 500;
+    font-size: 12px;
+    color: #40B8EB;
+}
+
+.rightBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+}
+
+.rightBox>.address {
+    display: flex;
+    gap: 0 10px;
+    align-items: center;
+
+}
+
+.rightBox>.address>p {
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    font-size: 12px;
+    color: #2B2A2A;
+}
+
+.rightTelArea {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+}
+
+.rightTelArea>div>a {
+    display: block;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 12px;
+    color: #2B2A2A;
+}
+
+.rightBottom>p {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 16px;
+    color: #808080;
+    margin-bottom: 10px;
+}
+
+.rightBottom>div {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: space-between;
+}
+
+.rightBottom>div>span {
+    font-weight: 400;
+    font-size: 12px;
+    color: #2B2A2A;
+}
+
+.rightBottom>div>span::after {
+    content: '';
+    display: inline-block;
+    width: 13px;
+    height: 12px;
+    background: #FFFFFF;
+    border: 1px solid #E61C23;
+    border-radius: 1px;
+    margin: 0 0 0 10px;
+    transform: translateY(2px);
+}
+
+.rightBottom>div>span.active::after {
+    background: #E61C23;
+}
+
+.time {
+    transform: translateY(-80px);
+    padding: 0 12px;
+}
+
+.time>p {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 12px;
+    color: #00A0E4;
+    margin-top: 5px;
+}
+
+.time>label {
+    font-weight: 400;
+    font-size: 12px;
+    color: #FFFFFF;
+    background: #00A0E4;
+    border-radius: 3px;
+    padding: 2px;
 }
