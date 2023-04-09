@@ -155,10 +155,10 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
                                     onFocus={() => input_firstRef.current.checked = false} />
 
                             </div>
-                            <div className={styles.element}>
+                            <div className={styles.element+' '+styles.labelExtend}>
                                 <input type="radio" name="min_order_count" id="min_order_count" value={-1} ref={input_firstRef}
                                     defaultChecked />
-                                <label htmlFor="min_order_count" style={{ fontSize: '12px' }}>Razılaşma yolu ilə </label>
+                                <label htmlFor="min_order_count" >Razılaşma yolu ilə </label>
 
                             </div>
                         </div>
@@ -172,9 +172,9 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
                                     onFocus={() => input_secondRef.current.checked = false} />
 
                             </div>
-                            <div className={styles.element}>
+                            <div className={styles.element+' '+styles.labelExtend}>
                                 <input defaultChecked type="radio" name="wholesale_price" value={-1} ref={input_secondRef} id="wholesale_price" />
-                                <label htmlFor="wholesale_price" style={{ fontSize: '12px' }}>Razılaşma yolu ilə </label>
+                                <label htmlFor="wholesale_price" >Razılaşma yolu ilə </label>
 
                             </div>
 
@@ -185,22 +185,22 @@ const NewAdvert: React.FC<NewAdvertProps> = ({ }) => {
 
                     <div className={styles.elementCard}>
                         <label htmlFor="">Pərakəndə satış mümkündür <span className={styles.required}>*</span></label>
-                        <div className={styles.elements}>
-                            <div className={styles.element}>
+                        <div className={styles.elements+' '+styles.wholesaleBottom}>
+                            <div className={styles.element+' '+styles.labelExtend}>
                                 <input type="radio" name="retail_sales" id="retail_sales_ok" defaultChecked value={1} />
-                                <label htmlFor="retail_sales_ok" style={{ fontSize: '12px' }}>Bəli </label>
+                                <label htmlFor="retail_sales_ok" >Bəli </label>
 
                             </div>
-                            <div className={styles.element}>
+                            <div className={styles.element+' '+styles.labelExtend}>
                                 <input type="radio" name="retail_sales" id="retail_sales_no" value={0} />
-                                <label htmlFor="retail_sales_no" style={{ fontSize: '12px' }}>Xeyr </label>
+                                <label htmlFor="retail_sales_no" >Xeyr </label>
 
                             </div>
 
                         </div>
                     </div>
 
-                    <div className={styles.elementCard}>
+                    <div className={styles.elementCard+' '+styles.textareaMobile}>
                         <label htmlFor="detail">Ətraflı </label>
                         <div className={styles.elements}>
                             <div className={styles.element}>

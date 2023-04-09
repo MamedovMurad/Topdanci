@@ -191,3 +191,94 @@
     height: 100%;
     object-fit: cover;
 }
+
+.labelExtend label {
+    font-size: 12px;
+}
+
+@media screen and (max-width: 900px) {
+    .newAdvert .elementCard {
+        width: 100%;
+    }
+
+    .newAdvert .elements>.element>textarea {
+        width: 100%;
+        background-color: #F1F3F7;
+    }
+
+    .newAdvert>div>h4 {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .newAdvert .elementCard>label {
+        font-size: 14px;
+    }
+
+    .content>h3 {
+        font-size: 14px;
+    }
+
+    .newAdvert .elements .element input[type="text"] {
+        width: 100%;
+    }
+
+    .newAdvert form {
+        padding: 8px;
+        background: white;
+    }
+
+    .newAdvert .elements {
+        display: flex;
+        gap: 0px 9px;
+        margin-bottom: 32px;
+    }
+
+    .newAdvert .elementCard>label {
+        width: 63%;
+    }
+
+    .labelExtend {
+        width: 109%;
+    }
+
+    .labelExtend label {
+        font-size: 10px;
+
+    }
+
+    .wholesaleBottom {
+        width: 30%;
+    }
+
+    .newAdvert .elements label::after {
+        transform: translateY(2px);
+    }
+
+    .newAdvert .textareaMobile {
+        display: block;
+    }
+
+    .newAdvert .textareaMobile>div>div {
+        width: 100%;
+    }
+
+    .picture {
+
+        width: 100%;
+        text-align: end;
+    }
+
+    .newAdvert .elements .element input[name="name_surname"],
+    .newAdvert .elements .element input[name="tel"],
+    .newAdvert .elements .element input[name="email"],
+    .newAdvert .elements .element input[name="advert_title"] {
+        width: 220px;
+
+    }
+
+    .buttonArea>button {
+        width: 100%;
+    }
+
+}
