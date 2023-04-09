@@ -118,4 +118,8 @@
     min-width: 23.9%;
 
   }
+
+  .content>div:last-child {
+    margin-top: 0px;
+  }
 }

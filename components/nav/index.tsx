@@ -4,6 +4,7 @@ import PrimaryButton from "../UI/button";
 import styles from "./index.module.css";
 import Link from "next/link";
 import { BurgerSVG } from "../../assets/svg/burger";
+import BurgerMenu from "../burger-menu";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
@@ -12,6 +13,7 @@ const Nav: React.FC<NavProps> = () => {
 
   return (
     <nav className={styles.nav}>
+     {/*  <BurgerMenu/> */}
       <div className="wrapper">
         <ul>
           <li className={styles.burgerMenu}>
