@@ -5,6 +5,7 @@ import TopSearch from "../topSearch";
 import styles from "./index.module.css";
 import MenuItem from "./menuItem";
 import { api } from "../../common/api";
+import { MyComponent } from "../../hooks/useResponsivenenessAdjuster";
 
 
 type MenuProps = {};
@@ -13,6 +14,7 @@ const Menu: React.FC<MenuProps> = () => {
 
   const [collapse, setcollapse] = useState(false)
   const [menu, setMenu] = useState([])
+  const responsive = MyComponent()
   async function fetchMenu(){
     const res = await api.get('categories')
 console.log(res.data);
@@ -44,7 +46,7 @@ setMenu(res.data)
             {
               collapse ? menu.map((item,index) => (
                 <MenuItem key={index} item={item}/>
-              )) :  menu.slice(0, 4).map((item,index) => (
+              )) :  menu.slice(0, responsive>500?8:4).map((item,index) => (
                 <MenuItem  key={index}  item={item}/>
               ))
             }
