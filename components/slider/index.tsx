@@ -34,7 +34,7 @@ const SliderUI: React.FC<SliderUIProps> = ({ photos }) => {
           layout="fill"
         />
       </div>
-      <ul>
+      <ul style={photos.length>=5?{gridTemplateColumns:'repeat(auto-fit,minmax(20%,1fr)'}:{}}>
         {
           photos?.map((item, index) => (
             <li key={item.src}>

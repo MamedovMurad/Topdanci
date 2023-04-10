@@ -17,8 +17,8 @@ height: 338px;
     width: 60%;
     display: grid;
     padding-left: 35px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(161px, 1fr));
+    grid-template-columns: repeat(auto-fit,minmax(32%,1fr));
+    grid-template-rows: repeat(auto-fit,minmax(47%,1fr));
     gap: 15px;
 /*   max-height: 338px; */
 }
