@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             {data.address} <br /> {data.date}
           </article>
         </div>
-        <div>
+        <div >
           <div className={styles.bottomcontent}>
             <p>Minimum sifariş</p> <p>Topdan qiymət</p>
           </div>
