@@ -45,7 +45,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ closeModal }) => {
         </header>
         <main>
           <ul>
-            <li><span><UserLoginSVG /></span> <Link href={''}>Giriş</Link></li>
+            <li><span><UserLoginSVG /></span> <Link href={'/login'}>Giriş</Link></li>
             <li><span><ValletSVG /></span> <Link href={''}>Balans artımı</Link></li>
             <li><span><HelpCenterSVG /></span> <Link href={''}>Dəstək</Link></li>
           </ul>
