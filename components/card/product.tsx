@@ -45,7 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
             <p>Minimum sifariş</p> <p>Topdan qiymət</p>
           </div>
           <div>
-            <p className={styles.productPrice}>100 Ədəd</p> <p>{data.price}</p>
+            <p className={styles.productPrice}>{data?.minNumber}</p> <p>{data.price}</p>
           </div>
         </div>
       </div>

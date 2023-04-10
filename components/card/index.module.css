@@ -122,4 +122,8 @@
   .content>div:last-child {
     margin-top: 0px;
   }
+
+  .content {
+    height: unset;
+  }
 }
