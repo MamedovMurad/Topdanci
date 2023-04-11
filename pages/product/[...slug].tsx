@@ -10,29 +10,30 @@ import ProductsContainer from "../../container/products";
 
 import styles from "./index.module.css";
 import Router from "next/router";
+import { ShareButton } from "../../hooks/shareButton";
 type ProductDetailProps = {
   data: any
 };
 
 const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
-
+  const { handleClick, isSupported } = ShareButton({ title: 'test', text: 'test', url: 'test' })
 
   return (
     <section className={styles.productPage}>
 
 
-      <div className={styles.alert} style={data.status.color_code ? { backgroundColor: data.status.color_code } : {padding:'0.1px'}}>
+      <div className={styles.alert} style={data.status.color_code ? { backgroundColor: data.status.color_code } : { padding: '0.1px' }}>
         <h4>{data.status.title}</h4>
-   {/*      <p></p> */}
+        {/*      <p></p> */}
       </div>
       <Overlay />
       <div className="wrapper">
         <div className={styles.productPagearea}>
           <div>
             <ul className={styles.links}>
-              <li onClick={()=>Router.push('/')}>Bütün elanlar</li>
-              <li onClick={()=>Router.push('/?category_id='+data.parent_category.id)}>{data?.parent_category?.name}</li>
-              <li onClick={()=>Router.push('/?category_id='+data.category.id)}>{data?.category?.name}</li>
+              <li onClick={() => Router.push('/')}>Bütün elanlar</li>
+              <li onClick={() => Router.push('/?category_id=' + data.parent_category.id)}>{data?.parent_category?.name}</li>
+              <li onClick={() => Router.push('/?category_id=' + data.category.id)}>{data?.category?.name}</li>
             </ul>
           </div>
           <SliderUI photos={data.images} />
@@ -110,11 +111,11 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
               <p>
                 {data.detail}
               </p>
-              <PrimaryButton text="Paylaş" size="7px"/>
+              <PrimaryButton text="Paylaş" size="7px" onClick={isSupported && handleClick} />
             </div>
-           
+
           </div>
-      
+
           {/*  <ProductsContainer  /> */}
         </div>
       </div>
@@ -129,7 +130,7 @@ export async function getServerSideProps({ params: { slug } }: any) {
   // Fetch data from external API
 
 
-  const res = await api.get('advert/' + slug[slug.length-1])
+  const res = await api.get('advert/' + slug[slug.length - 1])
   console.log(res);
 
 
