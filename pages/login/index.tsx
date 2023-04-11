@@ -15,7 +15,6 @@ const Login: React.FC<LoginProps> = ({ }) => {
     const [tel,handlesetTel]=usePhoneInput()
  
     const [tab, setTab] = useState(0)
-    const [otp_code, setOtp_code] = useState(0)
     const [inputs, setInputs] = useState({
         first: '',
         second: '',
@@ -27,7 +26,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
         event.preventDefault()
         setTab(2)
         const response = await api.post('otp', { tel: '994'+Number(tel.replace('(', '').replace(')', '').replaceAll('-','')) })
-        setOtp_code(response.kod)
+       
 
 
     }
@@ -97,7 +96,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
                             qəbul etdiyinizi təsdiqləmiş olursunuz.</p>
                     </footer>
                 </div> : <main className={styles.otp}>
-                    <h1>{otp_code}</h1>
+                 
                     <h3>Kodu daxil edin</h3>
                     <div >
                         <p>4 rəqəmli kod</p>
