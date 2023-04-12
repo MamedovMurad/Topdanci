@@ -11,6 +11,8 @@ export const ShareButton = ({ title, text, url }:any) => {
   }, []);
 
   const handleClick = () => {
+    console.log('sdfdsfs');
+    
     if (navigator.share) {
       navigator.share({
         title,
