@@ -11,13 +11,15 @@ import ProductsContainer from "../../container/products";
 import styles from "./index.module.css";
 import Router from "next/router";
 import { ShareButton } from "../../hooks/shareButton";
+import { MyComponent } from "../../hooks/useResponsivenenessAdjuster";
+import MultiSlider from "../../components/slider/multiSlider";
 type ProductDetailProps = {
   data: any
 };
 
 const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
   const { handleClick, isSupported } = ShareButton({ title: 'test', text: 'test', url: 'test' })
-
+const responsive  =  MyComponent()
   return (
     <section className={styles.productPage}>
 
@@ -36,7 +38,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ data }) => {
               <li onClick={() => Router.push('/?category_id=' + data.category.id)}>{data?.category?.name}</li>
             </ul>
           </div>
-          <SliderUI photos={data.images} />
+          
+          {responsive>900?<SliderUI photos={data.images} />
+          : <MultiSlider photos={data.images}/>}
+
           <div className={styles.contentTop}>
             <div>
               <div className={styles.info}>

@@ -19,7 +19,7 @@
 @media screen and (max-width: 900px) {
   .primary_button {
     padding: 3px 9px !important;
-    font-weight: 700;
-    font-size: 10px;
+    font-weight: 500 !important;
+    font-size: 12px !important;
   }
 }
