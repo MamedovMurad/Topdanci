@@ -13,18 +13,18 @@ const MultiSlider: React.FC<MultiSliderProps> = ({ photos }) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: photos.length>2?1.5:1,
+        slidesToShow: photos.length>2?1.2:1,
         slidesToScroll: 1
     };
 
     return (
-        <Slider {...settings}>
+        <Slider {...settings} arrows={false} className={styles.SliderMultiParent}>
             {
                 photos.map((item:any, index:number)=>(
                     <div key={index} className={styles.multislider}>
                     <Image src={item.src}
                         alt="Picture of the author"
-                        fill />
+                        className={styles.multiImage} width={274} height={200}/>
                 </div>
                 ))
             }
