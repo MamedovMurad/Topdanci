@@ -49,6 +49,19 @@
 }
 
 @media screen and (max-width: 900px) {
+    .leftArrow {
+        left: 1%;
+    }
+
+    .rightArrow {
+        right: 0;
+    }
+
+    .modalParent {
+
+        height: 85vh;
+
+    }
 
     .modal {
         height: 47%;
