@@ -136,4 +136,8 @@
         background: #F1F3F7;
       
     }
+    .otp>div>div>input {
+        background: #fff;
+        
+    }
 }

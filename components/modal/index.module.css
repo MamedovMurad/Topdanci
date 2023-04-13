@@ -47,3 +47,11 @@
     border-style: solid;
     border-color: transparent transparent transparent white;
 }
+
+@media screen and (max-width: 900px) {
+
+    .modal {
+        height: 47%;
+        width: 77%;
+    }
+}
