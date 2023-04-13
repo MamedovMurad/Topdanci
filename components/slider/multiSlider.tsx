@@ -13,7 +13,7 @@ const MultiSlider: React.FC<MultiSliderProps> = ({ photos }) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 1.4,
+        slidesToShow: photos.length>2?1.5:1,
         slidesToScroll: 1
     };
 
