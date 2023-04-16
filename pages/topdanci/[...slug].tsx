@@ -8,6 +8,7 @@ import ProductsContainer from '../../container/products';
 import ProductCard from '../../components/card/product';
 import SpinnerLoader from '../../components/loader/spinner';
 
+
 interface TopdanciProps {
   data: WholesaleDetail&{slug:string}
 }
@@ -100,18 +101,17 @@ function handleScrollToBottom() {
 
       <div className="wrapper">
         <main>
-          <h4>Topdançılar/EFOR MMC</h4>
-          <div className={styles.bgImage}></div>
+          <h4>Topdançılar/{data.title}</h4>
+          <div className={styles.bgImage} style={{backgroundImage:'url('+data.cover_photo+')'}}></div>
         </main>
         <section className={styles.topSection}>
           <div className={styles.leftBox}>
             <div className={styles.logoarea}><img src={data.logo} alt="photo" /></div>
-            <div className={styles.content}><h5>EFOR MMC</h5>
-              <p>What is Lorem Ipsum?
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard </p>
+            <div className={styles.content}><h5>{data.title}</h5>
+              <p>{data.summary} </p>
 
               <div className={styles.leftboxBottom}>
-                <article>Sloqan</article>
+                <article>Sloqan </article>
                 <article>{data.slogan}</article>
               </div>
 
@@ -120,28 +120,28 @@ function handleScrollToBottom() {
           <div className={styles.rightBox}>
             <div className={styles.address}>
               <span><TelIconSVG width={19} height={19} /></span>
-              <p> Bakı şəh.Mikayıl Rəfili 39</p>
+              <p> {data.address}</p>
             </div>
 
             <div className={styles.rightTelArea}>
               <span><TelIconSVG width={19} height={19} /></span>
               <div>
-                <a href="">055 973 63 13</a>
-                <a href="">055 973 63 13</a>
+                <a href={'tel:'+data.tel}>{data.tel}</a>
+              {/*   <a href="">055 973 63 13</a> */}
               </div>
             </div>
             <div className={styles.rightBottom}>
               <p>Pərakəndə satış mümkündür</p>
               <div>
-                <span className={styles.active}>Bəli</span>
-                <span>Xeyr</span>
+                <span className={data?.retail_sales===1?styles.active:''}>Bəli</span>
+                <span className={data?.retail_sales!==1?styles.active:''}>Xeyr</span>
               </div>
             </div>
           </div>
         </section>
       <div className={styles.time}>
-      <p>Hər gün /8:00-19:00</p>
-      <label>52 Elan</label>
+      <p>{data.work_date}</p>
+      <label>{data.adverts.paginate.total} Elan</label>
       </div>
 
 
@@ -171,6 +171,7 @@ export async function getServerSideProps({ params: { slug } }: any) {
 
   const res = await api.get('wholesaler/' + slug[slug.length - 1])
 
+console.log(res.data);
 
 
   // Pass data to the page via props

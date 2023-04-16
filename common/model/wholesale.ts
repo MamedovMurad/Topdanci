@@ -9,7 +9,7 @@ export interface WholesaleDetail {
     address_location?:string,
     address:string,
     tel:string,
-    retail_sales?:string
+    retail_sales?:number
     adverts:any,
 
 }

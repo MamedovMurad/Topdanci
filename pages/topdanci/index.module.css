@@ -29,7 +29,7 @@
 .topdanci>div>main>.bgImage {
 
     width: 100%;
-    background-image: url('../../assets/uploads/indir1.jpg');
+   /*  background-image: url('../../assets/uploads/indir1.jpg'); */
     background-repeat: no-repeat;
     background-position: center;
     height: 180px;
@@ -89,6 +89,8 @@
 .leftboxBottom {
     margin-top: 35px;
     display: flex;
+    gap: 0 10px;
+    
 }
 
 .leftboxBottom>article {
