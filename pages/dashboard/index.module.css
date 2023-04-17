@@ -71,3 +71,19 @@
 
     color: #808080;
 }
+
+@media screen and (max-width: 900px) {
+    .dashboard>main>div>ul {
+        display: block;
+        margin: 0;
+        padding: 2px 0;
+        background-color: #F1F3F7;
+    }
+    .dashboard>main>div>ul>li {
+        padding: 10px;
+        background-color: #fff;
+        margin-top: 2px;
+        display: flex;
+        justify-content: space-between;
+    }
+}

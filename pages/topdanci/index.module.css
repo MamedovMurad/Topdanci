@@ -208,9 +208,11 @@
         width: 100%;
         border: none;
     }
-.leftboxBottom{
-    margin-top: 15px;
-}
+
+    .leftboxBottom {
+        margin-top: 15px;
+    }
+
     .rightBottom>p {
         font-size: 14px;
     }
@@ -223,7 +225,8 @@
     .rightBottom {
         width: 100%;
     }
-    .rightBox{
+
+    .rightBox {
         flex-direction: row;
         flex-wrap: wrap;
         margin-top: 20px;

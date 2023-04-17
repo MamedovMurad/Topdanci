@@ -5,6 +5,8 @@ import withPrivateRoute from '../../hoc/withPrivateRoute';
 import Adverts from '../../container/profile/adverts';
 import EmptyAdverts from '../../components/empty-adverts';
 import { useRouter } from 'next/router';
+import { MyComponent } from '../../hooks/useResponsivenenessAdjuster';
+import { ArrowSVG } from '../../assets/svg/Arrow';
 
 interface DashboardProps {
 
@@ -21,8 +23,7 @@ const Dashboard: React.FC<DashboardProps> = ({ isLoggedIn }: any) => {
   ]
 
 const router =  useRouter()
-
-console.log(router.query,'query');
+const responsive  =  MyComponent()
 
 useEffect(() => {
   
@@ -49,7 +50,9 @@ router.query.param&&setselectedTab(tabs[findIndex])
           <ul>
             {
               tabs.map(tab => (
-                <li key={tab.title} onClick={() => setselectedTab(tab)} style={selectedTab.title === tab.title ? { color: 'red' } : {}}>{tab.title}</li>
+                <li key={tab.title} onClick={() => setselectedTab(tab)} style={selectedTab.title === tab.title ? { color: 'red' } : {}}>{tab.title}
+                {responsive<900&& <span style={{transform:'rotate(-90deg)', display:'inline-block'}}><ArrowSVG/></span>}
+                </li>
               ))
             }
 

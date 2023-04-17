@@ -39,9 +39,11 @@
     outline: none;
     width: 241px;
 }
-.replace>form>div>input:disabled{
+
+.replace>form>div>input:disabled {
     background-color: #d8d1d152;
 }
+
 .replace>form>div>button {
     font-weight: 400;
     font-size: 14px;
@@ -53,4 +55,18 @@
     border: none;
     text-align: center;
     cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+    .replace>form>div {
+        width: 100%;
+    }
+
+    .replace>form>div>label {
+        font-size: 14px;
+    }
+
+    .replace>form>div>input {
+        width: 224px;
+    }
 }

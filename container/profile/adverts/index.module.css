@@ -24,3 +24,14 @@
     color: #353535;
 }
 
+@media screen and (max-width: 900px) {
+    .adverts>.links {
+        width: 100%;
+        margin-left: 0px;
+        gap: 0 4px;
+    }
+    .adverts>.links>li {
+        font-size: 10px;
+    }
+}
+
