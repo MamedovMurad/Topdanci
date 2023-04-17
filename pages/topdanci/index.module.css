@@ -29,7 +29,7 @@
 .topdanci>div>main>.bgImage {
 
     width: 100%;
-   /*  background-image: url('../../assets/uploads/indir1.jpg'); */
+    /*  background-image: url('../../assets/uploads/indir1.jpg'); */
     background-repeat: no-repeat;
     background-position: center;
     height: 180px;
@@ -90,7 +90,7 @@
     margin-top: 35px;
     display: flex;
     gap: 0 10px;
-    
+
 }
 
 .leftboxBottom>article {
@@ -193,4 +193,40 @@
     background: #00A0E4;
     border-radius: 3px;
     padding: 2px;
+}
+
+@media screen and (max-width: 900px) {
+
+    .topSection {
+        padding: 0 12px;
+        transform: translateY(-80px);
+        display: block;
+
+    }
+
+    .topSection>.leftBox {
+        width: 100%;
+        border: none;
+    }
+.leftboxBottom{
+    margin-top: 15px;
+}
+    .rightBottom>p {
+        font-size: 14px;
+    }
+
+    .rightBox>.address>p,
+    .rightTelArea>div>a {
+        font-size: 10px;
+    }
+
+    .rightBottom {
+        width: 100%;
+    }
+    .rightBox{
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        justify-content: space-between;
+    }
 }

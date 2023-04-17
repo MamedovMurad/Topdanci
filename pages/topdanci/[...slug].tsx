@@ -7,6 +7,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import ProductsContainer from '../../container/products';
 import ProductCard from '../../components/card/product';
 import SpinnerLoader from '../../components/loader/spinner';
+import { LocationSVG } from '../../assets/svg/location';
 
 
 interface TopdanciProps {
@@ -119,7 +120,7 @@ function handleScrollToBottom() {
           </div>
           <div className={styles.rightBox}>
             <div className={styles.address}>
-              <span><TelIconSVG width={19} height={19} /></span>
+              <span> <LocationSVG/></span>
               <p> {data.address}</p>
             </div>
 
@@ -131,6 +132,7 @@ function handleScrollToBottom() {
               </div>
             </div>
             <div className={styles.rightBottom}>
+           
               <p>Pərakəndə satış mümkündür</p>
               <div>
                 <span className={data?.retail_sales===1?styles.active:''}>Bəli</span>

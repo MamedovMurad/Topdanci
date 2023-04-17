@@ -51,3 +51,25 @@
     font-size: 12px;
     color: #E61C23;
 }
+
+@media screen and (max-width: 900px) {
+    .companyitem {
+        display: block;
+    }
+
+    .companyitem>.logo {
+        width: 100%;
+    }
+
+    .companyitem>.content>h5 {
+        font-size: 14px;
+    }
+
+    .companyitem>.content>p {
+        font-size: 12px;
+    }
+
+    .companyitem>.content {
+        padding: 5px;
+    }
+}
