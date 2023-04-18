@@ -196,6 +196,10 @@
 }
 
 @media screen and (max-width: 900px) {
+    .rightBottom {
+        display: flex;
+        justify-content: space-between;
+    }
 
     .topSection {
         padding: 0 12px;
@@ -203,18 +207,22 @@
         display: block;
 
     }
-
+    .rightBottom>div {
+        width: 35%;
+    }
     .topSection>.leftBox {
         width: 100%;
         border: none;
     }
 
     .leftboxBottom {
+         display: block;
         margin-top: 15px;
     }
 
     .rightBottom>p {
         font-size: 14px;
+        margin: 0;
     }
 
     .rightBox>.address>p,
