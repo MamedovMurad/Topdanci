@@ -36,6 +36,8 @@ const Login: React.FC<LoginProps> = ({ }) => {
     const lastRef = useRef<any>(null);
 
     const handleInput1Change = async (event: any) => {
+        console.log(event.target.value.length,'kkk');
+        
         const value = event.target.value;
         const name = event.target.name;
         setInputs((input) => ({ ...input, [name]: value }))
@@ -50,7 +52,7 @@ const Login: React.FC<LoginProps> = ({ }) => {
         else if (name === 'third' && value.length > 0) {
             lastRef.current.focus();
 
-        } else if (name === 'last' && value.length > 0) {
+        } else if (name === 'last' && value.length > 0&&value.length<2) {
             console.log(Object.values(inputs).join('') + value);
             const response = await api.post('login', { tel:'994'+Number(tel.replace('(', '').replace(')', '').replaceAll('-','')), otp_code: Object.values(inputs).join('') + value })
             localStorage.setItem('agent', response.token)
@@ -101,10 +103,10 @@ const Login: React.FC<LoginProps> = ({ }) => {
                     <div >
                         <p>4 rəqəmli kod</p>
                         <div>
-                            <input type="text" maxLength={1} name='first' onChange={handleInput1Change} />
-                            <input type="text" maxLength={1} ref={secondRef} name='second' onChange={handleInput1Change} />
-                            <input type="text" maxLength={1} ref={thirdRef} name='third' onChange={handleInput1Change} />
-                            <input type="text" maxLength={1} ref={lastRef} name='last' onChange={handleInput1Change} />
+                            <input type="number" maxLength={1} name='first' onChange={handleInput1Change} />
+                            <input type="number" maxLength={1} ref={secondRef} name='second' onChange={handleInput1Change} />
+                            <input type="number" maxLength={1} ref={thirdRef} name='third' onChange={handleInput1Change} />
+                            <input type="number" maxLength={1} ref={lastRef} name='last' onChange={handleInput1Change} />
                         </div>
                         <button type='submit' onClick={handleSubmitForm}>Təkrar göndər</button>
                     </div>
