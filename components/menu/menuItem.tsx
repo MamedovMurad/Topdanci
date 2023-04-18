@@ -10,7 +10,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
   return (
     <>
       <li className={`${styles.MenutItem} ${item.subcategories.length <1 && styles.menuItemnosub}`}>
-        <button onClick={() => Router.push('/?category=' + item.id)}>
+        <button onClick={() =>item.link? Router.push(item.link) :  Router.push('/?category=' + item.id)}>
           <BuilderSVG />
         </button>
         <article>{item.name}</article>

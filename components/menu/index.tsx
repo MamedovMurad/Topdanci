@@ -46,9 +46,9 @@ setMenu(res.data)
             {
               collapse ? menu.map((item,index) => (
                 <MenuItem key={index} item={item}/>
-              )) :  menu.slice(0, responsive>500?8:4).map((item,index) => (
+              )) :  <> {menu.slice(0, responsive>900?7:3).map((item,index) => (
                 <MenuItem  key={index}  item={item}/>
-              ))
+              )) }  <MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[],}}/> </>
             }
 
 
