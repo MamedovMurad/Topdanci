@@ -14,6 +14,8 @@ import { FacebookSVG } from '../../assets/svg/facebook';
 import { InstagramSVG } from '../../assets/svg/instagram';
 import { LinkedinSVG } from '../../assets/svg/linkedin';
 import { YoutubeSVG } from '../../assets/svg/youtube';
+import { stringify } from 'querystring';
+import { useRouter } from 'next/router';
 interface BurgerMenuProps {
   closeModal: () => void
 }
@@ -21,19 +23,20 @@ interface BurgerMenuProps {
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ closeModal }) => {
   const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(3);
   const [activeLang, setactiveLang] = useState('AZ')
-  function setActiveLangHandle(param:string){
+  const router = useRouter()
+  function setActiveLangHandle(param: string) {
     setIsOpen(false)
     setactiveLang(param)
   }
   return (
     <div className={styles.burgerMenuParent} onClick={closeModal}>
-      <div className={styles.burgerMenu} onClick={(event)=>event.stopPropagation()}>
+      <div className={styles.burgerMenu} onClick={(event) => event.stopPropagation()}>
         <header>
           <div>
             <div ><span {...buttonProps}>{activeLang} <ArrowSVG /></span></div>
             <ul className={isOpen ? 'visible' : 'hidden'} role='menu'>
-              <li onClick={()=>setActiveLangHandle('AZ')}>AZ </li>
-              <li onClick={()=>setActiveLangHandle('EN')}>EN </li>
+              <li onClick={() => setActiveLangHandle('AZ')}>AZ </li>
+              <li onClick={() => setActiveLangHandle('EN')}>EN </li>
             </ul>
           </div>
           <div>
@@ -54,14 +57,21 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ closeModal }) => {
             <li> <Link href={''}>Ödənişli xidmətlər</Link></li>
             <li> <Link href={''}>Paketlər</Link></li>
             <li> <Link href={''}>Saytda reklam</Link></li>
+            <li> <Link href={'/topdancilar'}>Topdançılar</Link></li>
+            <li>
+              <Link href={{ pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 1 })}` }}>Alıcılar</Link>
+            </li>
+            <li>
+              <Link href={{ pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 0 })}` }}>Satıcılar</Link>
+            </li>
           </ul>
-          <ul className={styles.links}>
+          {/*         <ul className={styles.links}>
             <li>Əlaqə</li>
             <li><span><FacebookSVG /></span> <Link href={''}>Facebook</Link></li>
             <li><span><InstagramSVG /></span> <Link href={''}>Instagram</Link></li>
             <li><span><LinkedinSVG /></span> <Link href={''}>Linkedin</Link></li>
             <li><span><YoutubeSVG /></span> <Link href={''}>Youtube</Link></li>
-          </ul>
+          </ul> */}
         </main>
       </div>
     </div>
