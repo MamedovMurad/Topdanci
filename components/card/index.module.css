@@ -129,9 +129,13 @@
   }
 
   .bottomcontent::after {
-   
+
     height: 70px;
-  
-   
+
+
+  }
+
+  .bottomcontent+div>p {
+    font-size: 10px;
   }
 }

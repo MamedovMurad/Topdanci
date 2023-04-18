@@ -18,7 +18,7 @@ const CompanyItem: React.FC<CompanyItemProps> = ({ title, src, desc,tel,count,id
                 <Image
                     src={src}
                     alt={title}
-                    layout="fill"
+                   fill
                 />
             </div>
             <div className={styles.content}>
