@@ -31,8 +31,8 @@
 .containermenu>ul>li>button {
   background: #e61c23;
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: 45.4px;
+  height: 45.4px;
   overflow: hidden;
   border: none;
   outline: none;
@@ -49,9 +49,7 @@
 .containermenu>ul>li>button:hover {
   background: #00a0e4;
 }
-.containermenu>ul>li:last-child>button{
-  background: #00a0e4;
-}
+
 .containermenu>div>button>span {
   height: 1.5px;
   width: 80%;
