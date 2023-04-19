@@ -43,13 +43,20 @@ setMenu(res.data)
           </div>
 
           <ul>
+            
             {
-              collapse ? menu.map((item,index) => (
+              collapse ? 
+              <>
+              
+              {menu.map((item,index) => (
                 <MenuItem key={index} item={item}/>
-              )) :  <> {menu.slice(0, responsive>900?7:3).map((item,index) => (
+              ))}
+              <MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[],}}/> 
+              </>
+              :  menu.slice(0, responsive>900?7:3).map((item,index) => (
                 <MenuItem  key={index}  item={item}/>
-              )) }  <MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[],}}/> </>
-            }
+              )) }   
+            
 
 
 
