@@ -28,7 +28,7 @@ setMenu(res.data)
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4.6,
+    slidesToShow: 3.75,
     slidesToScroll: 3
 };
 
