@@ -29,7 +29,7 @@ setMenu(res.data)
     infinite: true,
     speed: 500,
     slidesToShow: 3.9,
-    slidesToScroll: 1
+    slidesToScroll: 3
 };
 
 
