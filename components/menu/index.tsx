@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { CancelSVG } from "../../assets/svg/cancel";
+import Router from "next/router";
 
 type MenuProps = {};
 
@@ -34,7 +35,11 @@ setMenu(res.data)
 
 
 function handleSubmenu(index:number) {
+  if (menu[index].subcategories.length<1) {
+    return Router.push('/?category=' + menu[index].id)  
+  }
   setSubMenu(index)
+
   setcollapse(true)
 }
 
