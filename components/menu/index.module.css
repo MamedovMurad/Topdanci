@@ -233,6 +233,7 @@
 
   .MenutItem::before {
     bottom: 8px;
+    display: none;
   }
 
   .sliderMenu {
