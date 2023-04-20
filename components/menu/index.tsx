@@ -75,7 +75,7 @@ function handleSubmenu(index:number) {
               {(subMenu? menu[subMenu]?.subcategories:menu).map((item:any,index:number) => (
                 <MenuItem key={index} item={{...item,index}} setmenu={!subMenu&&handleSubmenu} />
               ))}
-              <MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[]}}/> 
+              <MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[]}} setmenu={handleSubmenu}/> 
               </>
               
               
