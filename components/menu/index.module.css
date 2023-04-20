@@ -215,7 +215,7 @@
   }
 
   .containermenu>ul {
-
+    
     width: 88%;
     gap: 8px 0.7%;
   }
@@ -240,7 +240,7 @@
     width: 100%;
   }
 
-  .sliderParent {
+  .containermenu>.sliderParent {
     display: block !important;
     width: 100% !important;
   }
