@@ -2,21 +2,27 @@ import Router from "next/router";
 import { BuilderSVG } from "../../assets/svg/buider";
 import styles from './index.module.css'
 import Link from "next/link";
+import { MyComponent } from "../../hooks/useResponsivenenessAdjuster";
 type MenuItemProps = {
-  item: any
+  item: any,
+  setmenu?:any
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ item,setmenu }) => {
+  const responsive = MyComponent()
   return (
     <>
-      <li className={`${styles.MenutItem} ${item.subcategories.length <1 && styles.menuItemnosub}`}>
-        <button
+      <li className={`${styles.MenutItem} ${item.subcategories.length <1 && styles.menuItemnosub}`} 
+      onClick={()=> item.link? Router.push(item.link) :   (setmenu? setmenu(item.index):Router.push('/?category=' + item.id)  )} >
+   {(setmenu || responsive>900)&&     <button
         style={item.link?{background:'#00a0e4'}:{}}
-        onClick={() =>item.link? Router.push(item.link) :  Router.push('/?category=' + item.id)}>
+        onClick={() =>item.link? Router.push(item.link) :  
+         (setmenu? setmenu(item.index):Router.push('/?category=' + item.id)  )
+        }>
           <BuilderSVG />
-        </button>
+        </button>}
         <article>{item.name}</article>
-        {item.subcategories.length > 0 && <div className={styles.content}>
+        {item.subcategories.length > 0 &&responsive>900 && <div className={styles.content}>
           <header>Bütün elanlar</header>
           <ul>
             {

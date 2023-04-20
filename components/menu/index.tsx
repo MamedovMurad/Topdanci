@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
-import { BuilderSVG } from "../../assets/svg/buider";
-
 import TopSearch from "../topSearch";
 import styles from "./index.module.css";
 import MenuItem from "./menuItem";
 import { api } from "../../common/api";
 import { MyComponent } from "../../hooks/useResponsivenenessAdjuster";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { CancelSVG } from "../../assets/svg/cancel";
 
 type MenuProps = {};
 
 const Menu: React.FC<MenuProps> = () => {
 
   const [collapse, setcollapse] = useState(false)
-  const [menu, setMenu] = useState([])
+  const [menu, setMenu] = useState<any>([])
+  const [subMenu, setSubMenu] = useState<any>(null)
   const responsive = MyComponent()
   async function fetchMenu(){
     const res = await api.get('categories')
@@ -21,6 +23,21 @@ console.log(res.data);
 setMenu(res.data)
 
   }
+
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3.9,
+    slidesToScroll: 1
+};
+
+
+function handleSubmenu(index:number) {
+  setSubMenu(index)
+  setcollapse(true)
+}
+
   useEffect(() => {
     fetchMenu()
   }, [])
@@ -33,29 +50,44 @@ setMenu(res.data)
 
       <div className={styles.menuMobile+" wrapper"}>
         <div className={styles.containermenu}  >
-          <div onClick={() => setcollapse(!collapse)}>
-            <button style={collapse ? { background: '#00A0E4' } : {}}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-            <article>Hamısı</article>
-          </div>
+          {
+              (responsive>900||!collapse) ?
+               <div onClick={() => setcollapse(!collapse)}>
+              <button style={collapse ? { background: '#00A0E4' } : {}}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+              <article>Hamısı</article>
+            </div> :
+            <span onClick={(event)=>{ event.stopPropagation() ;setcollapse(false); setSubMenu(null)}}>
+              <CancelSVG/>
+            </span>
+          }
+        
 
-          <ul>
+          <ul className={styles[collapse?'sliderParent':'']}>
             
             {
               collapse ? 
               <>
               
-              {menu.map((item,index) => (
-                <MenuItem key={index} item={item}/>
+              {(subMenu? menu[subMenu]?.subcategories:menu).map((item:any,index:number) => (
+                <MenuItem key={index} item={{...item,index}} setmenu={!subMenu&&handleSubmenu} />
               ))}
-              <MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[],}}/> 
+              <MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[]}}/> 
               </>
-              :  menu.slice(0, responsive>900?7:3).map((item,index) => (
-                <MenuItem  key={index}  item={item}/>
-              )) }   
+              
+              
+              : 
+              responsive<900? 
+                <Slider {...settings} arrows={false} className={styles.sliderMenu}>
+                {  menu.slice(0, 8).map((item:any,index:number) => (
+              <MenuItem  key={index}  item={{...item, index}} setmenu={handleSubmenu}/> ))}
+              </Slider> :
+
+              menu.slice(0, 8).map((item:any,index:number) => (
+              <MenuItem  key={index}  item={item}/> )) }  
             
 
 

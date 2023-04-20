@@ -28,7 +28,7 @@
 }
 
 .containermenu>div>button,
-.containermenu>ul>li>button {
+.containermenu>ul li>button {
   background: #e61c23;
   border-radius: 50%;
   width: 45.4px;
@@ -46,7 +46,7 @@
 }
 
 .containermenu>div>button:hover,
-.containermenu>ul>li>button:hover {
+.containermenu>ul li>button:hover {
   background: #00a0e4;
 }
 
@@ -57,7 +57,7 @@
   border-radius: 3px;
 }
 
-.containermenu>ul>li {
+.containermenu>ul li {
   position: relative;
   width: 85px;
   display: flex;
@@ -140,11 +140,11 @@
   color: #808080;
 }
 
-.MenutItem>.content>ul>li {
+.MenutItem>.content>ul li {
   margin-top: 6px;
 }
 
-.MenutItem>.content>ul>li>a {
+.MenutItem>.content>ul li>a {
   text-decoration: none;
   font-weight: 400;
   font-size: 13px;
@@ -152,7 +152,7 @@
   transition: color .3s;
 }
 
-.MenutItem>.content>ul>li:hover a {
+.MenutItem>.content>ul li:hover a {
   color: #E61C23;
 }
 
@@ -182,18 +182,18 @@
 
   .containermenu {
     background-color: #fff;
-
+    position: relative;
     padding: 9px 5px;
     border-radius: 0px;
 
   }
 
-  .containermenu>ul>li {
+  .containermenu>ul li {
     width: 75px;
   }
 
   .containermenu>div>button,
-  .containermenu>ul>li>button {
+  .containermenu>ul li>button {
     width: 44px;
     height: 44px;
     gap: 5px 0;
@@ -205,6 +205,13 @@
     font-size: 12px;
     text-align: center;
     line-height: 1;
+  }
+
+  .containermenu>span {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 5;
   }
 
   .containermenu>ul {
@@ -226,5 +233,23 @@
 
   .MenutItem::before {
     bottom: 8px;
+  }
+
+  .sliderMenu {
+    width: 100%;
+  }
+
+  .sliderParent {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .containermenu>.sliderParent li {
+    width: 100% !important;
+    gap: 5px;
+    flex-direction: unset;
+    margin-bottom: 10px;
+    border-bottom: .3px solid #D9D9D9;
+    min-height: 30px;
   }
 }

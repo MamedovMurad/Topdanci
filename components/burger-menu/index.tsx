@@ -53,11 +53,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ closeModal }) => {
             <li><span><HelpCenterSVG /></span> <Link href={''}>Dəstək</Link></li>
           </ul>
           <ul>
-            <li> <Link href={''}>Layihə haqqında</Link></li>
-            <li> <Link href={''}>Ödənişli xidmətlər</Link></li>
-            <li> <Link href={''}>Paketlər</Link></li>
-            <li> <Link href={''}>Saytda reklam</Link></li>
-            <li> <Link href={'/topdancilar'}>Topdançılar</Link></li>
+          <li> <Link href={'/topdancilar'}>Topdançılar</Link></li>
             <li>
               <Link href={{ pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 1 })}` }}>Alıcılar</Link>
             </li>
@@ -65,6 +61,14 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ closeModal }) => {
               <Link href={{ pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 0 })}` }}>Satıcılar</Link>
             </li>
           </ul>
+          <ul>
+            <li> <Link href={''}>Layihə haqqında</Link></li>
+            <li> <Link href={''}>Ödənişli xidmətlər</Link></li>
+            <li> <Link href={''}>Paketlər</Link></li>
+            <li> <Link href={''}>Saytda reklam</Link></li>
+
+          </ul>
+
           {/*         <ul className={styles.links}>
             <li>Əlaqə</li>
             <li><span><FacebookSVG /></span> <Link href={''}>Facebook</Link></li>
