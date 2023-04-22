@@ -22,7 +22,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item,setmenu }) => {
    
         style={(Router.query?.category==item.id||item?.subcategories?.
           find((subi:any)=>subi.id==Router?.query?.category))?
-        {background:'#00a0e4'}:(item.link?{background:'#00a0e4'}:{})}
+        {background:'#FFC702'}:(item.link?{background:'#00a0e4'}:{})}
         onClick={() =>item.link? Router.push(item.link) :  
          (setmenu? setmenu(item.index):Router.push('/?category=' + item.id)  )
         }>
