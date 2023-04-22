@@ -33,12 +33,21 @@
 
 .footer>ul>li>ul>li {}
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 500px) {
   .footer>ul {
     flex-wrap: wrap;
     justify-content: flex-start;
   }
   .footer>ul>li{
     width: 50%;
+  }
+
+
+}
+
+@media only screen and (max-width: 950px) and (min-width: 500px)  {
+
+  .footer>ul>li{
+    width: 22%;
   }
 }

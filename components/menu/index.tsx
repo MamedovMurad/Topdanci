@@ -35,12 +35,16 @@ setMenu(res.data)
 
 
 function handleSubmenu(index:number) {
+
+  
   if (menu[index].subcategories.length<1) {
     return Router.push('/?category=' + menu[index].id)  
   }
+
   setSubMenu(index)
 
   setcollapse(true)
+  console.log(index);
 }
 
   useEffect(() => {
@@ -77,15 +81,15 @@ function handleSubmenu(index:number) {
               collapse ? 
               <>
               
-              {(subMenu? menu[subMenu]?.subcategories:menu).map((item:any,index:number) => (
-                <MenuItem key={index} item={{...item,index}} setmenu={!subMenu&&handleSubmenu} />
+              {(subMenu!==null? menu[subMenu]?.subcategories:menu).map((item:any,index:number) => (
+                <MenuItem key={index} item={{...item,index}} setmenu={subMenu===null&&handleSubmenu} />
               ))}
-             {!subMenu&&<MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[]}} setmenu={handleSubmenu}/> } 
+             {subMenu===null&&<MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[]}} setmenu={handleSubmenu}/> } 
               </>
               
               
               : 
-              responsive<900? 
+              responsive<686? 
                 <Slider {...settings} arrows={false} className={styles.sliderMenu}>
                 {  menu.slice(0, 8).map((item:any,index:number) => (
               <MenuItem  key={index}  item={{...item, index}} setmenu={handleSubmenu}/> ))}

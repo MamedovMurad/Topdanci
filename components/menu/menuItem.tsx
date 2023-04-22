@@ -10,12 +10,19 @@ type MenuItemProps = {
 
 const MenuItem: React.FC<MenuItemProps> = ({ item,setmenu }) => {
   const responsive = MyComponent()
+
+  console.log(Router.query?.category);
+  
   return (
     <>
       <li className={`${styles.MenutItem} ${item.subcategories.length <1 && styles.menuItemnosub}`} 
-      onClick={()=> item.link? Router.push(item.link) :   (setmenu? setmenu(item.index):Router.push('/?category=' + item.id)  )} >
-   {(setmenu || responsive>900)&&     <button
-        style={item.link?{background:'#00a0e4'}:{}}
+      onClick={()=> item.link? Router.push(item.link) :  
+       (setmenu? setmenu(item.index):Router.push('/?category=' + item.id)  )} >
+   {(setmenu || responsive>684)&&     <button
+   
+        style={(Router.query?.category==item.id||item?.subcategories?.
+          find((subi:any)=>subi.id==Router?.query?.category))?
+        {background:'#00a0e4'}:(item.link?{background:'#00a0e4'}:{})}
         onClick={() =>item.link? Router.push(item.link) :  
          (setmenu? setmenu(item.index):Router.push('/?category=' + item.id)  )
         }>

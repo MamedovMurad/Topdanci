@@ -166,11 +166,16 @@
   .Menu>div:last-child {
     /*  display: none; */
   }
-
+  .containermenu>div>button:hover,
+  .containermenu>ul li>button:hover {
+    background: #E61C23
+  }
   .Menu {
     padding: 10px 0 40px 0;
   }
-
+  .MenutItem:hover::before {
+display: none;
+  }
   .search {
     margin: 0;
     margin-bottom: 10px;
@@ -252,5 +257,31 @@
     margin-bottom: 10px;
     border-bottom: .3px solid #D9D9D9;
     min-height: 30px;
+  }
+}
+
+@media only screen and (max-width: 950px) and (min-width: 500px)  {
+
+  .menuMobile {
+    max-width: 94%;
+  }
+
+  .containermenu>ul {
+    
+    width: 96%;
+    gap: 8px 1%;
+  }
+
+  .containermenu>ul li {
+    width: 64px;
+  }
+
+  .containermenu>div {
+    width: 8%;
+  }
+
+  .containermenu {
+    gap: 0 5px;
+
   }
 }
