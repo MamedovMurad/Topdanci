@@ -23,6 +23,7 @@
     position: absolute;
     right: 15px;
     top: 15px;
+    z-index: 5;
 }
 .modalCancel>svg:hover{
     fill: white !important;
@@ -59,10 +60,12 @@
 @media screen and (max-width: 900px) {
     .leftArrow {
         left: 1%;
+        display: none;
     }
 
     .rightArrow {
         right: 0;
+        display: none;
     }
 
     .modalParent {
