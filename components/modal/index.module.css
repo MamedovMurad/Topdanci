@@ -25,6 +25,15 @@
     top: 15px;
     z-index: 5;
 }
+.count{
+    position: absolute;
+    z-index: 5;
+    left: 15px;
+    top: 15px;
+    color: white;
+    font-size: 10px;
+    font-weight: 400;
+}
 .modalCancel>svg:hover{
     fill: white !important;
     color: white  !important;
