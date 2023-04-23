@@ -217,6 +217,9 @@ display: none;
     right: 10px;
     top: 10px;
     z-index: 5;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
   }
 
   .containermenu>ul {
