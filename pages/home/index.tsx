@@ -130,7 +130,7 @@ const HomePage: React.FC<HomePageProps> = () => {
             <Menu />
             <div className="wrapper">
                 <ProductsContainer title="Premium elanlar" isproduct
-                    style={responsive > 900 ? { transform: 'translateY(-100px)' } :
+                    style={responsive > 990 ? { transform: 'translateY(-100px)' } :
                         { transform: 'translateY(-31px)' }} list={premiumProducts} />
 
                    <InfiniteScroll
@@ -138,7 +138,7 @@ const HomePage: React.FC<HomePageProps> = () => {
                     next={fetchProducts}
                     hasMore={hasmore}
                     loader={<SpinnerLoader />}
-                    style={responsive > 900?{ transform: 'translateY(-100px)' }
+                    style={responsive > 990?{ transform: 'translateY(-100px)' }
                     :{ transform: 'translateY(-30px)' }}
 
 
