@@ -31,9 +31,9 @@ const Modal: React.FC<ModalProps> = ({ closeModal, pathes, index }) => {
   const handlers = useSwipeable({
     onSwiped: (eventData) =>{
      if (eventData.dir==='Right') {
-      return handleClickRight()
+      return handleClick()
      }
-     return handleClick()
+     return handleClickRight()
     },
 
   });
