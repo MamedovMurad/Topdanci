@@ -39,11 +39,11 @@ const Nav: React.FC<NavProps> = () => {
 
                 </li>
                 <li>
-                  <Link href={{ pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 1 })}` }}>Alıcılar</Link>
+                  <Link href={{ pathname: '/', search: `?${stringify({ ...router.query, advert_type: 1 })}` }}>Alıcılar</Link>
 
                 </li>
                 <li>
-                  <Link href={{ pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 0 })}` }} >Satıcılar</Link>
+                  <Link href={{ pathname: '/', search: `?${stringify({ ...router.query, advert_type: 0 })}` }} >Satıcılar</Link>
 
                 </li>
               </ul>
