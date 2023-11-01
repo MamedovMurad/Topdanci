@@ -30,9 +30,9 @@
 
 .productContainer>main>.productmain {
   padding: 14px 0;
-  display: flex;
   gap: 10px 1.2%;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 }
 
 .productContainer>header>ul {
@@ -120,6 +120,8 @@
 
   .productContainer>header>ul>li>a {
     font-size: 12px;
-
+  }
+  .productContainer>main>.productmain {
+    grid-template-columns: auto auto;
   }
 }

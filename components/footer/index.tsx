@@ -1,4 +1,9 @@
 import styles from "./index.module.css";
+import Facebook from '../../assets/svg/Facebook.svg';
+import Instagram from '../../assets/svg/Instagram.svg';
+import Linkedin from '../../assets/svg/Linkedin.svg';
+import Youtube from '../../assets/svg/Youtube.svg';
+import Image from "next/image";
 type FooterProps = {};
 
 const Footer: React.FC<FooterProps> = () => {
@@ -53,14 +58,15 @@ const Footer: React.FC<FooterProps> = () => {
                     <b>Əlaqə</b>
                     <ul>
                         <li>
-                            <a href="">Facebook</a>
-                        </li>
-                        <li><a href="">Instagram</a></li>
-                        <li>
-                            <a href="">Linkedin</a>
+                            <Image src={Facebook} alt={'Facebook'}/><a href="">Facebook</a>
                         </li>
                         <li>
-                            <a href="">Youtube</a>
+                            <Image src={Instagram} alt={'Instagram'}/><a href="">Instagram</a></li>
+                        <li>
+                            <Image src={Linkedin} alt={'Linkedin'}/> <a href="">Linkedin</a>
+                        </li>
+                        <li>
+                            <Image src={Youtube} alt={'Youtube'}/> <a href="">Youtube</a>
                         </li>
                     </ul>
                 </li>

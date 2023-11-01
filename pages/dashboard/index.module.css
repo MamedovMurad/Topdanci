@@ -9,7 +9,9 @@
     align-items: center;
 
 }
-
+.incrementButton{
+    cursor: pointer;
+}
 .dashboard>header>div>h3 {
     font-style: normal;
     font-weight: 700;

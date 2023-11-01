@@ -6,6 +6,8 @@ import Link from "next/link";
 import { BurgerSVG } from "../../assets/svg/burger";
 import BurgerMenu from "../burger-menu";
 import useModal from "../../hooks/useModal";
+import TopdanchiLogo from "../../assets/svg/Logo.svg";
+import Image from "next/image";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
@@ -27,7 +29,7 @@ const Nav: React.FC<NavProps> = () => {
               </div>
             </li>
             <li className={styles.logo} onClick={() => Router.push('/')}>
-              <a>topdancı.az</a> <p>Topdan Al/Topdan Sat</p>
+              <Image style={{cursor : "pointer"}} src={TopdanchiLogo} alt={'Logo'} />
             </li>
             <li className={styles.navbar}>
               <ul>

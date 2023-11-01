@@ -38,6 +38,7 @@ function handleSubmenu(index:number) {
 
   
   if (menu[index].subcategories.length<1) {
+    setcollapse(false)
     return Router.push('/?category=' + menu[index].id)  
   }
 
@@ -50,9 +51,8 @@ function handleSubmenu(index:number) {
   useEffect(() => {
     fetchMenu()
   }, [])
-  
 
-  
+  console.log(menu[subMenu])
   return (
     <section className={styles.Menu}>
       <div className={styles.search}><TopSearch /></div>
@@ -60,7 +60,7 @@ function handleSubmenu(index:number) {
       <div className={styles.menuMobile+" wrapper"}>
         <div className={styles.containermenu}  >
           {
-              (responsive>900||!collapse) ?
+              (responsive>900||!collapse) &&
                <div onClick={() => setcollapse(!collapse)}>
               <button style={collapse ? { background: '#00A0E4' } : {}}>
                 <span></span>
@@ -68,15 +68,25 @@ function handleSubmenu(index:number) {
                 <span></span>
               </button>
               <article>Hamısı</article>
-            </div> :
-            <span onClick={(event)=>{ event.stopPropagation() ;setcollapse(false); setSubMenu(null)}}>
-              <CancelSVG/>
-            </span>
+            </div>
           }
         
 
           <ul className={styles[collapse?'sliderParent':'']}>
-            
+            { !(responsive>900||!collapse) &&
+              <div className={styles.mobileMenuHeader+" mobileMenuHeader"}>
+                <span onClick={(event) => {
+                  event.stopPropagation();
+                  setcollapse(false);
+                  setSubMenu(null)
+                }}>
+              <CancelSVG/>
+            </span>
+                <h3>
+                  {menu[subMenu]?.name?? 'Kataloq'}
+                </h3>
+              </div>
+            }
             {
               collapse ? 
               <>
@@ -84,7 +94,7 @@ function handleSubmenu(index:number) {
               {(subMenu!==null? menu[subMenu]?.subcategories:menu).map((item:any,index:number) => (
                 <MenuItem key={index} item={{...item,index}} setmenu={subMenu===null&&handleSubmenu} />
               ))}
-             {subMenu===null&&<MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[]}} setmenu={handleSubmenu}/> } 
+             {subMenu===null && <MenuItem  item={{name:'Topdançılar',link:'/topdancilar',subcategories:[]}} setmenu={handleSubmenu}/> }
               </>
               
               

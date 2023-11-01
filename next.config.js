@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['api.artelie.az'],
+    domains: ['api.artelie.az','picsum.photos'],
   },
 }
 

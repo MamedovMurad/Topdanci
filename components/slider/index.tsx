@@ -17,7 +17,7 @@ const SliderUI: React.FC<SliderUIProps> = ({ photos }) => {
     openModal();
     setindex(index)
   }
-
+  console.log(photos)
   return (
     <>
       {(isOpen) && (
@@ -25,15 +25,14 @@ const SliderUI: React.FC<SliderUIProps> = ({ photos }) => {
       )}
     <div className={styles.slider}>
 
-   
-      <div className={styles.bigImage}>
+      {photos.length > 1 && <div className={styles.bigImage}>
         <Image
-          onClick={() => handleModal(0)}
-          src={photos?.length && photos[0].src || ''}
-          alt={photos?.length && photos[0].alt || ''}
-          layout="fill"
+            onClick={() => handleModal(0)}
+            src={photos?.length && photos[0].src || ''}
+            alt={photos?.length && photos[0].alt || ''}
+            layout="fill"
         />
-      </div>
+      </div>}
       <ul style={photos.length>=5?{gridTemplateColumns:'repeat(auto-fit,minmax(20%,1fr)'}:{}}>
         {
           photos?.map((item, index) => (

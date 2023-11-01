@@ -55,6 +55,9 @@ body.no-scroll {
         max-width: 360px;
         margin: 0 auto;
     }
+    .wrapper.full{
+        max-width: 100%;
+    }
 
 
 }

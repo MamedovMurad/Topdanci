@@ -24,7 +24,8 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({ style = {}, list,
   const router = useRouter()
   const urls = [
     { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 0 })}` }, title: 'Satıcılar' },
-    { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: 1 })}` }, title: 'Alıcılar' },
+    { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: "salers" })}` }, title: 'Alıcılar' },
+    { link: { pathname: router.pathname, search: `?${stringify({ ...router.query, advert_type: "wholersalers" })}` }, title: 'Topdancılar' },
 
 
   ]

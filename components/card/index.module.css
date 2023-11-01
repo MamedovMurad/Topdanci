@@ -4,8 +4,7 @@
   border: 0.5px solid #e61c23;
   border-radius: 5px;
   /*   min-width: 212px; */
-  max-width: 23.9%;
-  min-width: 23.9%;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -114,9 +113,7 @@
 @media screen and (max-width: 900px) {
   .product {
     border-radius: 2px;
-    max-width: 48.9%;
-    min-width: 23.9%;
-    width: 48.9%;
+    width: 100%;
 
   }
 
@@ -144,9 +141,10 @@
 
   .product {
     border-radius: 2px;
-    max-width: 32%;
-    min-width: 23.9%;
-    width: 32%;
+    /*max-width: 32%;*/
+    /*min-width: 23.9%;*/
+    /*width: 32%;*/
+    width: 100%;
 
   }
   .bottomcontent::after {

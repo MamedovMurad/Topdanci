@@ -43,9 +43,9 @@ const Modal: React.FC<ModalProps> = ({ closeModal, pathes, index }) => {
       <div className={styles.modal} onClick={(event: any) => event.stopPropagation()}>
         <span className={styles.count}>{selected+1} / {pathes.length}</span>
         <span className={styles.modalCancel} onClick={closeModal}><CancelSVG color='white'/></span>
-        <div className={styles.leftArrow} onClick={handleClick}></div>
+        {pathes.length > 1 && <div className={styles.leftArrow} onClick={handleClick}></div>}
         <img src={pathes[selected].src} alt="" {...handlers}/>
-        <div className={styles.rightArrow} onClick={handleClickRight}></div>
+        {pathes.length > 1 && <div className={styles.rightArrow} onClick={handleClickRight}></div>}
       </div>
     </section>
   );

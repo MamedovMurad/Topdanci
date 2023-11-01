@@ -1,8 +1,7 @@
 .nav {
   background: #e61c23;
-  height: 68px;
   box-sizing: border-box;
-  padding-top: 5px;
+  padding: 5px 0 20px;
   border-bottom: 1px solid white;
 }
 .nav > div > ul {
@@ -35,11 +34,16 @@
 
   color: #ffffff;
 }
+.logo{
+  padding-top: 10px;
+}
 .navbar {
-  width: 40%;
+  width: 53%;
 }
 .navbar > ul {
   justify-content: space-between;
+  padding-left: 0;
+  margin-right: 50px;
 }
 .navbar > ul a {
   font-style: normal;
@@ -62,14 +66,10 @@
 .nav {
   margin-top: 10px;
   background: #ffffff;
-  height: 50px;
+  height: 70px;
 
 }
-.logo>a{
-  color: #2B2A2A;
-  font-size: 20px;
-}
-.logo>p{
-  display: none;
+.logo img{
+  margin-right: 15px;
 }
 }

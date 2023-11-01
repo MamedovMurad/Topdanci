@@ -22,6 +22,9 @@
 
 .footer>ul>li>ul>li {
   height: 21px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .footer>ul>li>ul>li>a {
@@ -31,7 +34,6 @@
   text-decoration: none;
 }
 
-.footer>ul>li>ul>li {}
 
 @media screen and (max-width: 500px) {
   .footer>ul {
