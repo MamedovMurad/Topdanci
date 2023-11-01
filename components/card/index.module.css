@@ -112,9 +112,9 @@
 @media screen and (max-width: 500px) {
   .product {
     border-radius: 2px;
-    max-width: 48%;
-    min-width: 48%;
-    width: 48%;
+    max-width: 48.84%;
+    min-width: 48.84%;
+    width: 48.84%;
   }
 
   .content > div:last-child {
