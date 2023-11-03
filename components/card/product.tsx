@@ -3,10 +3,11 @@ import Image from "next/image";
 import images from "../../assets/uploads/example.jpg";
 import Link from "next/link";
 import Router from "next/router";
+import { PremiumIcon } from "../../assets/svg/premium";
 
 type ProductCardProps = {
   data: {
-    id:number,
+    id: number;
     title: string;
     address: string;
     date: string;
@@ -19,33 +20,48 @@ type ProductCardProps = {
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+  console.log(data, "lllllll");
 
   return (
-    <div className={styles.product} onClick={()=>Router.push("/product/"+data.title+'/'+data.id)}>
+    <div
+      className={styles.product}
+      onClick={() => Router.push("/product/" + data.title + "/" + data.id)}
+    >
       <div className={styles.image}>
-        <Image
-          src={data.photo}
-          alt="Picture of the author"
-         layout="fill"
-        />
+        <Image src={data.photo} alt="Picture of the author" layout="fill" />
+        <span className={styles.premium}>
+          {data.type === "premium" && (
+            <PremiumIcon
+              color={data.label === "buyer" ? "#E61C23" : "#FFC702"}
+            />
+          )}
+        </span>
+
+        <span className={styles.wholeSale}></span>
       </div>
       <span className={`${styles.label} ${styles[data.label]}`}>
         {data.label === "buyer" ? "Alıcı" : "Satıcı"}
       </span>
-      <span>{data.type === "premium"}</span>
+
       <div className={styles.content}>
         <div>
-          <h6>  <Link href={"/product/"+data.title+'/'+data.id}>{data.title}</Link></h6>
+          <h6>
+            {" "}
+            <Link href={"/product/" + data.title + "/" + data.id}>
+              {data.title}
+            </Link>
+          </h6>
           <article>
             {data.address} <br /> {data.date}
           </article>
         </div>
-        <div >
+        <div>
           <div className={styles.bottomcontent}>
             <p>Minimum sifariş</p> <p>Topdan qiymət</p>
           </div>
           <div>
-            <p className={styles.productPrice}>{data?.minNumber}</p> <p>{data.price}</p>
+            <p className={styles.productPrice}>{data?.minNumber}</p>{" "}
+            <p>{data.price}</p>
           </div>
         </div>
       </div>

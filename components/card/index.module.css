@@ -108,7 +108,11 @@
 .bottomcontent + div > p:last-child {
   color: #2b2a2a;
 }
-
+span.premium {
+  position: absolute;
+  right: 5px;
+  bottom: -5px;
+}
 @media screen and (max-width: 500px) {
   .product {
     border-radius: 2px;
