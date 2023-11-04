@@ -16,6 +16,7 @@ type ProductCardProps = {
     photo: string;
     type: "ordinary" | "premium";
     label: "buyer" | "seller";
+    wholersalers: number;
   };
 };
 
@@ -37,7 +38,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           )}
         </span>
 
-        <span className={styles.wholeSale}></span>
+        {data.wholersalers == 1 && (
+          <span className={styles.wholeSale}>Topdançı</span>
+        )}
       </div>
       <span className={`${styles.label} ${styles[data.label]}`}>
         {data.label === "buyer" ? "Alıcı" : "Satıcı"}

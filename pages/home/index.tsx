@@ -52,6 +52,7 @@ const HomePage: React.FC<HomePageProps> = () => {
             photo: item.image?.src,
             label: item.advert_type ? "buyer" : "seller",
             type: "premium",
+            wholersalers: item.official_wholesaler,
           }}
         />
       ))
@@ -103,6 +104,7 @@ const HomePage: React.FC<HomePageProps> = () => {
               photo: item.image?.src,
               label: item.advert_type ? "buyer" : "seller",
               type: item.premium == 1 ? "premium" : "ordinary",
+              wholersalers: item.official_wholesaler,
             }}
           />
         ))
@@ -125,6 +127,7 @@ const HomePage: React.FC<HomePageProps> = () => {
               photo: item.image?.src,
               label: item.advert_type ? "buyer" : "seller",
               type: item.premium == 1 ? "premium" : "ordinary",
+              wholersalers: item.official_wholesaler,
             }}
           />
         )),
