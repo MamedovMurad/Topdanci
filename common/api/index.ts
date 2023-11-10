@@ -1,95 +1,79 @@
+class HttpClient {
+  _baseURL: string;
+  _headers: any;
+  constructor(options: any = {}) {
+    if (typeof window !== "undefined") {
+      options.headers.Authorization = "Bearer " + localStorage.getItem("agent");
+      console.log(localStorage.getItem("agent"));
+    }
+    this._baseURL = options.baseURL || "https://api.artelie.az/api/v1/";
+    this._headers = options.headers || {};
+  }
 
+  private static instance: HttpClient;
 
- class HttpClient {
-    _baseURL: string;
-    _headers: any
-    constructor(options: any = {}) {
-      if (typeof window !== 'undefined') {
-        options.headers.Authorization= "Bearer " +localStorage.getItem('agent') 
-        console.log(localStorage.getItem('agent'));
-        
-      }
-        this._baseURL = options.baseURL || "https://api.artelie.az/api/v1/";
-        this._headers = options.headers || {};
-   
-      
-        
+  static getInstance() {
+    if (!HttpClient.instance) {
+      HttpClient.instance = new HttpClient({
+        headers: {
+          ["content-type"]: "application/json",
+          Accept: "application/json",
+        },
+      });
     }
 
-    private static instance: HttpClient;
+    return HttpClient.instance;
+  }
 
-
-
-	static getInstance() {
-		if (!HttpClient.instance) {
-			HttpClient.instance = new HttpClient({headers:{['content-type']:'application/json',Accept:'application/json'}});
-		}
-
-		return HttpClient.instance;
-	}
-
-
-    setHeader(key: string, value: string) {
-      
-        this._headers[key] = value;
-        if (value==='') {
-         delete this._headers[key];
-        }
-        return this;
+  setHeader(key: string, value: string) {
+    this._headers[key] = value;
+    if (value === "") {
+      delete this._headers[key];
     }
+    return this;
+  }
 
-    async _fetchJSON(endpoint: string, options: any = {}) {
-        const res = await fetch(this._baseURL + endpoint, {
-            ...options,
-            headers: this._headers
-        });
+  async _fetchJSON(endpoint: string, options: any = {}) {
+    const res = await fetch(this._baseURL + endpoint, {
+      ...options,
+      headers: this._headers,
+    });
 
-        if (!res.ok) throw new Error(res.statusText);
+    if (!res.ok) return res.status;
 
-        if (options.parseResponse !== false && res.status !== 204)
-            return res.json();
+    if (options.parseResponse !== false && res.status !== 204)
+      return res.json();
 
-        return undefined;
-    }
+    return undefined;
+  }
 
-    get(endpoint:string, options = {}) {
-        return this._fetchJSON(
-          endpoint, 
-          { 
-            ...options, 
-            method: 'GET' 
-          }
-        )
-      }
-      
-      post(endpoint:string, body:any, options = {}) {
-        return this._fetchJSON(
-          endpoint, 
-          {
-            ...options, 
-            body: JSON.stringify(body), 
-            method: 'POST' 
-          }
-        )
-      }
-      postWithFormData(endpoint:string, body:any, options = {}){
-        return this._fetchJSON(
-          endpoint,{
-            method: 'POST' ,
-            body
-          }
-        )
-      }
-      delete(endpoint:string, options = {}) {
-        return this._fetchJSON(
-          endpoint, 
-          {
-            parseResponse: false,
-            ...options, 
-            method: 'DELETE' 
-          }
-        )
-      }
+  get(endpoint: string, options = {}) {
+    return this._fetchJSON(endpoint, {
+      ...options,
+      method: "GET",
+    });
+  }
+
+  post(endpoint: string, body: any, options = {}) {
+    return this._fetchJSON(endpoint, {
+      ...options,
+      body: JSON.stringify(body),
+      method: "POST",
+    });
+  }
+  postWithFormData(endpoint: string, body: any, options = {}) {
+    return this._fetchJSON(endpoint, {
+      method: "POST",
+      body,
+    });
+  }
+  delete(endpoint: string, options = {}) {
+    return this._fetchJSON(endpoint, {
+      parseResponse: false,
+      ...options,
+      method: "DELETE",
+    });
+  }
 }
 
-export  const api=  HttpClient.getInstance();
+export const api = HttpClient.getInstance();

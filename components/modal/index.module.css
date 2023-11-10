@@ -1,90 +1,236 @@
 .modalParent {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: #0000001f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba(49, 49, 49, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    top: 0;
-    left: 0;
-    z-index: 99;
+  top: 0;
+  left: 0;
+  z-index: 99;
 }
 
 .modal {
-    background-color: #222;
-    height: 90%;
-    width: 80%;
-    padding: 15px;
-    position: relative;
+  background-color: #222;
+  height: 90%;
+  width: 80%;
+  padding: 15px;
+  position: relative;
 }
-.modalCancel{
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    z-index: 5;
+.successModal {
+  position: relative;
+  background: white;
+  width: 27%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  padding-top: 5%;
+  box-sizing: border-box;
+  flex-direction: column;
+  gap: 70px 0;
 }
-.count{
-    position: absolute;
-    z-index: 5;
-    left: 15px;
-    top: 15px;
-    color: white;
-    font-size: 10px;
-    font-weight: 400;
+.successContent {
+  color: #808080;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
 }
-.modalCancel>svg:hover{
-    fill: white !important;
-    color: white  !important;
+.modalCancel,
+.successModalCancel {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 5;
 }
-.modal>img {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
+.successModalCancel {
+  left: 15px;
+}
+.count {
+  position: absolute;
+  z-index: 5;
+  left: 15px;
+  top: 15px;
+  color: white;
+  font-size: 10px;
+  font-weight: 400;
+}
+.modalCancel > svg:hover {
+  fill: white !important;
+  color: white !important;
+}
+.modal > img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .leftArrow {
-    position: absolute;
-    top: 45%;
-    left: 2%;
-    margin-left: -5px;
-    border-width: 14px;
-    border-style: solid;
-    border-color: transparent white transparent transparent;
-    cursor: pointer;
+  position: absolute;
+  top: 45%;
+  left: 2%;
+  margin-left: -5px;
+  border-width: 14px;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+  cursor: pointer;
 }
 
 .rightArrow {
-    cursor: pointer;
-    position: absolute;
-    top: 45%;
-    right: 2%;
-    margin-left: -5px;
-    border-width: 14px;
-    border-style: solid;
-    border-color: transparent transparent transparent white;
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  right: 2%;
+  margin-left: -5px;
+  border-width: 14px;
+  border-style: solid;
+  border-color: transparent transparent transparent white;
+}
+.premiumModal {
+  background: #d9d9d9;
+  padding: 8px 0;
+  position: relative;
+  width: 20%;
+  box-sizing: border-box;
+  min-height: 50%;
+}
+.PremumTitle {
+  color: #353535;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.premiumContent > p {
+  padding: 4px 8px;
+  color: #999;
+  background-color: white;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.premiumContent > h4 {
+  color: #353535;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 10px;
+}
+.premiumContent > ul {
+}
+.premiumContent li {
+  display: flex;
+  background: white;
+  justify-content: space-between;
+  padding: 15px;
+  margin-bottom: 1px;
+}
+.premiumContent li div input {
+  margin-right: 18px;
+}
+.premiumContent li div label {
+  color: #808080;
+  font-size: 14px;
+  font-weight: 400;
 }
 
+.premiumContent li div label {
+  cursor: pointer;
+}
+
+.premiumContent li div label::before {
+  content: attr(title);
+  display: inline-block;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  box-sizing: border-box;
+  padding: 2px;
+  min-width: 13px;
+  min-height: 13px;
+  color: rgba(0, 0, 0, 0.25);
+  border: 1px solid #d9d9d9;
+  border-radius: 1px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.premiumContent li div input[type="radio"] {
+  display: none;
+}
+
+.premiumContent li div input[type="radio"]:checked ~ label::before {
+  background: #e61c23;
+  border: 1px solid #e61c23;
+  color: #ffffff;
+}
+.premiumContent button {
+  border-radius: 5px;
+  background: #00a0e4;
+  padding: 6px 0;
+  width: 80%;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.premiumContent > div > p {
+  padding: 0 15px;
+  color: #999;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 @media screen and (max-width: 900px) {
-    .leftArrow {
-        left: 1%;
-        display: none;
-    }
+  .leftArrow {
+    left: 1%;
+    display: none;
+  }
 
-    .rightArrow {
-        right: 0;
-        display: none;
-    }
+  .rightArrow {
+    right: 0;
+    display: none;
+  }
 
-    .modalParent {
+  .modalParent {
+    height: 89vh;
+  }
 
-        height: 85vh;
+  .modal {
+    height: 95%;
+    width: 93%;
+  }
 
-    }
-
-    .modal {
-        height: 95%;
-        width: 93%;
-    }
+  .successModal {
+    position: relative;
+    background: white;
+    width: 87%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    padding-top: 5%;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 70px 0;
+  }
+  .premiumModal {
+    width: 87%;
+  }
 }

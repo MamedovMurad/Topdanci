@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TelIconSVG } from "../../assets/svg/tel";
 import { UserLoginSVG } from "../../assets/svg/userloginsvg";
 import { api } from "../../common/api";
@@ -8,16 +8,26 @@ import PrimaryButton from "../../components/UI/button";
 import ProductsContainer from "../../container/products";
 
 import styles from "./index.module.css";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { ShareButton } from "../../hooks/shareButton";
 import { MyComponent } from "../../hooks/useResponsivenenessAdjuster";
 import MultiSlider from "../../components/slider/multiSlider";
 import ProductCard from "../../components/card/product";
+import SuccessModal from "../../components/modal/successModal";
+import ErrorModal from "../../components/modal/errorModal";
+import PremiumModal from "../../components/modal/premiumModal";
+import ForwardModal from "../../components/modal/forwardModal";
 type ProductDetailProps = {
   res: any;
+  id: string | number;
 };
 
-const ProductDetail: React.FC<ProductDetailProps> = ({ res }) => {
+const ProductDetail: React.FC<ProductDetailProps> = ({ res, id }) => {
+  const [forward_premium, setmakePremium] = useState<number | boolean>(false);
+  const [errorMessage, seterrorMessage] = useState("");
+  const [successMessage, setsuccessMessage] = useState("");
+  const router = useRouter();
+
   const { data, similar_adverts } = res;
   const similar_data = similar_adverts.map((similar: any) => (
     <ProductCard
@@ -42,6 +52,33 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ res }) => {
     url: "test",
   });
   const responsive = MyComponent();
+
+  const callBackMessage = (param: { status: number; text: string }) => {
+    if (param.status) {
+      return seterrorMessage(param.text);
+    }
+    return setsuccessMessage(param.text);
+  };
+
+  useEffect(() => {
+    if (
+      router.asPath
+        ?.split("#")
+        .filter((item) => item === "application-success")
+        ?.join("")
+    ) {
+      return setsuccessMessage("true");
+    }
+    if (
+      router.asPath
+        ?.split("#")
+        .filter((item) => item === "application-rejected")
+        ?.join("")
+    ) {
+      return seterrorMessage("true");
+    }
+  }, []);
+
   return (
     <section className={styles.productPage}>
       <div
@@ -126,6 +163,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ res }) => {
                     text="Elanı irəli çək.  1 AZN"
                     size="3px 10px"
                     font="14px"
+                    onClick={() => setmakePremium(2)}
                   />
                   <PrimaryButton
                     text="Premium et.  5 AZN"
@@ -133,6 +171,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ res }) => {
                     color="white"
                     bg="#E61C23"
                     font="14px"
+                    onClick={() => setmakePremium(1)}
                   />
                 </>
               )}
@@ -176,6 +215,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ res }) => {
                       text="Elanı irəli çək.  1 AZN"
                       size="3px 10px"
                       font="14px"
+                      onClick={() => setmakePremium(2)}
                     />
                     <PrimaryButton
                       text="Premium et.  5 AZN"
@@ -184,6 +224,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ res }) => {
                       color="white"
                       bg="#E61C23"
                       font="14px"
+                      onClick={() => setmakePremium(1)}
                     />
                   </div>
                 )}
@@ -217,6 +258,32 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ res }) => {
           {/*  <ProductsContainer  /> */}
         </div>
       </div>
+
+      {/* modal */}
+      {forward_premium &&
+        (forward_premium === 1 ? (
+          <PremiumModal
+            closeModal={() => setmakePremium(false)}
+            id={id}
+            callBackMessage={callBackMessage}
+          />
+        ) : (
+          <ForwardModal
+            closeModal={() => setmakePremium(false)}
+            id={id}
+            callBackMessage={callBackMessage}
+          />
+        ))}
+
+      {errorMessage && (
+        <ErrorModal
+          closeModal={() => seterrorMessage("")}
+          text={errorMessage}
+        />
+      )}
+      {successMessage && (
+        <SuccessModal closeModal={() => setsuccessMessage("")} />
+      )}
     </section>
   );
 };
@@ -227,7 +294,7 @@ export async function getServerSideProps({ params: { slug } }: any) {
   // Fetch data from external API
 
   const res = await api.get("advert/" + slug[slug.length - 1]);
-  console.log(res);
+  console.log(slug);
   // Pass data to the page via props
-  return { props: { res } };
+  return { props: { res, id: slug[slug.length - 1] } };
 }
