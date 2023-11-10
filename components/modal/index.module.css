@@ -200,6 +200,43 @@
   font-weight: 400;
   line-height: normal;
 }
+.balanceModalForm {
+  width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70%;
+}
+
+.balanceModalForm label {
+  display: block;
+}
+.balanceModalForm input {
+  width: 100%;
+  display: block;
+  margin-top: 20px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px #444 solid;
+  outline-color: #00a0e4;
+  padding-left: 8px;
+  box-sizing: border-box;
+}
+.balanceModalForm button {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  background: #00a0e4;
+  color: white;
+  font-weight: 600;
+  outline: none;
+  border-radius: 8px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
 @media screen and (max-width: 900px) {
   .leftArrow {
     left: 1%;
