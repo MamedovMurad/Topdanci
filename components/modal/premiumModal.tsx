@@ -21,7 +21,7 @@ const PremiumModal: React.FC<ModalProps> = ({
   callBackMessage,
 }) => {
   const [priceList, setpriceList] = useState<
-    null | { price: number; description: string }[]
+    null | { price: number; description: string; id: number }[]
   >(null);
   const [errors, serErrors] = useState<any>({});
   const fetchPriceList = async () => {
@@ -94,7 +94,7 @@ const PremiumModal: React.FC<ModalProps> = ({
                       type="radio"
                       name="price_id"
                       id={"firstTIme" + index}
-                      value={item.price}
+                      value={item.id}
                       defaultChecked={index === 0}
                     />
                     <label htmlFor={"firstTIme" + index}>

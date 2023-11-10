@@ -22,7 +22,7 @@ const ForwardModal: React.FC<ModalProps> = ({
 }) => {
   const [errors, serErrors] = useState<any>({});
   const [priceList, setpriceList] = useState<
-    null | { price: number; description: string }[]
+    null | { price: number; description: string; id: number }[]
   >(null);
   const fetchPriceList = async () => {
     const response = await api.get("prices-info");
@@ -95,7 +95,7 @@ const ForwardModal: React.FC<ModalProps> = ({
                       type="radio"
                       name="price_id"
                       id={"firstTIme" + index}
-                      value={item.price}
+                      value={item.id}
                       defaultChecked={index === 0}
                     />
                     <label htmlFor={"firstTIme" + index}>
