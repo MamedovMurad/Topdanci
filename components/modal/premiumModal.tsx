@@ -63,8 +63,7 @@ const PremiumModal: React.FC<ModalProps> = ({
         return callBackMessage({ status: 1, text: "Hesaba daxil olun" });
       }
 
-      window.location.assign(res?.payment_url);
-      return callBackMessage({ status: 0, text: "Success!" });
+      return window.location.assign(res?.payment_url);
     }
   }
   return (
