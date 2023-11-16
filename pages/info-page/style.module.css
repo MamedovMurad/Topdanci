@@ -1,0 +1,75 @@
+.InfoPage {
+  margin: 60px 0;
+  margin-bottom: 130px;
+}
+.InfoPage > div {
+  display: flex;
+}
+.InfoPage > div > div {
+  width: 74%;
+}
+.InfoPage > div > div {
+  padding: 20px 50px;
+}
+
+.InfoPage div h2 {
+  color: #808080;
+  font-size: 18px;
+  font-weight: 500;
+}
+.InfoPage div p {
+  color: #808080;
+  font-size: 12px;
+  font-weight: 500;
+}
+.InfoPage aside {
+  width: 26%;
+}
+
+.InfoPage aside ul {
+  border-radius: 5px;
+  padding: 10px 15px;
+  list-style: none;
+  background: #f1f3f7;
+  display: flex;
+  flex-direction: column;
+  gap: 13px 0;
+}
+
+.InfoPage aside ul li a {
+  font-weight: 500;
+  font-size: 14px;
+  color: #353535;
+  text-decoration: none;
+}
+
+.InfoPage aside ul li a.active {
+  color: #e61c23;
+}
+
+@media screen and (max-width: 900px) {
+  .InfoPage {
+    margin: 10px 0;
+  }
+  .InfoPage > div {
+    display: block;
+  }
+  .InfoPage > div > aside {
+    width: 100%;
+  }
+  .InfoPage > div > div {
+    width: 100%;
+  }
+  .InfoPage > div > aside ul {
+    flex-direction: row;
+    gap: 10px 20px;
+    flex-wrap: wrap;
+  }
+  .InfoPage > div > aside ul li {
+    width: fit-content;
+  }
+
+  .InfoPage > div > div {
+    padding: 10px;
+  }
+}
