@@ -33,6 +33,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ res, id }) => {
     <ProductCard
       key={similar.id}
       data={{
+        slug: similar.slug,
         id: similar.id,
         title: similar.title,
         address: similar.city,

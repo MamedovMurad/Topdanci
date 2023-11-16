@@ -26,6 +26,7 @@ const Satici: React.FC<SaticiPageProps> = () => {
         <ProductCard
           key={index}
           data={{
+            slug: item.slug,
             id: item.id,
             title: item.title,
             address: "Bakı",

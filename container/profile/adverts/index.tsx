@@ -30,6 +30,7 @@ const Adverts: React.FC<AdvertsProps> = ({}) => {
           <ProductCard
             key={item.id}
             data={{
+              slug: item.slug,
               id: item.id,
               title: item.title,
               address: "Bakı",

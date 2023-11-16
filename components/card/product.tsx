@@ -17,16 +17,15 @@ type ProductCardProps = {
     type: "ordinary" | "premium";
     label: "buyer" | "seller";
     wholersalers: number;
+    slug: string;
   };
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
-  console.log(data, "lllllll");
-
   return (
     <div
       className={styles.product}
-      onClick={() => Router.push("/product/" + data.title + "/" + data.id)}
+      onClick={() => Router.push("/product/" + data.slug + "/" + data.id)}
     >
       <div className={styles.image}>
         <Image src={data.photo} alt="Picture of the author" layout="fill" />

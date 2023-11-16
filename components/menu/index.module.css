@@ -28,7 +28,7 @@
 }
 
 .containermenu > div > button,
-.containermenu > ul li > button {
+.containermenu > ul li button {
   background: #e61c23;
   border-radius: 50%;
   width: 45.4px;
@@ -97,7 +97,7 @@
   width: 100%;
 }
 
-.MenutItem:hover::before {
+.MenutItem.active::before {
   display: block;
 }
 
@@ -118,7 +118,7 @@
   overflow: hidden;
 }
 
-.MenutItem:hover .content {
+.MenutItem.active .content {
   opacity: 1;
   height: unset;
   width: 479px;

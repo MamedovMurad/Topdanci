@@ -43,6 +43,7 @@ const HomePage: React.FC<HomePageProps> = () => {
         <ProductCard
           key={item.id}
           data={{
+            slug: item.slug,
             id: item.id,
             title: item.title,
             address: item.city,
@@ -95,6 +96,7 @@ const HomePage: React.FC<HomePageProps> = () => {
           <ProductCard
             key={item.id}
             data={{
+              slug: item.slug,
               id: item.id,
               title: item.title,
               address: item.city,
@@ -118,6 +120,7 @@ const HomePage: React.FC<HomePageProps> = () => {
           <ProductCard
             key={item.id}
             data={{
+              slug: item.slug,
               id: item.id,
               title: item.title,
               address: item.city,

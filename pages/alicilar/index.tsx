@@ -15,6 +15,7 @@ const Alici: React.FC<AliciPageProps> = () => {
         <ProductCard
           key={index}
           data={{
+            slug: item.slug,
             id: item.id,
             title: item.title,
             address: "Bakı",
