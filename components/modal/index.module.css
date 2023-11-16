@@ -200,30 +200,87 @@
   font-weight: 400;
   line-height: normal;
 }
-.balanceModalForm {
-  width: 80%;
-  margin: 0 auto;
-  box-sizing: border-box;
+.balanceModal {
+  background: #f1f3f7;
+  padding: 23px 15px;
+  border-radius: 15px;
+  width: 40%;
+}
+.balanceModal > h4 {
+  text-align: center;
+  border-bottom: 1px solid #646363;
+  padding-bottom: 25px;
+  margin: 0;
+
+  color: #353535;
+
+  font-size: 24px;
+
+  font-weight: 500;
+}
+
+.balanceModal .amountSpan {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 70%;
+  justify-content: center;
+  gap: 0 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid #646363;
+}
+.balanceModal .amountSpan span.active {
+  border: 1px solid #ffc702;
+  background: #ffc702;
+}
+.balanceModal .amountSpan span {
+  color: #6a6363;
+  display: inline-block;
+  padding: 5px 12px;
+  border: 1px solid #bababa;
+  cursor: pointer;
+  background: #ebe8dd;
+}
+.balanceModal .amountSpan input {
+  width: 130px;
+  background: #ebe8dd;
+  outline-color: #bababa;
+  border: none;
+  padding: 5px 12px;
+}
+.balanceModal .labelBalance,
+.balanceModal h5 {
+  font-size: 18px;
+  color: #6a6363;
+  font-weight: 500;
+  margin: 20px 0;
+}
+.balanceModal .paymentTYpe ul {
+  list-style: none;
+  padding: 0;
+}
+.balanceModal .bottomP {
+  color: #999;
+  text-align: center;
+  font-size: 12px;
+  max-width: 60%;
+  margin: 0 auto;
+  margin-top: 22px;
+}
+.balanceModal .paymentTYpe ul li {
+  display: flex;
+  align-items: center;
+  gap: 0 12px;
+  color: #6a6363;
+  font-size: 16px;
+  font-weight: 500;
+}
+.balanceModalForm {
+  /*   width: 80%; */
+  margin: 0 auto;
 }
 
 .balanceModalForm label {
   display: block;
 }
-.balanceModalForm input {
-  width: 100%;
-  display: block;
-  margin-top: 20px;
-  height: 40px;
-  border-radius: 8px;
-  border: 1px #444 solid;
-  outline-color: #00a0e4;
-  padding-left: 8px;
-  box-sizing: border-box;
-}
+
 .balanceModalForm button {
   width: 100%;
   padding: 10px 0;
@@ -271,5 +328,23 @@
   }
   .premiumModal {
     width: 87%;
+  }
+
+  .balanceModal {
+    width: 78%;
+  }
+  .balanceModal .labelBalance {
+    text-align: center;
+  }
+  .balanceModal .amountSpan span {
+    flex: 0 0 22%;
+  }
+  .balanceModal .amountSpan {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .balanceModal .bottomP {
+    max-width: 100%;
   }
 }
