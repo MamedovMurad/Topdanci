@@ -16,6 +16,8 @@ const Satici: React.FC<SaticiPageProps> = () => {
   const category = router.query.category ? router?.query?.category + "" : "";
 
   const [products, setproducts] = useState([]);
+  const [isActiveMenu, setisActiveMenu] = useState(false);
+
   async function fetchProducts() {
     const response = await api.get(
       "adverts?" +
@@ -48,7 +50,7 @@ const Satici: React.FC<SaticiPageProps> = () => {
   }, [router.query]);
   return (
     <div>
-      <Menu />
+      <Menu setisActiveMenu={setisActiveMenu} isActiveMenu={isActiveMenu} />
       <div className="wrapper">
         {" "}
         <ProductsContainer

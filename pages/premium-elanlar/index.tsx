@@ -17,6 +17,7 @@ const PremiumPage: React.FC<HomePageProps> = () => {
   const [hasmore, sethasmore] = useState(false);
   const [end, setend] = useState(false);
   const [page, setpage] = useState(1);
+  const [isActiveMenu, setisActiveMenu] = useState(false);
 
   const responsive = MyComponent();
 
@@ -109,7 +110,7 @@ const PremiumPage: React.FC<HomePageProps> = () => {
 
   return (
     <div>
-      <Menu />
+      <Menu setisActiveMenu={setisActiveMenu} isActiveMenu={isActiveMenu} />
       <div className="wrapper">
         <InfiniteScroll
           dataLength={products?.length || 1}

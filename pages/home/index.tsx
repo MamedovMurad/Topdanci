@@ -19,8 +19,6 @@ const HomePage: React.FC<HomePageProps> = () => {
   const [page, setpage] = useState(1);
   const [isActiveMenu, setisActiveMenu] = useState(false);
 
-  console.log(isActiveMenu, "yyyyyyyyyy");
-
   const responsive = MyComponent();
 
   async function fetchPremiumProducts() {
