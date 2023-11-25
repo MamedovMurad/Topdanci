@@ -64,13 +64,13 @@ const MenuItem: React.FC<MenuItemProps> = ({
                   ? { background: "#00a0e4" }
                   : {}
               }
-              onClick={() =>
+              /*        onClick={() =>
                 item.link
                   ? Router.push(item.link)
                   : setmenu
                   ? setmenu(item.index)
                   : Router.push("/?category=" + item.id)
-              }
+              } */
             >
               <BuilderSVG />
             </button>
@@ -79,7 +79,18 @@ const MenuItem: React.FC<MenuItemProps> = ({
         <article>{item.name}</article>
         {item.subcategories.length > 0 && responsive > 900 && (
           <div className={styles.content} style={position[item.index]}>
-            <header>Bütün elanlar</header>
+            <header
+              style={{ cursor: "pointer" }}
+              onClick={() =>
+                item.link
+                  ? Router.push(item.link)
+                  : setmenu
+                  ? setmenu(item.index)
+                  : Router.push("/?category=" + item.id)
+              }
+            >
+              Bütün elanlar
+            </header>
 
             <ul>
               {item?.subcategories.map((sub: any, index: number) => (
