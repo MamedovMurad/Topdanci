@@ -17,6 +17,9 @@ const HomePage: React.FC<HomePageProps> = () => {
   const [hasmore, sethasmore] = useState(false);
   const [end, setend] = useState(false);
   const [page, setpage] = useState(1);
+  const [isActiveMenu, setisActiveMenu] = useState(false);
+
+  console.log(isActiveMenu, "yyyyyyyyyy");
 
   const responsive = MyComponent();
 
@@ -156,7 +159,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 
   return (
     <div>
-      <Menu />
+      <Menu setisActiveMenu={setisActiveMenu} isActiveMenu={isActiveMenu} />
       <div className="wrapper">
         <ProductsContainer
           title="Premium elanlar"

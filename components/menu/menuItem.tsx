@@ -3,21 +3,41 @@ import { BuilderSVG } from "../../assets/svg/buider";
 import styles from "./index.module.css";
 import Link from "next/link";
 import { MyComponent } from "../../hooks/useResponsivenenessAdjuster";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { OutsideClickDetector } from "../../hooks/OutsideClickDetector";
+import { json } from "stream/consumers";
 
 type MenuItemProps = {
   item: any;
+  callBack?: any;
   setmenu?: any;
+  setisActiveMenu: (param: boolean) => void;
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({ item, setmenu }) => {
+const MenuItem: React.FC<MenuItemProps> = ({
+  item,
+  setmenu,
+  callBack,
+  setisActiveMenu,
+}) => {
   const responsive = MyComponent();
   const [activeItem, setactiveItem] = useState(-1);
 
   function handleClick() {
+    setisActiveMenu(true);
     setactiveItem(item.id);
   }
+
+  useEffect(() => {
+    callBack && callBack(activeItem);
+    setisActiveMenu && setisActiveMenu(activeItem === -1 ? false : true);
+  }, [activeItem]);
+
+  const position: any = {
+    0: { left: "-95px" },
+    6: { right: "-110px" },
+    7: { right: "-10px" },
+  };
 
   return (
     <>
@@ -28,7 +48,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, setmenu }) => {
         onClick={handleClick}
       >
         {(setmenu || responsive > 684) && (
-          <OutsideClickDetector onOutsideClick={() => setactiveItem(-1)}>
+          <OutsideClickDetector
+            onOutsideClick={() => {
+              setactiveItem(-1);
+            }}
+          >
             <button
               style={
                 Router.query?.category == item.id ||
@@ -54,12 +78,15 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, setmenu }) => {
         )}
         <article>{item.name}</article>
         {item.subcategories.length > 0 && responsive > 900 && (
-          <div className={styles.content}>
+          <div className={styles.content} style={position[item.index]}>
             <header>Bütün elanlar</header>
+
             <ul>
               {item?.subcategories.map((sub: any, index: number) => (
                 <li key={index}>
-                  <Link href={"/?category=" + sub.id}>{sub.name}</Link>
+                  <Link href={"/?category=" + sub.id}>
+                    {sub.name + item.index}
+                  </Link>
                 </li>
               ))}
             </ul>

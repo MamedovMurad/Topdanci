@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TopSearch from "../topSearch";
 import styles from "./index.module.css";
 import MenuItem from "./menuItem";
@@ -10,9 +10,12 @@ import Slider from "react-slick";
 import { CancelSVG } from "../../assets/svg/cancel";
 import Router, { useRouter } from "next/router";
 
-type MenuProps = {};
+type MenuProps = {
+  setisActiveMenu: (param: boolean) => void;
+  isActiveMenu: boolean;
+};
 
-const Menu: React.FC<MenuProps> = () => {
+const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
   const [collapse, setcollapse] = useState(false);
   const [menu, setMenu] = useState<any>([]);
   const [subMenu, setSubMenu] = useState<any>(null);
@@ -52,9 +55,21 @@ const Menu: React.FC<MenuProps> = () => {
     setcollapse(false);
   }, [router]);
 
-  console.log(menu[subMenu]);
+  const menuRef = useRef<any>(null);
+
+  const callBakForExpandMenu = (param: number) => {
+    if (param === -1) {
+      menuRef.current.paddingBottom = "0";
+    } else {
+      menuRef.current.paddingBottom = "150px";
+    }
+  };
   return (
-    <section className={styles.Menu}>
+    <section
+      className={styles.Menu}
+      ref={menuRef}
+      style={isActiveMenu ? { height: "500px" } : {}}
+    >
       <div className={styles.search}>
         <TopSearch />
       </div>
@@ -94,12 +109,15 @@ const Menu: React.FC<MenuProps> = () => {
                     <MenuItem
                       key={index}
                       item={{ ...item, index }}
+                      setisActiveMenu={setisActiveMenu}
                       setmenu={subMenu === null && handleSubmenu}
                     />
                   )
                 )}
                 {subMenu === null && (
                   <MenuItem
+                    setisActiveMenu={setisActiveMenu}
+                    callBack={callBakForExpandMenu}
                     item={{
                       name: "Topdançılar",
                       link: "/topdancilar",
@@ -117,6 +135,7 @@ const Menu: React.FC<MenuProps> = () => {
               >
                 {menu.slice(0, 8).map((item: any, index: number) => (
                   <MenuItem
+                    setisActiveMenu={setisActiveMenu}
                     key={index}
                     item={{ ...item, index }}
                     setmenu={handleSubmenu}
@@ -127,7 +146,11 @@ const Menu: React.FC<MenuProps> = () => {
               menu
                 .slice(0, 8)
                 .map((item: any, index: number) => (
-                  <MenuItem key={index} item={item} />
+                  <MenuItem
+                    key={index}
+                    item={{ ...item, index }}
+                    setisActiveMenu={setisActiveMenu}
+                  />
                 ))
             )}
           </ul>
