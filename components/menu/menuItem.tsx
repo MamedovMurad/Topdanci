@@ -11,7 +11,7 @@ type MenuItemProps = {
   item: any;
   callBack?: any;
   setmenu?: any;
-  setisActiveMenu: (param: boolean) => void;
+  setisActiveMenu?: (param: boolean) => void;
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -24,7 +24,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   const [activeItem, setactiveItem] = useState(-1);
 
   function handleClick() {
-    setisActiveMenu(true);
+    setisActiveMenu && setisActiveMenu(true);
     setactiveItem(item.id);
   }
 

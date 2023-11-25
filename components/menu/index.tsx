@@ -11,8 +11,8 @@ import { CancelSVG } from "../../assets/svg/cancel";
 import Router, { useRouter } from "next/router";
 
 type MenuProps = {
-  setisActiveMenu: (param: boolean) => void;
-  isActiveMenu: boolean;
+  setisActiveMenu?: (param: boolean) => void;
+  isActiveMenu?: boolean;
 };
 
 const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
