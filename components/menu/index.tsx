@@ -68,7 +68,7 @@ const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
     <section
       className={styles.Menu}
       ref={menuRef}
-      style={isActiveMenu ? { height: "600px" } : {}}
+      style={isActiveMenu ? { paddingBottom: "600px" } : {}}
     >
       <div className={styles.search}>
         <TopSearch />

@@ -1,42 +1,50 @@
-import React, { useState } from 'react';
-import styles from './index.module.css';
-import Link from 'next/link';
-import { UserLoginSVG } from '../../assets/svg/userloginsvg';
-import useModal from '../../hooks/useModal';
+import React, { useState } from "react";
+import styles from "./index.module.css";
+import Link from "next/link";
+import { UserLoginSVG } from "../../assets/svg/userloginsvg";
+import useModal from "../../hooks/useModal";
 
-import { MobileLogo } from '../../assets/svg/mobilelogo';
-import { ArrowSVG } from '../../assets/svg/Arrow';
-import { CancelSVG } from '../../assets/svg/cancel';
-import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
-import { HelpCenterSVG } from '../../assets/svg/destek';
-import { ValletSVG } from '../../assets/svg/vallet';
-import { FacebookSVG } from '../../assets/svg/facebook';
-import { InstagramSVG } from '../../assets/svg/instagram';
-import { LinkedinSVG } from '../../assets/svg/linkedin';
-import { YoutubeSVG } from '../../assets/svg/youtube';
-import { stringify } from 'querystring';
-import { useRouter } from 'next/router';
+import { MobileLogo } from "../../assets/svg/mobilelogo";
+import { ArrowSVG } from "../../assets/svg/Arrow";
+import { CancelSVG } from "../../assets/svg/cancel";
+import useDropdownMenu from "react-accessible-dropdown-menu-hook";
+import { HelpCenterSVG } from "../../assets/svg/destek";
+import { ValletSVG } from "../../assets/svg/vallet";
+import { FacebookSVG } from "../../assets/svg/facebook";
+import { InstagramSVG } from "../../assets/svg/instagram";
+import { LinkedinSVG } from "../../assets/svg/linkedin";
+import { YoutubeSVG } from "../../assets/svg/youtube";
+import { stringify } from "querystring";
+import { useRouter } from "next/router";
 interface BurgerMenuProps {
-  closeModal: () => void
+  closeModal: () => void;
+  user: null | { name: string; tel: string };
 }
 
-const BurgerMenu: React.FC<BurgerMenuProps> = ({ closeModal }) => {
+const BurgerMenu: React.FC<BurgerMenuProps> = ({ closeModal, user }) => {
   const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(3);
-  const [activeLang, setactiveLang] = useState('AZ')
-  const router = useRouter()
+  const [activeLang, setactiveLang] = useState("AZ");
+  const router = useRouter();
   function setActiveLangHandle(param: string) {
-    setIsOpen(false)
-    setactiveLang(param)
+    setIsOpen(false);
+    setactiveLang(param);
   }
   return (
     <div className={styles.burgerMenuParent} onClick={closeModal}>
-      <div className={styles.burgerMenu} onClick={(event) => event.stopPropagation()}>
+      <div
+        className={styles.burgerMenu}
+        onClick={(event) => event.stopPropagation()}
+      >
         <header>
           <div>
-            <div ><span {...buttonProps}>{activeLang} <ArrowSVG /></span></div>
-            <ul className={isOpen ? 'visible' : 'hidden'} role='menu'>
-              <li onClick={() => setActiveLangHandle('AZ')}>AZ </li>
-              <li onClick={() => setActiveLangHandle('EN')}>EN </li>
+            <div>
+              <span {...buttonProps}>
+                {activeLang} <ArrowSVG />
+              </span>
+            </div>
+            <ul className={isOpen ? "visible" : "hidden"} role="menu">
+              <li onClick={() => setActiveLangHandle("AZ")}>AZ </li>
+              <li onClick={() => setActiveLangHandle("EN")}>EN </li>
             </ul>
           </div>
           <div>
@@ -48,25 +56,71 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ closeModal }) => {
         </header>
         <main>
           <ul>
-            <li><span><UserLoginSVG /></span> <Link href={'/login'}>Giriş</Link></li>
-            <li><span><ValletSVG /></span> <Link href={''}>Balans artımı</Link></li>
-            <li><span><HelpCenterSVG /></span> <Link href={''}>Dəstək</Link></li>
-          </ul>
-          <ul>
-          <li> <Link href={'/topdancilar'}>Topdançılar</Link></li>
             <li>
-              <Link href={{ pathname: '/', search: `?${stringify({ ...router.query, advert_type: 1 })}` }}>Alıcılar</Link>
+              <span>
+                <UserLoginSVG />
+              </span>{" "}
+              <Link href={"/dashboard"}>
+                {" "}
+                {user?.name?.slice(0, 6) || user?.tel || "Giriş"}
+              </Link>
             </li>
             <li>
-              <Link href={{ pathname: '/', search: `?${stringify({ ...router.query, advert_type: 0 })}` }}>Satıcılar</Link>
+              <span>
+                <ValletSVG />
+              </span>{" "}
+              <Link href={""}>Balans artımı</Link>
+            </li>
+            <li>
+              <span>
+                <HelpCenterSVG />
+              </span>{" "}
+              <Link href={""}>Dəstək</Link>
             </li>
           </ul>
           <ul>
-            <li> <Link href={''}>Layihə haqqında</Link></li>
-            <li> <Link href={''}>Ödənişli xidmətlər</Link></li>
-            <li> <Link href={''}>Paketlər</Link></li>
-            <li> <Link href={''}>Saytda reklam</Link></li>
-
+            <li>
+              {" "}
+              <Link href={"/topdancilar"}>Topdançılar</Link>
+            </li>
+            <li>
+              <Link
+                href={{
+                  pathname: "/",
+                  search: `?${stringify({ ...router.query, advert_type: 1 })}`,
+                }}
+              >
+                Alıcılar
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={{
+                  pathname: "/",
+                  search: `?${stringify({ ...router.query, advert_type: 0 })}`,
+                }}
+              >
+                Satıcılar
+              </Link>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              {" "}
+              <Link href={""}>Layihə haqqında</Link>
+            </li>
+            <li>
+              {" "}
+              <Link href={""}>Ödənişli xidmətlər</Link>
+            </li>
+            <li>
+              {" "}
+              <Link href={""}>Paketlər</Link>
+            </li>
+            <li>
+              {" "}
+              <Link href={""}>Saytda reklam</Link>
+            </li>
           </ul>
 
           {/*         <ul className={styles.links}>

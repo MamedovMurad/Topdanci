@@ -8,15 +8,17 @@ import BurgerMenu from "../burger-menu";
 import useModal from "../../hooks/useModal";
 import TopdanchiLogo from "../../assets/svg/Logo.svg";
 import Image from "next/image";
-type NavProps = {};
+type NavProps = {
+  user: null | { name: string; tel: string };
+};
 
-const Nav: React.FC<NavProps> = () => {
+const Nav: React.FC<NavProps> = ({ user }) => {
   const router = useRouter();
   const { isOpen, openModal, closeModal } = useModal();
 
   return (
     <>
-      {isOpen && <BurgerMenu closeModal={closeModal} />}
+      {isOpen && <BurgerMenu closeModal={closeModal} user={user} />}
       <nav className={styles.nav}>
         <div className="wrapper">
           <ul>

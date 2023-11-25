@@ -8,6 +8,8 @@ type AliciPageProps = {};
 
 const Alici: React.FC<AliciPageProps> = () => {
   const [products, setproducts] = useState([]);
+  const [isActiveMenu, setisActiveMenu] = useState(false);
+
   async function fetchProducts() {
     const response = await api.get("adverts?advert_type=1");
     setproducts(
@@ -37,7 +39,7 @@ const Alici: React.FC<AliciPageProps> = () => {
   }, []);
   return (
     <div>
-      <Menu />
+      <Menu setisActiveMenu={setisActiveMenu} isActiveMenu={isActiveMenu} />
       <div className="wrapper">
         {" "}
         <ProductsContainer
