@@ -170,6 +170,11 @@
   background: #f1f3f7;
   padding: 10px 15px;
 }
+.outsideCollapse > header {
+  font-size: 14px;
+  color: #808080;
+  font-weight: 500;
+}
 .outsideCollapse > ul {
   list-style: none;
   display: flex;
