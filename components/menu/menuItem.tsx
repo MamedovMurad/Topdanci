@@ -3,101 +3,79 @@ import { BuilderSVG } from "../../assets/svg/buider";
 import styles from "./index.module.css";
 import Link from "next/link";
 import { MyComponent } from "../../hooks/useResponsivenenessAdjuster";
-import { useEffect, useState } from "react";
-import { OutsideClickDetector } from "../../hooks/OutsideClickDetector";
-import { json } from "stream/consumers";
 
 type MenuItemProps = {
   item: any;
-  callBack?: any;
   setmenu?: any;
-  setisActiveMenu?: (param: boolean) => void;
+  setActiveMenu?: (param: any) => void;
+  activeItem?: any;
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
   item,
   setmenu,
-  callBack,
-  setisActiveMenu,
+  setActiveMenu,
+  activeItem,
 }) => {
   const responsive = MyComponent();
-  const [activeItem, setactiveItem] = useState(-1);
 
-  function handleClick() {
-    setisActiveMenu && setisActiveMenu(true);
-    setactiveItem(item.id);
-  }
-
-  useEffect(() => {
-    callBack && callBack(activeItem);
-    setisActiveMenu && setisActiveMenu(activeItem === -1 ? false : true);
-  }, [activeItem]);
-
-  const position: any = {
-    0: { left: "-95px" },
-    6: { right: "-110px" },
-    7: { right: "-10px" },
+  const handleClick = () => {
+    if (responsive < 900) {
+      item.link
+        ? Router.push(item.link)
+        : setmenu
+        ? setmenu(item.index)
+        : Router.push("/?category=" + item.id);
+    }
+    setmenu && setmenu(item.index);
+    if (setActiveMenu) {
+      if (activeItem?.id === item.id) {
+        return setActiveMenu(null);
+      }
+      return setActiveMenu(item);
+    }
   };
 
   return (
     <>
       <li
-        className={`${styles.MenutItem} ${
-          item.subcategories.length < 1 && styles.menuItemnosub
-        } ${activeItem === item.id && styles.active}`}
+        className={`${
+          styles.MenutItem +
+          " " +
+          (activeItem?.id == item.id ? styles.MenutItemActive : "")
+        } ${item.subcategories.length < 1 && styles.menuItemnosub}`}
         onClick={handleClick}
       >
         {(setmenu || responsive > 684) && (
-          <OutsideClickDetector
-            onOutsideClick={() => {
-              setactiveItem(-1);
-            }}
+          <button
+            style={
+              (item?.subcategories?.find(
+                (subi: any) => subi.id == Router?.query?.category
+              ) &&
+                activeItem === null) ||
+              activeItem?.id === item.id
+                ? { background: "#FFC702" }
+                : {}
+            }
+            /*            onClick={() =>
+              item.link
+                ? Router.push(item.link)
+                : setmenu
+                ? setmenu(item.index)
+                : Router.push("/?category=" + item.id)
+            } */
           >
-            <button
-              style={
-                Router.query?.category == item.id ||
-                item?.subcategories?.find(
-                  (subi: any) => subi.id == Router?.query?.category
-                )
-                  ? { background: "#FFC702" }
-                  : item.link
-                  ? { background: "#00a0e4" }
-                  : {}
-              }
-              /*        onClick={() =>
-                item.link
-                  ? Router.push(item.link)
-                  : setmenu
-                  ? setmenu(item.index)
-                  : Router.push("/?category=" + item.id)
-              } */
-            >
-              <BuilderSVG />
-            </button>
-          </OutsideClickDetector>
+            <BuilderSVG />
+          </button>
         )}
         <article>{item.name}</article>
         {item.subcategories.length > 0 && responsive > 900 && (
-          <div className={styles.content} style={position[item.index]}>
-            <header
-              style={{ cursor: "pointer" }}
-              onClick={() =>
-                item.link
-                  ? Router.push(item.link)
-                  : setmenu
-                  ? setmenu(item.index)
-                  : Router.push("/?category=" + item.id)
-              }
-            >
-              Bütün elanlar
-            </header>
-
+          <div className={styles.content}>
+            <header>Bütün elanlar</header>
             <ul>
               {item?.subcategories.map((sub: any, index: number) => (
                 <li key={index}>
-                  <Link href={"/?category=" + sub.id}>
-                    {sub.name + item.index}
-                  </Link>
+                  <Link href={"/?category=" + sub.id}>{sub.name}</Link>
                 </li>
               ))}
             </ul>

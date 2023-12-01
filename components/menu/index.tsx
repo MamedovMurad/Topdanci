@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { CancelSVG } from "../../assets/svg/cancel";
 import Router, { useRouter } from "next/router";
+import Link from "next/link";
 
 type MenuProps = {
   setisActiveMenu?: (param: boolean) => void;
@@ -17,6 +18,7 @@ type MenuProps = {
 
 const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
   const [collapse, setcollapse] = useState(false);
+  const [activeItem, setactiveItem] = useState<any>(null);
   const [menu, setMenu] = useState<any>([]);
   const [subMenu, setSubMenu] = useState<any>(null);
   const responsive = MyComponent();
@@ -64,6 +66,17 @@ const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
       menuRef.current.paddingBottom = "150px";
     }
   };
+
+  function splitArray(inputArray: any, chunkSize: any) {
+    var resultArray = [];
+    for (var i = 0; i < inputArray.length; i += chunkSize) {
+      resultArray.push(inputArray.slice(i, i + chunkSize));
+    }
+    return resultArray;
+  }
+
+  console.log(activeItem, "jj");
+
   return (
     <section
       className={styles.Menu}
@@ -109,15 +122,12 @@ const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
                     <MenuItem
                       key={index}
                       item={{ ...item, index }}
-                      setisActiveMenu={setisActiveMenu}
                       setmenu={subMenu === null && handleSubmenu}
                     />
                   )
                 )}
                 {subMenu === null && (
                   <MenuItem
-                    setisActiveMenu={setisActiveMenu}
-                    callBack={callBakForExpandMenu}
                     item={{
                       name: "Topdançılar",
                       link: "/topdancilar",
@@ -135,7 +145,6 @@ const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
               >
                 {menu.slice(0, 8).map((item: any, index: number) => (
                   <MenuItem
-                    setisActiveMenu={setisActiveMenu}
                     key={index}
                     item={{ ...item, index }}
                     setmenu={handleSubmenu}
@@ -149,13 +158,38 @@ const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
                   <MenuItem
                     key={index}
                     item={{ ...item, index }}
-                    setisActiveMenu={setisActiveMenu}
+                    setActiveMenu={setactiveItem}
+                    activeItem={activeItem}
                   />
                 ))
             )}
           </ul>
         </div>
       </div>
+      {activeItem && responsive > 900 && (
+        <div className={"wrapper "}>
+          <div className={styles.outsideCollapse}>
+            <header>Bütün elanlar</header>
+            <hr />
+            <ul
+              style={
+                activeItem?.subcategories?.length / 9 > 1
+                  ? {
+                      height:
+                        (activeItem?.subcategories?.length / 9) * 60 + "px",
+                    }
+                  : {}
+              }
+            >
+              {activeItem?.subcategories?.map((item: any) => (
+                <li key={item.id}>
+                  <Link href={"/?category=" + item.id}>{item.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
