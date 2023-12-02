@@ -1,3 +1,299 @@
+import TopSearch from "../topSearch";
+import styles from "./index.module.css";
+import MenuItem from "./menuItem";
+import { api } from "../../common/api";
+import { MyComponent } from "../../hooks/useResponsivenenessAdjuster";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { CancelSVG } from "../../assets/svg/cancel";
+import Router, { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+type MenuProps = {};
+
+const Menu: React.FC<MenuProps> = () => {
+  const [activeItem, setactiveItem] = useState<any>(null);
+
+  const [collapse, setcollapse] = useState(false);
+  const [menu, setMenu] = useState<any>([]);
+  const [subMenu, setSubMenu] = useState<any>(null);
+  const responsive = MyComponent();
+  async function fetchMenu() {
+    const res = await api.get("categories");
+    console.log(res.data);
+    setMenu(res.data);
+  }
+
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3.75,
+    slidesToScroll: 3,
+  };
+
+  const router = useRouter();
+  function handleSubmenu(index: number) {
+    if (menu[index].subcategories.length < 1) {
+      setcollapse(false);
+      return Router.push("/?category=" + menu[index].id);
+    }
+
+    setSubMenu(index);
+
+    setcollapse(true);
+    console.log(index);
+  }
+
+  useEffect(() => {
+    fetchMenu();
+  }, []);
+
+  useEffect(() => {
+    setcollapse(false);
+  }, [router]);
+
+  console.log(menu[subMenu]);
+  return (
+    <>
+      {responsive < 900 ? (
+        <section className={styles.Menu}>
+          <div className={styles.search}>
+            <TopSearch />
+          </div>
+
+          <div className={styles.menuMobile + " wrapper"}>
+            <div className={styles.containermenu}>
+              {(responsive > 900 || !collapse) && (
+                <div onClick={() => setcollapse(!collapse)}>
+                  <button style={collapse ? { background: "#00A0E4" } : {}}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </button>
+                  <article>Hamısı</article>
+                </div>
+              )}
+
+              <ul className={styles[collapse ? "sliderParent" : ""]}>
+                {!(responsive > 900 || !collapse) && (
+                  <div
+                    className={styles.mobileMenuHeader + " mobileMenuHeader"}
+                  >
+                    <span
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setcollapse(false);
+                        setSubMenu(null);
+                      }}
+                    >
+                      <CancelSVG />
+                    </span>
+                    <h3>{menu[subMenu]?.name ?? "Kataloq"}</h3>
+                  </div>
+                )}
+                {collapse ? (
+                  <>
+                    {(subMenu !== null
+                      ? menu[subMenu]?.subcategories
+                      : menu
+                    ).map((item: any, index: number) => (
+                      <MenuItem
+                        key={index}
+                        item={{ ...item, index }}
+                        setmenu={subMenu === null && handleSubmenu}
+                      />
+                    ))}
+                    {subMenu === null && (
+                      <MenuItem
+                        item={{
+                          name: "Topdançılar",
+                          link: "/topdancilar",
+                          subcategories: [],
+                        }}
+                        setmenu={handleSubmenu}
+                      />
+                    )}
+                  </>
+                ) : responsive < 686 ? (
+                  <Slider
+                    {...settings}
+                    arrows={false}
+                    className={styles.sliderMenu}
+                  >
+                    {menu.slice(0, 8).map((item: any, index: number) => (
+                      <MenuItem
+                        key={index}
+                        item={{ ...item, index }}
+                        setmenu={handleSubmenu}
+                      />
+                    ))}
+                  </Slider>
+                ) : (
+                  menu
+                    .slice(0, 8)
+                    .map((item: any, index: number) => (
+                      <MenuItem key={index} item={item} />
+                    ))
+                )}
+              </ul>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section
+          className={styles.Menu}
+          /*        ref={menuRef} */
+        >
+          <div className={styles.search}>
+            <TopSearch />
+          </div>
+
+          <div className={styles.menuMobile + " wrapper"}>
+            <div className={styles.containermenu}>
+              {(responsive > 900 || !collapse) && (
+                <div onClick={() => setcollapse(!collapse)}>
+                  <button style={collapse ? { background: "#00A0E4" } : {}}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </button>
+                  <article>Hamısı</article>
+                </div>
+              )}
+
+              <ul className={styles[collapse ? "sliderParent" : ""]}>
+                {!(responsive > 900 || !collapse) && (
+                  <div
+                    className={styles.mobileMenuHeader + " mobileMenuHeader"}
+                  >
+                    <span
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setcollapse(false);
+                        setSubMenu(null);
+                      }}
+                    >
+                      <CancelSVG />
+                    </span>
+                    <h3>{menu[subMenu]?.name ?? "Kataloq"}</h3>
+                  </div>
+                )}
+                {collapse ? (
+                  <>
+                    {(subMenu !== null
+                      ? menu[subMenu]?.subcategories
+                      : menu
+                    ).map((item: any, index: number) => (
+                      <MenuItem
+                        key={index}
+                        item={{ ...item, index }}
+                        setActiveMenu={setactiveItem}
+                        activeItem={activeItem}
+                        collapse={collapse}
+                      />
+                    ))}
+                    {subMenu === null && (
+                      <MenuItem
+                        item={{
+                          name: "Topdançılar",
+                          link: "/topdancilar",
+                          subcategories: [],
+                        }}
+                        setActiveMenu={setactiveItem}
+                        activeItem={activeItem}
+                        collapse={collapse}
+                      />
+                    )}
+                  </>
+                ) : responsive < 686 ? (
+                  <Slider
+                    {...settings}
+                    arrows={false}
+                    className={styles.sliderMenu}
+                  >
+                    {menu.slice(0, 8).map((item: any, index: number) => (
+                      <MenuItem
+                        key={index}
+                        item={{ ...item, index }}
+                        setmenu={handleSubmenu}
+                      />
+                    ))}
+                  </Slider>
+                ) : (
+                  menu
+                    .slice(0, 8)
+                    .map((item: any, index: number) => (
+                      <MenuItem
+                        key={index}
+                        item={{ ...item, index }}
+                        setActiveMenu={setactiveItem}
+                        activeItem={activeItem}
+                        collapse={collapse}
+                      />
+                    ))
+                )}
+              </ul>
+            </div>
+          </div>
+          {activeItem && responsive > 900 && (
+            <div className={"wrapper "}>
+              <div className={styles.outsideCollapse}>
+                <header>Bütün elanlar</header>
+                <hr />
+                <ul
+                  style={
+                    activeItem?.subcategories?.length / 9 > 1
+                      ? {
+                          height:
+                            (activeItem?.subcategories?.length / 9) * 60 + "px",
+                        }
+                      : {}
+                  }
+                >
+                  {activeItem?.subcategories?.map((item: any) => (
+                    <li key={item.id}>
+                      <Link href={"/?category=" + item.id}>{item.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </section>
+      )}
+    </>
+  );
+};
+
+export default Menu;
+
+/* import { useEffect, useState } from "react";
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { useEffect, useRef, useState } from "react";
 import TopSearch from "../topSearch";
 import styles from "./index.module.css";
@@ -199,4 +495,4 @@ const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
   );
 };
 
-export default Menu;
+export default Menu;*/
