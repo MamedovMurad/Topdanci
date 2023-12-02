@@ -122,7 +122,9 @@ const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
                     <MenuItem
                       key={index}
                       item={{ ...item, index }}
-                      setmenu={subMenu === null && handleSubmenu}
+                      setActiveMenu={setactiveItem}
+                      activeItem={activeItem}
+                      collapse={collapse}
                     />
                   )
                 )}
@@ -133,7 +135,9 @@ const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
                       link: "/topdancilar",
                       subcategories: [],
                     }}
-                    setmenu={handleSubmenu}
+                    setActiveMenu={setactiveItem}
+                    activeItem={activeItem}
+                    collapse={collapse}
                   />
                 )}
               </>
@@ -160,6 +164,7 @@ const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
                     item={{ ...item, index }}
                     setActiveMenu={setactiveItem}
                     activeItem={activeItem}
+                    collapse={collapse}
                   />
                 ))
             )}

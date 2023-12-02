@@ -76,7 +76,8 @@
   gap: 24px 2.7%;
 }
 
-.MenutItemActive::before {
+.MenutItemActive::before,
+.MenutItemActiveCol::before {
   content: "";
   position: absolute;
   display: inline-block;
@@ -86,6 +87,9 @@
   bottom: -33px;
 }
 
+.MenutItemActiveCol::before {
+  bottom: -121px;
+}
 .MenutItem > .content::before {
   content: "";
   display: block;

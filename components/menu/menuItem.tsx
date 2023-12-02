@@ -9,6 +9,7 @@ type MenuItemProps = {
   setmenu?: any;
   setActiveMenu?: (param: any) => void;
   activeItem?: any;
+  collapse?: any;
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -16,10 +17,14 @@ const MenuItem: React.FC<MenuItemProps> = ({
   setmenu,
   setActiveMenu,
   activeItem,
+  collapse,
 }) => {
   const responsive = MyComponent();
 
   const handleClick = () => {
+    if (item.link) {
+      return Router.push("" + item.link);
+    }
     if (responsive < 900) {
       item.link
         ? Router.push(item.link)
@@ -42,13 +47,16 @@ const MenuItem: React.FC<MenuItemProps> = ({
         className={`${
           styles.MenutItem +
           " " +
-          (activeItem?.id == item.id ? styles.MenutItemActive : "")
+          (activeItem?.id == item.id
+            ? styles["MenutItemActive" + (collapse ? "Col" : "")]
+            : "")
         } ${item.subcategories.length < 1 && styles.menuItemnosub}`}
         onClick={handleClick}
       >
         {(setmenu || responsive > 684) && (
           <button
             style={
+              (item.link && activeItem === null) ||
               (item?.subcategories?.find(
                 (subi: any) => subi.id == Router?.query?.category
               ) &&
