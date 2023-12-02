@@ -11,9 +11,12 @@ import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-type MenuProps = {};
+type MenuProps = {
+  setisActiveMenu?: (param: boolean) => void;
+  isActiveMenu?: boolean;
+};
 
-const Menu: React.FC<MenuProps> = () => {
+const Menu: React.FC<MenuProps> = ({ setisActiveMenu, isActiveMenu }) => {
   const [activeItem, setactiveItem] = useState<any>(null);
 
   const [collapse, setcollapse] = useState(false);
