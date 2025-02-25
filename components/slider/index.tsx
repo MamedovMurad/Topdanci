@@ -36,10 +36,10 @@ const SliderUI: React.FC<SliderUIProps> = ({ photos }) => {
       <ul style={photos.length>=5?{gridTemplateColumns:'repeat(auto-fit,minmax(20%,1fr)'}:{}}>
         {
           photos?.map((item, index) => (
-            <li key={item}>
+            <li key={item.src}>
               <Image
                 onClick={() => handleModal(index)}
-                src={item}
+                src={item.src}
                 alt={item.alt}
                 layout="fill"
               />
