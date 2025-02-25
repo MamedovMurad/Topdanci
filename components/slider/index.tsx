@@ -39,7 +39,7 @@ const SliderUI: React.FC<SliderUIProps> = ({ photos }) => {
             <li key={item}>
               <Image
                 onClick={() => handleModal(index)}
-                src={tem}
+                src={item}
                 alt={item.alt}
                 layout="fill"
               />
